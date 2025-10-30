@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PAD THAI KRUA LUANG — Demo</title>
+  <style>
+    :root{
+      --bg: #ffffff;
+      --max-content-width: 1100px;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* Container to center content on wide screens while allowing full-bleed embed */
+    .page {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    h1 { margin:0 0 12px 0; font-size:20px; }
+    p { margin:6px 0 16px 0; color:#444; }
+
+    /* Responsive embed wrapper.
+       We use a full-bleed technique so the embed can span the full viewport width,
+       while the page content remains centered on large screens. */
+    .full-bleed {
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    /* Default: assume a tall (portrait) design and give enough height */
+    .embed {
+      position: relative;
+      width:100%;
+      padding-bottom: 160%; /* mobile default (can adjust) */
+      height:0;
+      overflow:hidden;
+      background:#000; /* temporary background while loading */
+    }
+    .embed iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
+    /* Larger screens (desktop) — reduce padding to avoid excessive height */
+    @media (min-width: 900px){
+      .embed { padding-bottom: 100%; } /* portrait on desktop */
+      .page { padding: 40px; }
+      h1 { font-size:24px; }
+    }
+
+    /* Very wide / landscape layouts — use shorter ratio */
+    @media (min-width: 1400px){
+      .embed { padding-bottom: 80%; }
+    }
+
+    /* Small tweaks for very short mobile screens */
+    @media (max-height: 600px) and (max-width: 480px) {
+      .embed { padding-bottom: 200%; } /* allow extra scroll for very narrow phones */
+    }
+
+    /* A small footer bar with link to open original Canva page */
+    .tools {
+      margin-top:12px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .btn {
+      background:#ff7a18;
+      color:white;
+      padding:8px 12px;
+      border-radius:6px;
+      text-decoration:none;
+      font-weight:600;
+    }
+    .note { color:#666; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>PAD THAI KRUA LUANG — ตัวอย่างหน้า</h1>
+    <p class="note">ฝังผลงานจาก Canva แบบ responsive — แสดงได้ทั้งบนมือถือและเดสก์ท็อป หากต้องการปรับความสูงให้พอดีมากขึ้น ให้แก้ค่า <code>padding-bottom</code> ในแท็ก <code>.embed</code> หรือใน media queries</p>
+
+    <div class="full-bleed">
+      <div class="embed" id="canva-embed">
+        <!-- ถ้าอยากเปลี่ยนลิงก์ ให้แก้ src ด้านล่าง -->
+        <iframe src="https://www.canva.com/design/DAG3CSWS2P0/96KlYN7XSuIxYWSlEZ9Lnw/view?embed"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="tools">
+      <a class="btn" href="https://www.canva.com/design/DAG3CSWS2P0/96KlYN7XSuIxYWSlEZ9Lnw/view" target="_blank" rel="noopener">เปิดหน้า Canva แบบเต็มจอ</a>
+      <span class="note">หากฝังแล้วไม่พอดี ให้ลองปรับ <code>padding-bottom</code> เป็นค่าใกล้เคียงกับอัตราส่วน (height/width × 100%)</span>
+    </div>
+
+    <hr style="margin:20px 0; border:none; height:1px; background:#eee;">
+    <p class="note">วิธีใช้: บันทึกไฟล์นี้เป็น <code>index.html</code> แล้วอัปโหลดไปที่ repo <code>yourusername.github.io</code> ของคุณ (หรือวางใน GitHub → Add file → Upload files)</p>
+  </div>
+</body>
+</html>
