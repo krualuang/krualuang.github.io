@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Krua Luang — Royal Thai Cuisine | ครัวหลวง</title>
     <meta name="description" content="Krua Luang — Royal Thai cuisine in Vientiane. Fine dining, authentic Thai flavours, and franchise opportunities. ຮ້ານອາຫານໄທຮຸ່ງໄຮສຶດ ແລະ ໂອກາດແຟຣນໄຊສ໌." />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    
     <style>
         /* Minimal modern styles — change colors to match brand */
         :root{--gold:#c99d4a;--bg:#fff;--muted:#666}
         *{box-sizing:border-box}
-        body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans Lao",Sarabun,Arial;margin:0;color:#111;background:var(--bg);line-height:1.45}
+        body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans Thai", "Noto Sans Lao",Sarabun,Arial;margin:0;color:#111;background:var(--bg);line-height:1.45}
         .container{max-width:1100px;margin:0 auto;padding:24px}
         header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
         .logo{display:flex;align-items:center;gap:12px}
@@ -67,7 +69,7 @@
                 <div class="lang-switch">
                     <button id="lang-en">EN</button>
                     <button id="lang-la">ລາ</button>
-                </div>
+                    <button id="lang-th">TH</button> </div>
             </div>
         </header>
 
@@ -221,93 +223,18 @@
     </div>
 
     <script>
-        // Simple bilingual data (English + Lao). All translations are now handled here.
+        // Simple bilingual data (English + Lao + Thai).
         const I18N = {
             en: {
                 'nav.home': 'Home', 'nav.menu': 'Menu', 'nav.franchise': 'Franchise', 'nav.about': 'About', 'nav.contact': 'Contact',
-                // HERO section updated to be fully translated via JS
-                'hero.eyebrow': 'Royal Thai Cuisine — Vientiane', 
-                'hero.h1': 'Authentic Royal Thai flavours<br>Experience Royal Thai Cuisine', 
-                'hero.lead': 'Fine dining experience & franchise opportunities.', 
-                'hero.cta1': 'Explore Franchise', 'hero.cta2': 'Book a Visit', 
-                'hero.card.title': 'Elegant dining & authentic taste', 
-                'hero.card.lead': 'Beautiful setting and trusted food quality',
-                
-                'menu.title': 'Menu & Gallery', 'menu.sub': 'Authentic dishes • Popular choices', 'menu.sample': 'Sample Menu — Popular dishes', 
-                'menu.col.dish': 'Dish', 'menu.col.price': 'Price', 'menu.item.padthai': 'Pad Thai (Signature)', 'menu.item.green': 'Green Curry', 'menu.item.dessert': 'Traditional Thai Dessert',
-                
-                'franchise.title': 'Franchise Opportunities', 'franchise.sub': '3 investment packages • Ready to scale', 
-                'franchise.pkg.min': 'Minimal', 'franchise.pkg.min.desc': 'For markets & kiosks — basic support, recipes & training.', 
-                'franchise.pkg.med': 'Medium', 'franchise.pkg.med.desc': 'Managed support package — equipment and partial operations.', 
-                'franchise.pkg.sta': 'Stand Alone', 'franchise.pkg.sta.desc': 'Full stand-alone restaurant set-up with training & marketing.', 
-                'franchise.what': 'What franchisees receive', 'franchise.list.1': 'Full recipes & supplier list', 'franchise.list.2': 'Training & on-site support', 'franchise.list.3': 'Marketing materials & POS setup', 
-                'franchise.cta': 'Apply Now', 'franchise.cta2': 'Contact Sales',
-                
-                'about.title': 'About Krua Luang', 
-                'about.lead': 'Krua Luang started from a passion to bring royal Thai flavours to Vientiane. We combine authentic recipes with a modern dining experience.',
-                'about.mission': 'Mission: To provide premium Thai dining and scalable franchise solutions.', 'about.vision': 'Vision: Expand to 50 branches across Laos.',
-                
+                'hero.eyebrow': 'Royal Thai Cuisine — Vientiane', 'hero.h1': 'Authentic Royal Thai flavours<br>Experience Royal Thai Cuisine', 'hero.lead': 'Fine dining experience & franchise opportunities.', 'hero.cta1': 'Explore Franchise', 'hero.cta2': 'Book a Visit', 'hero.card.title': 'Elegant dining & authentic taste', 'hero.card.lead': 'Beautiful setting and trusted food quality',
+                'menu.title': 'Menu & Gallery', 'menu.sub': 'Authentic dishes • Popular choices', 'menu.sample': 'Sample Menu — Popular dishes', 'menu.col.dish': 'Dish', 'menu.col.price': 'Price', 'menu.item.padthai': 'Pad Thai (Signature)', 'menu.item.green': 'Green Curry', 'menu.item.dessert': 'Traditional Thai Dessert',
+                'franchise.title': 'Franchise Opportunities', 'franchise.sub': '3 investment packages • Ready to scale', 'franchise.pkg.min': 'Minimal', 'franchise.pkg.min.desc': 'For markets & kiosks — basic support, recipes & training.', 'franchise.pkg.med': 'Medium', 'franchise.pkg.med.desc': 'Managed support package — equipment and partial operations.', 'franchise.pkg.sta': 'Stand Alone', 'franchise.pkg.sta.desc': 'Full stand-alone restaurant set-up with training & marketing.', 'franchise.what': 'What franchisees receive', 'franchise.list.1': 'Full recipes & supplier list', 'franchise.list.2': 'Training & on-site support', 'franchise.list.3': 'Marketing materials & POS setup', 'franchise.cta': 'Apply Now', 'franchise.cta2': 'Contact Sales',
+                'about.title': 'About Krua Luang', 'about.lead': 'Krua Luang started from a passion to bring royal Thai flavours to Vientiane. We combine authentic recipes with a modern dining experience.', 'about.mission': 'Mission: To provide premium Thai dining and scalable franchise solutions.', 'about.vision': 'Vision: Expand to 50 branches across Laos.',
                 'contact.title': 'Contact Us', 'contact.address': 'Address', 'contact.phone': 'Phone', 'contact.whatsapp': 'WhatsApp'
             },
             la: {
                 'nav.home': 'ໜ້າຫຼັກ', 'nav.menu': 'ເມນູ', 'nav.franchise': 'ແຟຣນໄຊສ໌', 'nav.about': 'ກ່ຽວກັບ', 'nav.contact': 'ຕິດຕໍ່',
-                
-                // HERO section
-                'hero.eyebrow': 'ອາຫານໄທ ລົດຊາດແບບດັ້ງເດີມ', 
-                'hero.h1': 'ອາຫານໄທດັ່ງເດີມ<br>ຮັບປະສົບການອາຫານຄັວຫຼວງ', 
-                'hero.lead': 'ບໍລິການ Fine dining ແລະ ໂອກາດແຟຣນໄຊສ໌', 
-                'hero.cta1': 'ຊອກແຟຣນໄຊສ໌', 'hero.cta2': 'ຈອງທົດສອບ', 
-                'hero.card.title': 'ບ່ອນຮັບປະທານ ແລະ ຄຸນນະພາບອາຫານ', 
-                'hero.card.lead': 'ບ່ອນສະແດງສຸມທິ ແລະ ຄຸນນະພາບອາຫານ',
-                
-                'menu.title': 'ເມນູ & ຮູບພາບ', 'menu.sub': 'ອາຫານດັ່ງເດີມ', 'menu.sample': 'ເມນູຕົວຢ່າງ', 
-                'menu.col.dish': 'ອາຫານ', 'menu.col.price': 'ລາຄາ', 'menu.item.padthai': 'ຜັດໄທ (ເຄີງ)', 'menu.item.green': 'ເຂົ້າໝາກພື້ນ', 'menu.item.dessert': 'ຂອງຫວານ',
-                
-                'franchise.title': 'ໂອກາດແຟຣນໄຊສ໌', 'franchise.sub': 'ລາຍການການລົງທຶນ 3 ປະເພດ', 
-                'franchise.pkg.min': 'Minimal', 'franchise.pkg.min.desc': 'ເຫມາະສຳລັບຕະຫຼາດ & kiosk — ສະຫຼຸບສະຫຼຸບ', 
-                'franchise.pkg.med': 'Medium', 'franchise.pkg.med.desc': 'ບໍລິການຈັດການ ແລະ ອຸປະກອນ', 
-                'franchise.pkg.sta': 'Stand Alone', 'franchise.pkg.sta.desc': 'ຕັ້ງຮ້ານສົມບູນ ພ້ອມການສອນ & ການຕະຫຼາດ', 
-                'franchise.what': 'ສິ່ງທີ່ຜູ້ເຂົ້າຮ່ວມຈະໄດ້', 'franchise.list.1': 'ບົດສູດແລະລາຍການຜູ້ສະໜອງ', 'franchise.list.2': 'ການຝຶກອົບຮົມ', 'franchise.list.3': 'ວັດຖຸການຕະຫຼາດ & POS', 
-                'franchise.cta': 'ສະໝັກດຽວນີ້', 'franchise.cta2': 'ຕິດຕໍ່ຝາກຂາ',
-                
-                'about.title': 'ກ່ຽວກັບຄົວຫຼວງ', 
-                'about.lead': 'ຄົວຫຼວງເລີ່ມຈາກຄວາມຮັກຕໍ່ອາຫານໄທ ແລະ ຕ້ອງການນຳຮັບຮອງຮູບແບບຮອບດ້ານ.',
-                'about.mission': 'ພາຍໃນ: ນຳເສີອາຫານໄທຊັດສະເລີຍແລະແຜນການແຟຣນໄຊສ໌', 'about.vision': 'ວິຊັນ: ຂະຫຍາຍເປັນ 50 ສາຂາ',
-                
-                'contact.title': 'ຕິດຕໍ່ພວກເຮົາ', 'contact.address': 'ທີ່ຢູ່', 'contact.phone': 'ເບີໂທ', 'contact.whatsapp': 'WhatsApp'
-            }
-        };
-
-        const elems = document.querySelectorAll('[data-i18n]');
-        function setLang(lang){
-            const languageCode = (lang === 'la') ? 'lo' : 'en';
-            document.documentElement.lang = languageCode;
-
-            elems.forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                // ใช้ภาษาที่เลือก หรือภาษาอังกฤษเป็นค่าเริ่มต้น
-                const text = (I18N[lang] && I18N[lang][key]) || I18N['en'][key] || el.textContent;
-
-                // ใช้ innerHTML สำหรับ Hero H1 เพื่อรองรับ <br>
-                if (key === 'hero.h1') {
-                    el.innerHTML = text;
-                } else {
-                    el.textContent = text;
-                }
-            });
-        }
-        
-        document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
-        document.getElementById('lang-la').addEventListener('click', () => setLang('la'));
-
-        // default language: English
-        setLang('en');
-
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        function openForm(type){
-            document.getElementById('contact-form').scrollIntoView({behavior:'smooth'});
-        }
-    </script>
-</body>
-</html>
+                'hero.eyebrow': 'ອາຫານໄທ ລົດຊາດແບບດັ້ງເດີມ', 'hero.h1': 'ອາຫານໄທດັ່ງເດີມ<br>ຮັບປະສົບການອາຫານຄັວຫຼວງ', 'hero.lead': 'ບໍລິການ Fine dining ແລະ ໂອກາດແຟຣນໄຊສ໌', 'hero.cta1': 'ຊອກແຟຣນໄຊສ໌', 'hero.cta2': 'ຈອງທົດສອບ', 'hero.card.title': 'ບ່ອນຮັບປະທານ ແລະ ຄຸນນະພາບອາຫານ', 'hero.card.lead': 'ບ່ອນສະແດງສຸມທິ ແລະ ຄຸນນະພາບອາຫານ',
+                'menu.title': 'ເມນູ & ຮູບພາບ', 'menu.sub': 'ອາຫານດັ່ງເດີມ', 'menu.sample': 'ເມນູຕົວຢ່າງ', 'menu.col.dish': 'ອາຫານ', 'menu.col.price': 'ລາຄາ', 'menu.item.padthai': 'ຜັດໄທ (ເຄີງ)', 'menu.item.green': 'ເຂົ້າໝາກພື້ນ', 'menu.item.dessert': 'ຂອງຫວານ',
+                'franchise.title': 'ໂອກາດແຟຣນໄຊສ໌', 'franchise.sub': 'ລາຍການການລົງທຶນ 3 ປະເພດ', 'franchise.pkg.min': 'Minimal', 'franchise.pkg.min.desc': 'ເຫມາະສຳລັບຕະຫຼາດ & kiosk — ສະຫຼຸບສະຫຼຸບ', 'franchise.pkg.med': 'Medium', 'franchise.pkg.med.desc': 'ບໍລິການຈັດການ ແລະ ອຸປະກອນ', 'franchise.pkg.sta': 'Stand Alone', 'franchise.pkg.sta.desc': 'ຕັ້ງຮ້ານສົມບູນ ພ້ອມການສອນ & ການຕະຫຼາດ', 'franchise.what': 'ສິ່ງທີ່ຜູ້ເຂົ້າຮ່ວມຈະໄດ້', 'franchise.list.1': 'ບົດສູດແລະລາຍການຜູ້ສະໜອງ', 'franchise.list.2': 'ການຝຶກອົບຮົມ', 'franchise.list.3': 'ວັດຖຸການຕະຫຼາດ
