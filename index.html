@@ -240,4 +240,97 @@
                                 <input id="name-input" placeholder="Full name / ຊື່" required style="flex:1;padding:10px;border-radius:8px;border:1px solid #eee">
                                 
                                 <label for="phone-input" class="a11y-hidden">Phone</label>
-                                <input id="phone-input" placeholder="Phone / ເບີ" required style="flex:1;padding:10px;border-radius:8
+                                <input id="phone-input" placeholder="Phone / ເບີ" required style="flex:1;padding:10px;border-radius:8px;border:1px solid #eee">
+                            </div>
+                            <label for="message-input" class="a11y-hidden">Message</label>
+                            <textarea id="message-input" placeholder="Message / ຂໍ້ຄວາມ" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee;height:100px"></textarea>
+                            <div style="margin-top:8px;display:flex;gap:8px">
+                                <button class="btn" type="submit">Send</button>
+                                <a class="btn" href="https://wa.me/8562056605450" style="background:#fff;color:var(--gold);border:1px solid var(--gold);">Chat on WhatsApp</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card" style="height:100%">
+                    <div style="width:100%;height:260px;background:#f7f7f7;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted)">Google Map placeholder</div>
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top:28px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                    <strong>Krua Luang</strong><br>
+                    <span style="color:var(--muted)">ຮ້ານອາຫານ ຄົວຫຼວງ — Vientiane</span>
+                </div>
+                <div style="color:var(--muted)">© <span id="year"></span> Krua Luang</div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple bilingual data (English + Lao + Thai).
+        const I18N = {
+            en: {
+                'nav.home': 'Home', 'nav.menu': 'Menu', 'nav.franchise': 'Franchise', 'nav.about': 'About', 'nav.contact': 'Contact',
+                'hero.eyebrow': 'Royal Thai Cuisine — Vientiane', 'hero.h1': 'Authentic Royal Thai flavours<br>Experience Royal Thai Cuisine', 'hero.lead': 'Fine dining experience & franchise opportunities.', 'hero.cta1': 'Explore Franchise', 'hero.cta2': 'Book a Visit', 'hero.card.title': 'Elegant dining & authentic taste', 'hero.card.lead': 'Beautiful setting and trusted food quality',
+                'menu.title': 'Menu & Gallery', 'menu.sub': 'Authentic dishes • Popular choices', 'menu.sample': 'Sample Menu — Popular dishes', 'menu.col.dish': 'Dish', 'menu.col.price': 'Price', 'menu.item.padthai': 'Pad Thai (Signature)', 'menu.item.green': 'Green Curry', 'menu.item.dessert': 'Traditional Thai Dessert',
+                'franchise.title': 'Franchise Opportunities', 'franchise.sub': '3 investment packages • Ready to scale', 'franchise.pkg.min': 'Minimal', 'franchise.pkg.min.desc': 'For markets & kiosks — basic support, recipes & training.', 'franchise.pkg.med': 'Medium', 'franchise.pkg.med.desc': 'Managed support package — equipment and partial operations.', 'franchise.pkg.sta': 'Stand Alone', 'franchise.pkg.sta.desc': 'Full stand-alone restaurant set-up with training & marketing.', 'franchise.what': 'What franchisees receive', 'franchise.list.1': 'Full recipes & supplier list', 'franchise.list.2': 'Training & on-site support', 'franchise.list.3': 'Marketing materials & POS setup', 'franchise.cta': 'Apply Now', 'franchise.cta2': 'Contact Sales',
+                'about.title': 'About Krua Luang', 'about.lead': 'Krua Luang started from a passion to bring royal Thai flavours to Vientiane. We combine authentic recipes with a modern dining experience.', 'about.mission': 'Mission: To provide premium Thai dining and scalable franchise solutions.', 'about.vision': 'Vision: Expand to 50 branches across Laos.',
+                'contact.title': 'Contact Us', 'contact.address': 'Address', 'contact.phone': 'Phone', 'contact.whatsapp': 'WhatsApp'
+            },
+            la: {
+                'nav.home': 'ໜ້າຫຼັກ', 'nav.menu': 'ເມນູ', 'nav.franchise': 'ແຟຣນໄຊສ໌', 'nav.about': 'ກ່ຽວກັບ', 'nav.contact': 'ຕິດຕໍ່',
+                'hero.eyebrow': 'ອາຫານໄທ ລົດຊາດແບບດັ້ງເດີມ', 'hero.h1': 'ອາຫານໄທດັ່ງເດີມ<br>ຮັບປະສົບການອາຫານຄັວຫຼວງ', 'hero.lead': 'ບໍລິການ Fine dining ແລະ ໂອກາດແຟຣນໄຊສ໌', 'hero.cta1': 'ຊອກແຟຣນໄຊສ໌', 'hero.cta2': 'ຈອງທົດສອບ', 'hero.card.title': 'ບ່ອນຮັບປະທານ ແລະ ຄຸນນະພາບອາຫານ', 'hero.card.lead': 'ບ່ອນສະແດງສຸມທິ ແລະ ຄຸນນະພາບອາຫານ',
+                'menu.title': 'ເມນູ & ຮູບພາບ', 'menu.sub': 'ອາຫານດັ່ງເດີມ', 'menu.sample': 'ເມນູຕົວຢ່າງ', 'menu.col.dish': 'ອາຫານ', 'menu.col.price': 'ລາຄາ', 'menu.item.padthai': 'ຜັດໄທ (ເຄີງ)', 'menu.item.green': 'ເຂົ້າໝາກພື້ນ', 'menu.item.dessert': 'ຂອງຫວານ',
+                'franchise.title': 'ໂອກາດແຟຣນໄຊສ໌', 'franchise.sub': 'ລາຍການການລົງທຶນ 3 ປະເພດ', 'franchise.pkg.min': 'Minimal', 'franchise.pkg.min.desc': 'ເຫມາະສຳລັບຕະຫຼາດ & kiosk — ສະຫຼຸບສະຫຼຸບ', 'franchise.pkg.med': 'Medium', 'franchise.pkg.med.desc': 'ບໍລິການຈັດການ ແລະ ອຸປະກອນ', 'franchise.pkg.sta': 'Stand Alone', 'franchise.pkg.sta.desc': 'ຕັ້ງຮ້ານສົມບູນ ພ້ອມການສອນ & ການຕະຫຼາດ', 'franchise.what': 'ສິ່ງທີ່ຜູ້ເຂົ້າຮ່ວມຈະໄດ້', 'franchise.list.1': 'ບົດສູດແລະລາຍການຜູ້ສະໜອງ', 'franchise.list.2': 'ການຝຶກອົບຮົມ', 'franchise.list.3': 'ວັດຖຸການຕະຫຼາດ & POS', 'franchise.cta': 'ສະໝັກດຽວນີ້', 'franchise.cta2': 'ຕິດຕໍ່ຝາກຂາ',
+                'about.title': 'ກ່ຽວກັບຄົວຫຼວງ', 'about.lead': 'ຄົວຫຼວງເລີ່ມຈາກຄວາມຮັກຕໍ່ອາຫານໄທ ແລະ ຕ້ອງການນຳຮັບຮອງຮູບແບບຮອບດ້ານ.', 'about.mission': 'ພາຍໃນ: ນຳເສີອາຫານໄທຊັດສະເລີຍແລະແຜນການແຟຣນໄຊສ໌', 'about.vision': 'ວິຊັນ: ຂະຫຍາຍເປັນ 50 ສາຂາ',
+                'contact.title': 'ຕິດຕໍ່ພວກເຮົາ', 'contact.address': 'ທີ່ຢູ່', 'contact.phone': 'ເບີໂທ', 'contact.whatsapp': 'WhatsApp'
+            },
+            th: { 
+                'nav.home': 'หน้าหลัก', 'nav.menu': 'เมนู', 'nav.franchise': 'แฟรนไชส์', 'nav.about': 'เกี่ยวกับ', 'nav.contact': 'ติดต่อ',
+                'hero.eyebrow': 'ตำรับอาหารไทยโบราณ — เวียงจันทน์', 'hero.h1': 'รสชาติไทยแท้ตำรับวัง<br>สัมผัสประสบการณ์ครัวหลวง', 'hero.lead': 'ประสบการณ์ทานอาหารชั้นเลิศ และโอกาสแฟรนไชส์.', 'hero.cta1': 'สำรวจแฟรนไชส์', 'hero.cta2': 'จองโต๊ะ/เยี่ยมชม', 'hero.card.title': 'บรรยากาศหรูหรา รสชาติแบบดั้งเดิม', 'hero.card.lead': 'สถานที่สวยงาม และคุณภาพอาหารที่ไว้ใจได้',
+                'menu.title': 'เมนู & แกลเลอรี', 'menu.sub': 'อาหารไทยต้นตำรับ • เมนูแนะนำ', 'menu.sample': 'เมนูตัวอย่าง — อาหารยอดนิยม', 'menu.col.dish': 'เมนู', 'menu.col.price': 'ราคา', 'menu.item.padthai': 'ผัดไทย (เมนูแนะนำ)', 'menu.item.green': 'แกงเขียวหวาน', 'menu.item.dessert': 'ขนมไทยดั้งเดิม',
+                'franchise.title': 'โอกาสแฟรนไชส์', 'franchise.sub': '3 แพ็กเกจการลงทุน • พร้อมต่อยอดธุรกิจ', 'franchise.pkg.min': 'ขนาดเล็ก', 'franchise.pkg.min.desc': 'สำหรับตลาด & คีออสก์ — สนับสนุนสูตรอาหารและการฝึกอบรมพื้นฐาน', 'franchise.pkg.med': 'ขนาดกลาง', 'franchise.pkg.med.desc': 'แพ็กเกจการจัดการ — อุปกรณ์ และการดำเนินงานบางส่วน', 'franchise.pkg.sta': 'ร้านเดี่ยว', 'franchise.pkg.sta.desc': 'ติดตั้งร้านอาหารครบวงจร พร้อมการฝึกอบรมและการตลาด', 'franchise.what': 'สิ่งที่ผู้ซื้อแฟรนไชส์จะได้รับ', 'franchise.list.1': 'สูตรอาหารฉบับเต็มและรายชื่อซัพพลายเออร์', 'franchise.list.2': 'การฝึกอบรมและการสนับสนุนหน้างาน', 'franchise.list.3': 'สื่อการตลาดและการตั้งค่า POS', 'franchise.cta': 'สมัครตอนนี้', 'franchise.cta2': 'ติดต่อฝ่ายขาย',
+                'about.title': 'เกี่ยวกับครัวหลวง', 'about.lead': 'ครัวหลวงเริ่มต้นจากความหลงใหลในการนำรสชาติไทยตำรับวังมาสู่เวียงจันทน์ เราผสานสูตรอาหารดั้งเดิมเข้ากับประสบการณ์การรับประทานอาหารที่ทันสมัย', 'about.mission': 'พันธกิจ: เพื่อมอบประสบการณ์อาหารไทยระดับพรีเมียมและโซลูชั่นแฟรนไชส์ที่ปรับขนาดได้', 'about.vision': 'วิสัยทัศน์: ขยายสาขาให้ได้ 50 แห่งทั่วประเทศลาว',
+                'contact.title': 'ติดต่อเรา', 'contact.address': 'ที่อยู่', 'contact.phone': 'โทรศัพท์', 'contact.whatsapp': 'WhatsApp'
+            }
+        };
+
+        const elems = document.querySelectorAll('[data-i18n]');
+        function setLang(lang){
+            const languageCode = (lang === 'la') ? 'lo' : (lang === 'th' ? 'th' : 'en'); 
+            document.documentElement.lang = languageCode;
+
+            elems.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const text = (I18N[lang] && I18N[lang][key]) || I18N['en'][key] || el.textContent;
+
+                if (key === 'hero.h1') {
+                    el.innerHTML = text;
+                } else {
+                    el.textContent = text;
+                }
+            });
+            // อัปเดตสถานะปุ่มภาษา
+            document.querySelectorAll('.lang-switch button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.getElementById(`lang-${lang}`).classList.add('active');
+        }
+        
+        document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
+        document.getElementById('lang-la').addEventListener('click', () => setLang('la'));
+        document.getElementById('lang-th').addEventListener('click', () => setLang('th')); 
+
+        setLang('en'); // ตั้งค่าภาษาเริ่มต้น
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function openForm(type){
+            document.getElementById('contact-form').scrollIntoView({behavior:'smooth'});
+        }
+    </script>
+</body>
+</html>
