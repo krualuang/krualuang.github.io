@@ -1,99 +1,137 @@
-<style>
-    /* Minimal modern styles — change colors to match brand */
-    :root{
-        --gold:#c99d4a; /* สีทองหลัก */
-        --dark-gold:#a57b37; /* สีทองเข้ม */
-        --bg:#fff;
-        --muted:#666;
-        --shadow-color: rgba(0, 0, 0, 0.05); /* เงาที่นุ่มนวล */
-        --dark-bg:#222; 
-        --text-on-dark:#eee; 
-    }
-    *{box-sizing:border-box}
-    body{
-        font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans Thai", "Noto Sans Lao",Sarabun,Arial;
-        margin:0;
-        color:#111;
-        background:var(--bg); /* เปลี่ยนพื้นหลังกลับเป็นสีขาว แต่เพิ่มเงาให้องค์ประกอบแทน */
-        line-height:1.45;
-    }
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{
-        display:flex;align-items:center;justify-content:space-between;
-        padding:18px 0; 
-        background: var(--bg); 
-        /* เพิ่มเงาที่ดูนุ่มนวลให้กับ Header */
-        box-shadow: 0 2px 8px var(--shadow-color);
-        border-radius: 0 0 12px 12px;
-        position: sticky; /* ทำให้ Header ติดอยู่ด้านบนเวลา Scroll */
-        top: 0;
-        z-index: 100;
-    }
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Krua Luang — Royal Thai Cuisine | ครัวหลวง</title>
+    <meta name="description" content="Krua Luang — Royal Thai cuisine in Vientiane. Fine dining, authentic Thai flavours, and franchise opportunities. ຮ້ານອາຫານໄທຮຸ່ງໄຮສຶດ ແລະ ໂອກາດແຟຣນໄຊສ໌." />
     
-    .logo{display:flex;align-items:center;gap:12px}
-    .logo .logo-img { /* สไตล์สำหรับรูปโลโก้ */
-        width:48px;
-        height:48px;
-        border-radius:8px; 
-        object-fit: contain; 
-        background-color: transparent; /* ทำให้พื้นหลังโปร่งใส (ถ้าโลโก้มีสีพื้นหลัง ให้ลบบรรทัดนี้) */
-    }
+    <link rel="icon" type="image/png" href="assets/favicon.png"> 
+    
+    <style>
+        /* Minimal modern styles — change colors to match brand */
+        :root{
+            --gold:#c99d4a; /* สีทองหลัก */
+            --dark-gold:#a57b37; /* สีทองเข้ม */
+            --bg:#fff;
+            --muted:#666;
+            --light-grey:#f8f8f8; /* สีเทาอ่อนสำหรับพื้นหลัง Hero */
+            --shadow-color: rgba(0, 0, 0, 0.05); /* เงาที่นุ่มนวล */
+            --dark-bg:#222; 
+            --text-on-dark:#eee; 
+        }
+        *{box-sizing:border-box}
+        body{
+            font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans Thai", "Noto Sans Lao",Sarabun,Arial;
+            margin:0;
+            color:#111;
+            background:var(--bg); /* พื้นหลังหลักเป็นสีขาว */
+            line-height:1.45;
+        }
+        .container{max-width:1100px;margin:0 auto;padding:24px}
+        header{
+            display:flex;align-items:center;justify-content:space-between;
+            padding:18px 0; 
+            background: var(--bg); 
+            /* ทำให้ Header ดูลอยและติดอยู่ด้านบน */
+            box-shadow: 0 2px 8px var(--shadow-color);
+            border-radius: 0 0 12px 12px;
+            position: sticky; 
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo{display:flex;align-items:center;gap:12px}
+        .logo .logo-img { /* สไตล์สำหรับรูปโลโก้ */
+            width:48px;
+            height:48px;
+            border-radius:8px; 
+            object-fit: contain; 
+            background-color: transparent; 
+        }
 
-    nav{display:flex;gap:16px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600; transition: color 0.2s}
-    nav a:hover {color: var(--gold);} 
-    .btn{background:var(--gold);color:#fff;padding:10px 14px;border-radius:8px;border:none;cursor:pointer; transition: opacity 0.2s, transform 0.2s}
-    .btn:hover {opacity: 0.9; transform: translateY(-1px);} 
-    .hero{
-        display:grid;grid-template-columns:1fr 420px;gap:28px;
-        align-items:center;padding:28px; /* เพิ่ม padding ทั้งหมด 28px */
-        background: var(--light-grey); /* ใช้สีเทาอ่อนสำหรับส่วน Hero เพื่อแยกออกจาก Header */
-        border-radius: 12px; 
-        margin-top: 24px;
-    } 
-    .hero .eyebrow{color:var(--muted);font-weight:700}
-    .hero h1{font-size:32px;margin:6px 0}
-    .hero p{color:var(--muted)}
-    .hero .cta{margin-top:14px;display:flex;gap:10px}
-    .card{background:#fff;border-radius:12px;box-shadow:0 4px 12px var(--shadow-color);padding:18px} /* เพิ่มเงาที่นุ่มนวลให้กับ Card */
-    /* Sections */
-    section{padding:28px 0; border: none;} /* ลบเส้นแบ่ง */
-    .grid{display:grid;gap:16px}
-    .cols-3{grid-template-columns:repeat(3,1fr)}
-    .cols-2{grid-template-columns:repeat(2,1fr)}
-    .gallery img{width:100%;height:180px;object-fit:cover;border-radius:8px}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
-    footer{
-        padding:24px 0;
-        color:var(--text-on-dark); 
-        font-size:14px;
-        background:var(--dark-bg); 
-        margin-top:28px;
-        border-radius: 12px 12px 0 0; 
-    }
-    footer a {color: var(--text-on-dark); text-decoration: none;}
-    footer a:hover {color: var(--gold);}
+        nav{display:flex;gap:16px;align-items:center}
+        nav a{color:var(--muted);text-decoration:none;font-weight:600; transition: color 0.2s}
+        nav a:hover {color: var(--gold);} 
+        .btn{background:var(--gold);color:#fff;padding:10px 14px;border-radius:8px;border:none;cursor:pointer; transition: opacity 0.2s, transform 0.2s}
+        .btn:hover {opacity: 0.9; transform: translateY(-1px);} 
+        .hero{
+            display:grid;grid-template-columns:1fr 420px;gap:28px;
+            align-items:center;padding:28px; 
+            background: var(--light-grey); /* พื้นหลังเทาอ่อนสำหรับส่วน Hero */
+            border-radius: 12px; 
+            margin-top: 24px;
+        } 
+        .hero .eyebrow{color:var(--muted);font-weight:700}
+        .hero h1{font-size:32px;margin:6px 0}
+        .hero p{color:var(--muted)}
+        .hero .cta{margin-top:14px;display:flex;gap:10px}
+        .card{background:#fff;border-radius:12px;box-shadow:0 4px 12px var(--shadow-color);padding:18px} /* Card มีเงา */
+        
+        /* Sections */
+        section{padding:28px 0; border: none;} 
+        .grid{display:grid;gap:16px}
+        .cols-3{grid-template-columns:repeat(3,1fr)}
+        .cols-2{grid-template-columns:repeat(2,1fr)}
+        .gallery img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+        table{width:100%;border-collapse:collapse}
+        th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
+        footer{
+            padding:24px 0;
+            color:var(--text-on-dark); 
+            font-size:14px;
+            background:var(--dark-bg); 
+            margin-top:28px;
+            border-radius: 12px 12px 0 0; 
+        }
+        footer a {color: var(--text-on-dark); text-decoration: none;}
+        footer a:hover {color: var(--gold);}
 
-    /* Language toggle */
-    .lang-switch{display:flex;gap:8px}
-    .lang-switch button{padding:6px 10px;border-radius:8px;border:1px solid var(--muted);background:#fff;cursor:pointer; transition: border-color 0.2s}
-    .lang-switch button:hover {border-color: var(--gold); background: #f0f0f0;} 
-    .lang-switch button.active {
-        background-color: var(--dark-gold); /* ใช้สีทองเข้มเป็นพื้นหลังปุ่มที่เลือก */
-        color: #fff;
-        border-color: var(--dark-gold);
-    }
+        /* Language toggle */
+        .lang-switch{display:flex;gap:8px}
+        .lang-switch button{padding:6px 10px;border-radius:8px;border:1px solid var(--muted);background:#fff;cursor:pointer; transition: border-color 0.2s}
+        .lang-switch button:hover {border-color: var(--gold); background: #f0f0f0;} 
+        .lang-switch button.active {
+            background-color: var(--dark-gold); 
+            color: #fff;
+            border-color: var(--dark-gold);
+        }
 
-    /* Hidden label for A11Y */
-    .a11y-hidden {position: absolute; clip: rect(0 0 0 0);}
-    /* Responsive */
-    @media(max-width:900px){
-        .hero{grid-template-columns:1fr; padding: 18px;}
-        .cols-3{grid-template-columns:1fr}
-        .cols-2{grid-template-columns:1fr}
-        .hero h1{font-size:26px}
-        header {flex-wrap: wrap; justify-content: center; padding: 12px 0;} 
-        nav {margin-top: 12px;} 
-    }
-</style>
+        /* Hidden label for A11Y */
+        .a11y-hidden {position: absolute; clip: rect(0 0 0 0);}
+        /* Responsive */
+        @media(max-width:900px){
+            .hero{grid-template-columns:1fr; padding: 18px;}
+            .cols-3{grid-template-columns:1fr}
+            .cols-2{grid-template-columns:1fr}
+            .hero h1{font-size:26px}
+            header {flex-wrap: wrap; justify-content: center; padding: 12px 0;} 
+            nav {margin-top: 12px;} 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="assets/logo.png" alt="Krua Luang Logo" class="logo-img">
+                <div>
+                    <div style="font-weight:800">Krua Luang</div>
+                    <div style="font-size:12px;color:var(--muted)">ຄົວຫຼວງ • Royal Thai Cuisine</div>
+                </div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:18px">
+                <nav>
+                    <a href="#home" data-i18n="nav.home">Home</a>
+                    <a href="#menu" data-i18n="nav.menu">Menu</a>
+                    <a href="#franchise" data-i18n="nav.franchise">Franchise</a>
+                    <a href="#about" data-i18n="nav.about">About</a>
+                    <a href="#contact" data-i18n="nav.contact">Contact</a>
+                </nav>
+                <div class="lang-switch">
+                    <button id="lang-en" class="active">EN</button>
+                    <button id="lang-la">ລາ</button>
+                    <button id="lang-th">TH</button> 
+                </div>
+            </div>
