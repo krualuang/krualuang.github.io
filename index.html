@@ -5,69 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Krualuang Franchise</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Prompt', sans-serif; }
-    body { background-color: #fff; color: #333; scroll-behavior: smooth; }
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Prompt', sans-serif;}
+    body {background: #fff; color: #333; scroll-behavior: smooth;}
 
-    /* --- Navbar --- */
+    /* Navbar */
     header {
       background: #000;
       color: #fff;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
+      padding: 0.8rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
       z-index: 1000;
     }
-    header h1 { font-size: 1.5rem; color: gold; letter-spacing: 1px; }
-    nav a {
-      color: #fff;
-      margin-left: 1rem;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    nav a:hover { color: gold; }
+    header img {height: 50px;}
+    nav a {color: #fff; margin-left: 1rem; text-decoration: none; font-weight: 500;}
+    nav a:hover {color: gold;}
 
-    /* --- HERO --- */
+    /* Language Selector */
+    .lang-select {margin-left: 1rem; background: #111; color: #fff; border: 1px solid gold; border-radius: 4px; padding: 0.3rem;}
+    .lang-select:hover {background: gold; color: #000;}
+
+    /* HERO */
     .hero {
       height: 90vh;
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-        url('https://images.unsplash.com/photo-1604908813010-6b2b9e3b3a2a?auto=format&fit=crop&w=1600&q=80') center/cover;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-bg.jpg') center/cover;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: #fff;
-      position: relative;
       padding: 0 1rem;
     }
-    .hero-content {
-      max-width: 800px;
-    }
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: gold;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      line-height: 1.3;
-      margin-bottom: 1rem;
-    }
-    .hero h1 span {
-      font-size: 1.6rem;
-      color: #ffd700;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      color: #ddd;
-      margin-bottom: 2rem;
-      line-height: 1.7;
-    }
-    .cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .hero-content {max-width: 800px;}
+    .eyebrow {color: gold; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 1rem;}
+    .hero h1 {font-size: 2.5rem; line-height: 1.3; margin-bottom: 1rem;}
+    .hero h1 span {color: #ffd700; font-size: 1.4rem;}
+    .hero p {font-size: 1.1rem; color: #ddd; margin-bottom: 2rem; line-height: 1.7;}
+    .cta {display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;}
     .btn {
       background: gold;
       color: #000;
@@ -78,31 +55,22 @@
       cursor: pointer;
       transition: 0.3s;
     }
-    .btn:hover { background: #fff; }
+    .btn:hover {background: #fff;}
     .btn-outline {
       background: transparent;
       color: #fff;
       border: 2px solid gold;
     }
-    .btn-outline:hover { background: gold; color: #000; }
+    .btn-outline:hover {background: gold; color: #000;}
 
-    /* --- About --- */
-    .about {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
-    }
-    .about h3 { font-size: 2rem; color: #000; margin-bottom: 1rem; }
-    .about p { color: #555; line-height: 1.8; }
+    /* About */
+    .about {padding: 4rem 2rem; max-width: 1000px; margin: auto; text-align: center;}
+    .about h3 {font-size: 2rem; color: #000; margin-bottom: 1rem;}
+    .about p {color: #555; line-height: 1.8;}
 
-    /* --- Franchise --- */
-    .franchise {
-      background: #f7f7f7;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    .franchise h3 { font-size: 2rem; color: #000; margin-bottom: 1rem; }
+    /* Franchise */
+    .franchise {background: #f7f7f7; padding: 4rem 2rem; text-align: center;}
+    .franchise h3 {font-size: 2rem; color: #000; margin-bottom: 1rem;}
     .franchise-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -116,108 +84,99 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: 0.3s;
     }
-    .card:hover { transform: translateY(-5px); }
-    .card h4 { color: gold; margin-bottom: 0.5rem; }
-    .card p { color: #555; line-height: 1.6; }
+    .card img {width: 100%; border-radius: 10px; margin-bottom: 1rem;}
+    .card:hover {transform: translateY(-5px);}
+    .card h4 {color: gold; margin-bottom: 0.5rem;}
+    .card p {color: #555; line-height: 1.6;}
 
-    /* --- Contact --- */
-    .contact {
-      padding: 4rem 2rem;
-      background: #000;
-      color: #fff;
-      text-align: center;
-    }
-    .contact h3 { color: gold; font-size: 2rem; margin-bottom: 1rem; }
-    .contact p { margin-bottom: 1rem; }
+    /* Contact */
+    .contact {padding: 4rem 2rem; background: #000; color: #fff; text-align: center;}
+    .contact h3 {color: gold; font-size: 2rem; margin-bottom: 1rem;}
+    .contact p {margin-bottom: 1rem;}
     .contact a {
-      color: #000;
-      background: gold;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
+      color: #000; background: gold;
+      padding: 0.8rem 1.5rem; border-radius: 50px;
+      text-decoration: none; font-weight: bold;
     }
-    .contact a:hover { background: #fff; }
+    .contact a:hover {background: #fff;}
 
-    /* --- Footer --- */
-    footer {
-      background: #111;
-      color: #999;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
-      .hero h1 span { font-size: 1.2rem; }
-      .hero p { font-size: 1rem; }
-    }
+    footer {background: #111; color: #999; text-align: center; padding: 1rem; font-size: 0.9rem;}
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Krualuang</h1>
+    <img src="images/logo.png" alt="Krualuang Logo">
     <nav>
-      <a href="#home">หน้าแรก</a>
-      <a href="#about">เกี่ยวกับเรา</a>
-      <a href="#franchise">แฟรนไชส์</a>
-      <a href="#contact">ติดต่อ</a>
+      <a href="#home" data-i18n="menu.home">หน้าแรก</a>
+      <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
+      <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
+      <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
+      <select id="language" class="lang-select">
+        <option value="th">ไทย</option>
+        <option value="la">ລາວ</option>
+        <option value="en">English</option>
+      </select>
     </nav>
   </header>
 
   <!-- HERO -->
   <section id="home" class="hero">
     <div class="hero-content">
-      <div class="eyebrow">Krualuang — Authentic Thai Cuisine</div>
-      <h1>
+      <div class="eyebrow" data-i18n="hero.eyebrow">Krualuang — Authentic Thai Cuisine</div>
+      <h1 data-i18n="hero.title">
         Royal Thai Taste<br>
         <span>ຮັບປະສົບການອາຫານຄັວຫຼວງ</span>
       </h1>
-      <p>Fine dining experience and franchise opportunities across Laos and Thailand.</p>
+      <p data-i18n="hero.desc">Fine dining experience and franchise opportunities across Laos and Thailand.</p>
       <div class="cta">
-        <button class="btn" onclick="location.href='#franchise'">Explore Franchise</button>
-        <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView()">Book a Visit</button>
+        <button class="btn" data-i18n="hero.cta1" onclick="location.href='#franchise'">Explore Franchise</button>
+        <button class="btn btn-outline" data-i18n="hero.cta2" onclick="document.getElementById('contact').scrollIntoView()">Book a Visit</button>
       </div>
     </div>
   </section>
 
+  <!-- ABOUT -->
   <section id="about" class="about">
-    <h3>เกี่ยวกับครัวหลวง</h3>
-    <p>Krualuang คือแบรนด์อาหารสไตล์ไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานความสะดวกในรูปแบบแฟรนไชส์ทันสมัย ลงทุนเริ่มต้นเพียงหลักหมื่น สามารถสร้างยอดขายหลักล้านได้ภายในเวลาไม่นาน</p>
+    <h3 data-i18n="about.title">เกี่ยวกับครัวหลวง</h3>
+    <p data-i18n="about.text">Krualuang คือแบรนด์อาหารสไตล์ไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานความสะดวกในรูปแบบแฟรนไชส์ทันสมัย ลงทุนเริ่มต้นเพียงหลักหมื่น สามารถสร้างยอดขายหลักล้านได้ภายในเวลาไม่นาน</p>
   </section>
 
+  <!-- FRANCHISE -->
   <section id="franchise" class="franchise">
-    <h3>แพ็กเกจแฟรนไชส์</h3>
+    <h3 data-i18n="franchise.title">แพ็กเกจแฟรนไชส์</h3>
     <div class="franchise-cards">
       <div class="card">
-        <h4>ชุดเริ่มต้น</h4>
-        <p>ลงทุนเพียง 19,000 บาท เหมาะสำหรับผู้เริ่มต้น ต้องการทดลองตลาด</p>
+        <img src="images/food1.jpg" alt="Franchise Starter">
+        <h4 data-i18n="franchise.p1">ชุดเริ่มต้น</h4>
+        <p data-i18n="franchise.p1desc">ลงทุนเพียง 19,000 บาท เหมาะสำหรับผู้เริ่มต้น ต้องการทดลองตลาด</p>
       </div>
       <div class="card">
-        <h4>ชุดมาตรฐาน</h4>
-        <p>รวมอุปกรณ์และวัตถุดิบครบชุด พร้อมอบรมสูตรและการบริหารหน้าร้าน</p>
+        <img src="images/food2.jpg" alt="Franchise Standard">
+        <h4 data-i18n="franchise.p2">ชุดมาตรฐาน</h4>
+        <p data-i18n="franchise.p2desc">รวมอุปกรณ์ครบชุด พร้อมอบรมสูตรและการบริหารหน้าร้าน</p>
       </div>
       <div class="card">
-        <h4>ชุดพรีเมียม</h4>
-        <p>สำหรับผู้ต้องการขยายหลายสาขา มีระบบบริหารและทีมสนับสนุนเต็มรูปแบบ</p>
+        <img src="images/food3.jpg" alt="Franchise Premium">
+        <h4 data-i18n="franchise.p3">ชุดพรีเมียม</h4>
+        <p data-i18n="franchise.p3desc">สำหรับผู้ต้องการขยายหลายสาขา มีทีมสนับสนุนครบ</p>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact" class="contact">
-    <h3>ติดต่อแฟรนไชส์</h3>
-    <p>📞 โทร: 020 1234 5678</p>
-    <p>💬 Line: @krualuang</p>
-    <p>📧 Email: info@krualuang.com</p>
-    <a href="https://line.me/">แชทกับเรา</a>
+    <h3 data-i18n="contact.title">ติดต่อแฟรนไชส์</h3>
+    <p>📞 <span data-i18n="contact.phone">โทร: 020 1234 5678</span></p>
+    <p>💬 <span data-i18n="contact.line">Line: @krualuang</span></p>
+    <p>📧 <span data-i18n="contact.email">Email: info@krualuang.com</span></p>
+    <a href="https://line.me/" data-i18n="contact.chat">แชทกับเรา</a>
   </section>
 
   <footer>
     © 2025 Krualuang Franchise. All Rights Reserved.
   </footer>
 
+  <script src="js/lang.js"></script>
 </body>
 </html>
