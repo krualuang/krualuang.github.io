@@ -19,18 +19,16 @@
       color: #333;
       overflow-x: hidden;
     }
-    <header>
-  <nav>
-    <div>
-      <img src="logo/logo.png" alt="ครัวหลวง Logo" style="height: 40px;">
-    </div>
-    <div>
-      <a href="#home" data-i18n="menu.home">หน้าแรก</a>
-      <!-- ลิงก์อื่นๆ... -->
-    </div>
-    <!-- ส่วนภาษา... -->
-  </nav>
-</header>
+    
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    
     nav {
       display: flex;
       justify-content: space-between;
@@ -38,6 +36,10 @@
       max-width: 1200px;
       margin: auto;
       padding: 1rem 1.5rem;
+    }
+    
+    .logo {
+      height: 40px;
     }
     
     nav a {
@@ -91,6 +93,12 @@
       z-index: 2;
       max-width: 90%;
       padding: 2rem;
+    }
+    
+    .hero-logo {
+      height: 100px;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
     }
     
     .hero h4 { 
@@ -273,9 +281,17 @@
         gap: 0.5rem; 
       }
       
+      .logo {
+        height: 35px;
+      }
+      
       .hero {
         padding-top: 120px;
         height: calc(100vh - 120px);
+      }
+      
+      .hero-logo {
+        height: 70px;
       }
       
       .hero h1 { 
@@ -307,7 +323,10 @@
 
 <header>
   <nav>
-    <div><strong>KRUALUANG</strong></div>
+    <div>
+      <!-- โลโก้ใน navigation -->
+      <img src="logo/logo.png" alt="ครัวหลวง" class="logo">
+    </div>
     <div>
       <a href="#home" data-i18n="menu.home">หน้าแรก</a>
       <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
@@ -327,6 +346,8 @@
 <!-- HERO -->
 <section id="home" class="hero">
   <div class="hero-content">
+    <!-- โลโก้ใน hero section -->
+    <img src="logo/logo.png" alt="ครัวหลวง" class="hero-logo">
     <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
     <h1 data-i18n="hero.title">Royal Thai Taste</h1>
     <p data-i18n="hero.desc">ประสบการณ์อาหารไทยอันเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
