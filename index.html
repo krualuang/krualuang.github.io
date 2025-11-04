@@ -1,282 +1,223 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="th">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Krua Luang — Royal Thai Cuisine | ครัวหลวง</title>
-  <meta name="description" content="Krua Luang — Royal Thai cuisine in Vientiane. Fine dining, authentic Thai flavours, and franchise opportunities. ຮ້ານອາຫານໄທຮຸ່ງໄຮສຶດ ແລະ ໂອກາດແຟຣນໄຊສ໌." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krualuang Franchise</title>
   <style>
-    /* Minimal modern styles — change colors to match brand */
-    :root{--gold:#c99d4a;--bg:#fff;--muted:#666}
-    *{box-sizing:border-box}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,\"Noto Sans Lao\",Sarabun,Arial;margin:0;color:#111;background:var(--bg);line-height:1.45}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-    .logo{display:flex;align-items:center;gap:12px}
-    .logo .mark{width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#ffd88a);display:flex;align-items:center;justify-content:center;font-weight:700}
-    nav{display:flex;gap:16px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600}
-    .btn{background:var(--gold);color:#fff;padding:10px 14px;border-radius:8px;border:none;cursor:pointer}
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:28px 0}
-    .hero .eyebrow{color:var(--muted);font-weight:700}
-    .hero h1{font-size:32px;margin:6px 0}
-    .hero p{color:var(--muted)}
-    .hero .cta{margin-top:14px;display:flex;gap:10px}
-    .card{background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(17,17,17,0.06);padding:18px}
-    /* Sections */
-    section{padding:28px 0;border-top:1px solid #f0f0f0}
-    .grid{display:grid;gap:16px}
-    .cols-3{grid-template-columns:repeat(3,1fr)}
-    .cols-2{grid-template-columns:repeat(2,1fr)}
-    .gallery img{width:100%;height:180px;object-fit:cover;border-radius:8px}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:10px;border-bottom:1px solid #eee;text-align:left}
-    footer{padding:24px 0;color:var(--muted);font-size:14px}
-    /* Language toggle */
-    .lang-switch{display:flex;gap:8px}
-    .lang-switch button{padding:6px 10px;border-radius:8px;border:1px solid #eee;background:#fafafa;cursor:pointer}
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Prompt', sans-serif; }
+    body { background-color: #fff; color: #333; scroll-behavior: smooth; }
+
+    /* --- Navbar --- */
+    header {
+      background: #000;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    header h1 { font-size: 1.5rem; color: gold; letter-spacing: 1px; }
+    nav a {
+      color: #fff;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover { color: gold; }
+
+    /* --- HERO --- */
+    .hero {
+      height: 90vh;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url('https://images.unsplash.com/photo-1604908813010-6b2b9e3b3a2a?auto=format&fit=crop&w=1600&q=80') center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      padding: 0 1rem;
+    }
+    .hero-content {
+      max-width: 800px;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: gold;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span {
+      font-size: 1.6rem;
+      color: #ffd700;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #ddd;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      background: gold;
+      color: #000;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #fff; }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid gold;
+    }
+    .btn-outline:hover { background: gold; color: #000; }
+
+    /* --- About --- */
+    .about {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    .about h3 { font-size: 2rem; color: #000; margin-bottom: 1rem; }
+    .about p { color: #555; line-height: 1.8; }
+
+    /* --- Franchise --- */
+    .franchise {
+      background: #f7f7f7;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .franchise h3 { font-size: 2rem; color: #000; margin-bottom: 1rem; }
+    .franchise-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card h4 { color: gold; margin-bottom: 0.5rem; }
+    .card p { color: #555; line-height: 1.6; }
+
+    /* --- Contact --- */
+    .contact {
+      padding: 4rem 2rem;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+    .contact h3 { color: gold; font-size: 2rem; margin-bottom: 1rem; }
+    .contact p { margin-bottom: 1rem; }
+    .contact a {
+      color: #000;
+      background: gold;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .contact a:hover { background: #fff; }
+
+    /* --- Footer --- */
+    footer {
+      background: #111;
+      color: #999;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
     /* Responsive */
-    @media(max-width:900px){.hero{grid-template-columns:1fr;}.cols-3{grid-template-columns:1fr}.cols-2{grid-template-columns:1fr}.hero h1{font-size:26px}}
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero h1 span { font-size: 1.2rem; }
+      .hero p { font-size: 1rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">
-        <div class="mark">KL</div>
-        <div>
-          <div style="font-weight:800">Krua Luang</div>
-          <div style="font-size:12px;color:var(--muted)">ຄົວຫຼວງ • Royal Thai Cuisine</div>
-        </div>
-      </div>
 
-      <div style="display:flex;align-items:center;gap:18px">
-        <nav>
-          <a href="#home" data-i18n="nav.home">Home</a>
-          <a href="#menu" data-i18n="nav.menu">Menu</a>
-          <a href="#franchise" data-i18n="nav.franchise">Franchise</a>
-          <a href="#about" data-i18n="nav.about">About</a>
-          <a href="#contact" data-i18n="nav.contact">Contact</a>
-        </nav>
-        <div class="lang-switch">
-          <button id="lang-en">EN</button>
-          <button id="lang-la">ລາ</button>
-        </div>
-      </div>
-    </header>
+  <header>
+    <h1>Krualuang</h1>
+    <nav>
+      <a href="#home">หน้าแรก</a>
+      <a href="#about">เกี่ยวกับเรา</a>
+      <a href="#franchise">แฟรนไชส์</a>
+      <a href="#contact">ติดต่อ</a>
+    </nav>
+  </header>
 
-    <!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-overlay">
+  <!-- HERO -->
+  <section id="home" class="hero">
     <div class="hero-content">
-      <div class="eyebrow" data-i18n="hero.eyebrow">Royal Thai Cuisine — Vientiane</div>
-      <h1 data-i18n="hero.h1">
-        Authentic Royal Thai Flavours<br>
-        <span data-i18n="hero.h1_la">ຮັບປະສົບການອາຫານຄັວຫຼວງ</span>
+      <div class="eyebrow">Krualuang — Authentic Thai Cuisine</div>
+      <h1>
+        Royal Thai Taste<br>
+        <span>ຮັບປະສົບການອາຫານຄັວຫຼວງ</span>
       </h1>
-      <p data-i18n="hero.lead">Fine dining experience &amp; franchise opportunities.<br>ສະບັບຫວຼງ ຮູບແບບຮອບດ້ານ</p>
+      <p>Fine dining experience and franchise opportunities across Laos and Thailand.</p>
       <div class="cta">
-        <button class="btn" onclick="location.href='#franchise'" data-i18n="hero.cta1">Explore Franchise</button>
-        <button class="btn btn-outline" onclick="document.getElementById('contact-form').scrollIntoView()" data-i18n="hero.cta2">Book a Visit</button>
+        <button class="btn" onclick="location.href='#franchise'">Explore Franchise</button>
+        <button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView()">Book a Visit</button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-      <div>
-        <div class="eyebrow" data-i18n="hero.eyebrow">Royal Thai Cuisine — Vientiane</div>
-        <h1 data-i18n="hero.h1">Authentic Royal Thai flavours<br><span data-i18n="hero.h1_la">ຮັບປະສົບການອາຫານຄັວຫຼວງ</span></h1>
-        <p data-i18n="hero.lead">Fine dining experience &amp; franchise opportunities. ສະບັບຫວຼງ ຮູບແບບຮອບດ້ານ</p>
-        <div class="cta">
-          <button class="btn" onclick="location.href='#franchise'" data-i18n="hero.cta1">Explore Franchise</button>
-          <button class="btn" style="background:#fff;color:var(--gold);border:1px solid var(--gold);" onclick="document.getElementById('contact-form').scrollIntoView()" data-i18n="hero.cta2">Book a Visit</button>
-        </div>
+  <section id="about" class="about">
+    <h3>เกี่ยวกับครัวหลวง</h3>
+    <p>Krualuang คือแบรนด์อาหารสไตล์ไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานความสะดวกในรูปแบบแฟรนไชส์ทันสมัย ลงทุนเริ่มต้นเพียงหลักหมื่น สามารถสร้างยอดขายหลักล้านได้ภายในเวลาไม่นาน</p>
+  </section>
 
-        <div style="margin-top:18px;color:var(--muted);font-size:13px">
-          <strong data-i18n="contact.phone">Call</strong>: <a href="tel:+8562056605450">+856 20 56605450</a> • <a href="https://wa.me/8562056605450">WhatsApp</a>
-        </div>
+  <section id="franchise" class="franchise">
+    <h3>แพ็กเกจแฟรนไชส์</h3>
+    <div class="franchise-cards">
+      <div class="card">
+        <h4>ชุดเริ่มต้น</h4>
+        <p>ลงทุนเพียง 19,000 บาท เหมาะสำหรับผู้เริ่มต้น ต้องการทดลองตลาด</p>
       </div>
-
-      <div>
-        <div class="card">
-          <!-- hero image placeholder -->
-          <img src="/assets/hero.jpg" alt="Krua Luang hero" style="width:100%;height:260px;object-fit:cover;border-radius:8px;margin-bottom:12px">
-          <div style="font-weight:700;margin-bottom:8px" data-i18n="hero.card.title">Elegant dining & authentic taste</div>
-          <div style="color:var(--muted);font-size:14px" data-i18n="hero.card.lead">ບ່ອນທີ່ສະອາດ ແລະ ບໍລິການສະບັບຫວຼງ</div>
-        </div>
+      <div class="card">
+        <h4>ชุดมาตรฐาน</h4>
+        <p>รวมอุปกรณ์และวัตถุดิบครบชุด พร้อมอบรมสูตรและการบริหารหน้าร้าน</p>
       </div>
-    </section>
-
-    <!-- MENU / GALLERY -->
-    <section id="menu">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <h2 data-i18n="menu.title">Menu & Gallery</h2>
-        <div style="color:var(--muted);font-size:14px" data-i18n="menu.sub">Authentic dishes • ອາຫານດັ່ງເດີມ</div>
+      <div class="card">
+        <h4>ชุดพรีเมียม</h4>
+        <p>สำหรับผู้ต้องการขยายหลายสาขา มีระบบบริหารและทีมสนับสนุนเต็มรูปแบบ</p>
       </div>
+    </div>
+  </section>
 
-      <div class="grid cols-3 gallery" style="margin-top:14px">
-        <!-- replace images with real files -->
-        <img src="/assets/dish1.jpg" alt="Pad Thai">
-        <img src="/assets/dish2.jpg" alt="Thai Dessert">
-        <img src="/assets/interior1.jpg" alt="Dining Room">
-      </div>
+  <section id="contact" class="contact">
+    <h3>ติดต่อแฟรนไชส์</h3>
+    <p>📞 โทร: 020 1234 5678</p>
+    <p>💬 Line: @krualuang</p>
+    <p>📧 Email: info@krualuang.com</p>
+    <a href="https://line.me/">แชทกับเรา</a>
+  </section>
 
-      <div style="margin-top:18px">
-        <div class="card">
-          <strong data-i18n="menu.sample">Sample Menu — Popular dishes</strong>
-          <table style="margin-top:12px">
-            <thead><tr><th data-i18n="menu.col.dish">Dish</th><th data-i18n="menu.col.price">Price</th></tr></thead>
-            <tbody>
-              <tr><td data-i18n="menu.item.padthai">Pad Thai (Signature)</td><td>LAK 25,000</td></tr>
-              <tr><td data-i18n="menu.item.green">Green Curry</td><td>LAK 30,000</td></tr>
-              <tr><td data-i18n="menu.item.dessert">Traditional Thai Dessert</td><td>LAK 18,000</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
+  <footer>
+    © 2025 Krualuang Franchise. All Rights Reserved.
+  </footer>
 
-    <!-- FRANCHISE -->
-    <section id="franchise">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <h2 data-i18n="franchise.title">Franchise Opportunities</h2>
-        <div style="color:var(--muted);font-size:14px" data-i18n="franchise.sub">3 investment packages • ລາຍການການລົງທຶນ 3 ປະເພດ</div>
-      </div>
-
-      <div style="margin-top:12px" class="grid cols-3">
-        <div class="card">
-          <h3 data-i18n="franchise.pkg.min">Minimal</h3>
-          <p data-i18n="franchise.pkg.min.desc">For markets & kiosks — basic support, recipes & training.</p>
-          <p style="font-weight:800">LAK 39,000</p>
-        </div>
-        <div class="card">
-          <h3 data-i18n="franchise.pkg.med">Medium</h3>
-          <p data-i18n="franchise.pkg.med.desc">Managed support package — equipment and partial operations.</p>
-          <p style="font-weight:800">LAK 69,000</p>
-        </div>
-        <div class="card">
-          <h3 data-i18n="franchise.pkg.sta">Stand Alone</h3>
-          <p data-i18n="franchise.pkg.sta.desc">Full stand-alone restaurant set-up with training & marketing.</p>
-          <p style="font-weight:800">LAK 89,000</p>
-        </div>
-      </div>
-
-      <div style="margin-top:18px" class="card">
-        <strong data-i18n="franchise.what">What franchisees receive</strong>
-        <ul style="margin-top:10px;color:var(--muted)">
-          <li data-i18n="franchise.list.1">Full recipes & supplier list</li>
-          <li data-i18n="franchise.list.2">Training & on-site support</li>
-          <li data-i18n="franchise.list.3">Marketing materials & POS setup</li>
-        </ul>
-        <div style="margin-top:12px;display:flex;gap:12px">
-          <button class="btn" onclick="openForm('franchise')" data-i18n="franchise.cta">Apply Now</button>
-          <a href="#contact" style="align-self:center;color:var(--muted);text-decoration:underline" data-i18n="franchise.cta2">Contact Sales</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <h2 data-i18n="about.title">About Krua Luang</h2>
-      <div class="grid cols-2" style="margin-top:12px">
-        <div>
-          <p data-i18n="about.lead">Krua Luang started from a passion to bring royal Thai flavours to Vientiane. We combine authentic recipes with a modern dining experience. ຄົວຫຼວງເລີ່ມຈາກຄວາມຮັກຕໍ່ອາຫານໄທດັ່ງເດີມ.</p>
-          <ul style="color:var(--muted);margin-top:10px">
-            <li data-i18n="about.mission">Mission: To provide premium Thai dining and scalable franchise solutions.</li>
-            <li data-i18n="about.vision">Vision: Expand to 50 branches across Laos.</li>
-          </ul>
-        </div>
-        <div>
-          <img src="/assets/team.jpg" alt="team" style="width:100%;height:220px;object-fit:cover;border-radius:8px">
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2 data-i18n="contact.title">Contact Us</h2>
-      <div class="grid cols-2" style="margin-top:12px;gap:20px;align-items:start">
-        <div class="card">
-          <p style="margin:0 0 8px 0"><strong data-i18n="contact.address">Address</strong>: 395 Thongkang Village, Vientiane, Laos</p>
-          <p style="margin:0 0 8px 0"><strong data-i18n="contact.phone">Phone</strong>: <a href="tel:+8562056605450">+856 20 56605450</a></p>
-          <p style="margin:0 0 8px 0"><strong data-i18n="contact.whatsapp">WhatsApp</strong>: <a href="https://wa.me/8562056605450">wa.me/8562056605450</a></p>
-
-          <div style="margin-top:12px">
-            <!-- simple contact form (no backend) -->
-            <form id="contact-form" onsubmit="event.preventDefault(); alert('Thank you — we will contact you.');">
-              <div style="display:flex;gap:8px;margin-bottom:8px">
-                <input placeholder="Full name / ຊື່" required style="flex:1;padding:10px;border-radius:8px;border:1px solid #eee">
-                <input placeholder="Phone / ເບີ" required style="flex:1;padding:10px;border-radius:8px;border:1px solid #eee">
-              </div>
-              <textarea placeholder="Message / ຂໍ້ຄວາມ" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee;height:100px"></textarea>
-              <div style="margin-top:8px;display:flex;gap:8px">
-                <button class="btn" type="submit">Send</button>
-                <a class="btn" href="https://wa.me/8562056605450">Chat on WhatsApp</a>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div class="card" style="height:100%">
-          <!-- Map placeholder: replace src with real embed -->
-          <div style="width:100%;height:260px;background:#f7f7f7;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted)">Google Map placeholder</div>
-        </div>
-      </div>
-    </section>
-
-    <footer style="margin-top:28px">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <div>
-          <strong>Krua Luang</strong><br>
-          <span style="color:var(--muted)">ຮ້ານອາຫານ ຄົວຫຼວງ — Vientiane</span>
-        </div>
-        <div style="color:var(--muted)">© <span id="year"></span> Krua Luang</div>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    // Simple bilingual data (English + Lao). Expand as needed.
-    const I18N = {
-      en: {
-        'nav.home':'Home','nav.menu':'Menu','nav.franchise':'Franchise','nav.about':'About','nav.contact':'Contact',
-        'hero.eyebrow':'Royal Thai Cuisine — Vientiane','hero.h1':'Authentic Royal Thai flavours','hero.lead':'Fine dining experience & franchise opportunities.','hero.cta1':'Explore Franchise','hero.cta2':'Book a Visit','hero.card.title':'Elegant dining & authentic taste','hero.card.lead':'Beautiful setting and trusted food quality',
-        'menu.title':'Menu & Gallery','menu.sub':'Authentic dishes • Popular choices','menu.sample':'Sample Menu — Popular dishes','menu.col.dish':'Dish','menu.col.price':'Price','menu.item.padthai':'Pad Thai (Signature)','menu.item.green':'Green Curry','menu.item.dessert':'Thai Dessert',
-        'franchise.title':'Franchise Opportunities','franchise.sub':'3 investment packages • Ready to scale','franchise.pkg.min':'Minimal','franchise.pkg.min.desc':'For markets & kiosks — basic support, recipes & training.','franchise.pkg.med':'Medium','franchise.pkg.med.desc':'Managed support package — equipment and partial operations.','franchise.pkg.sta':'Stand Alone','franchise.pkg.sta.desc':'Full stand-alone restaurant set-up with training & marketing.','franchise.what':'What franchisees receive','franchise.list.1':'Full recipes & supplier list','franchise.list.2':'Training & on-site support','franchise.list.3':'Marketing materials & POS setup','franchise.cta':'Apply Now','franchise.cta2':'Contact Sales',
-        'about.title':'About Krua Luang','about.lead':'Krua Luang started from a passion to bring royal Thai flavours to Vientiane. We combine authentic recipes with a modern dining experience.','about.mission':'Mission: To provide premium Thai dining and scalable franchise solutions.','about.vision':'Vision: Expand to 50 branches across Laos.',
-        'contact.title':'Contact Us','contact.address':'Address','contact.phone':'Phone','contact.whatsapp':'WhatsApp'
-      },
-      la: {
-        'nav.home':'ໜ້າຫຼັກ','nav.menu':'ເມນູ','nav.franchise':'ແຟຣນໄຊສ໌','nav.about':'ກ່ຽວກັບ','nav.contact':'ຕິດຕໍ່',
-        'hero.eyebrow':'ອາຫານໄທລົດຊາດ • ວຽງຈັນ','hero.h1_la':'ຮັບປະສົບການອາຫານຄັວຫຼວງ','hero.lead':'ບໍລິການ Fine dining ແລະ ໂອກາດແຟຣນໄຊສ໌','hero.cta1':'ຊອກແຟຣນໄຊສ໌','hero.cta2':'ຈອງທົດສອບ','hero.card.title':'ບ່ອນຮັບປະທານ ແລະ ମະດຕິອາຫານ','hero.card.lead':'ບ່ອນສະແດງສຸມທິ ແລະ ຄຸນນະພາບອາຫານ',
-        'menu.title':'ເມນູ & ຮູບພາບ','menu.sub':'ອາຫານດັ່ງເດີມ','menu.sample':'ເມນູຕົວຢ່າງ','menu.col.dish':'ອາຫານ','menu.col.price':'ລາຄາ','menu.item.padthai':'ຜັດໄທ (ເຄີງ)','menu.item.green':'ເຂົ້າໝາກພື້ນ','menu.item.dessert':'ຂອງຫວານ',
-        'franchise.title':'ໂອກາດແຟຣນໄຊສ໌','franchise.sub':'ລາຍການການລົງທຶນ 3 ປະເພດ','franchise.pkg.min':'Minimal','franchise.pkg.min.desc':'ເຫມາະສຳລັບຕະຫຼາດ & kiosk — ສະຫຼຸບສະຫຼຸບ','franchise.pkg.med':'Medium','franchise.pkg.med.desc':'ບໍລິການຈັດການ ແລະ ອຸປະກອນ','franchise.pkg.sta':'Stand Alone','franchise.pkg.sta.desc':'ຕັ້ງຮ້ານສົມບູນ ພ້ອມການສອນ & ການຕະຫຼາດ','franchise.what':'ສິ່ງທີ່ຜູ້ເຂົ້າຮ່ວມຈະໄດ້','franchise.list.1':'ບົດສູດແລະລາຍການຜູ້ສະໜອງ','franchise.list.2':'ການຝຶກອົບຮົມ','franchise.list.3':'ວັດຖຸການຕະຫຼາດ & POS','franchise.cta':'ສະໝັກດຽວນີ້','franchise.cta2':'ຕິດຕໍ່ຝາກຂາ',
-        'about.title':'ກ່ຽວກັບຄົວຫຼວງ','about.lead':'ຄົວຫຼວງເລີ່ມຈາກຄວາມຮັກຕໍ່ອາຫານໄທ ແລະ ຕ້ອງການນຳຮັບຮອງຮູບແບບຮອບດ້ານ.','about.mission':'ພາຍໃນ: ນຳເສີອາຫານໄທຊັດສະເລີຍແລະແຜນການແຟຣນໄຊສ໌','about.vision':'ວິຊັນ: ຂະຫຍາຍເປັນ 50 ສາຂາ',
-        'contact.title':'ຕິດຕໍ່ພວກເຮົາ','contact.address':'ທີ່ຢູ່','contact.phone':'ເບີໂທ','contact.whatsapp':'WhatsApp'
-      }
-    };
-
-    const elems = document.querySelectorAll('[data-i18n]');
-    function setLang(lang){
-      elems.forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        const text = (I18N[lang] && I18N[lang][key]) || I18N['en'][key] || el.textContent;
-        // allow mixing: if element contains separate la span keep it
-        el.textContent = text;
-      });
-      document.documentElement.lang = (lang==='la')? 'lo' : 'en';
-    }
-    document.getElementById('lang-en').addEventListener('click', ()=>setLang('en'));
-    document.getElementById('lang-la').addEventListener('click', ()=>setLang('la'));
-
-    // default language: English + Lao mix
-    setLang('en');
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    function openForm(type){
-      document.getElementById('contact-form').scrollIntoView({behavior:'smooth'});
-    }
-  </script>
 </body>
 </html>
