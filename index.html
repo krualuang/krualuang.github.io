@@ -38,8 +38,35 @@
       padding: 1rem 1.5rem;
     }
     
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
     .logo {
       height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+    
+    .logo-text {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #d4af37;
+    }
+    
+    .logo-placeholder {
+      height: 40px;
+      width: 120px;
+      background: linear-gradient(135deg, #d4af37, #ffd700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      font-size: 0.9rem;
     }
     
     nav a {
@@ -74,13 +101,13 @@
       border-color: #d4af37;
     }
     
-    /* HERO SECTION - แก้ไขพาธรูปภาพ */
+    /* HERO SECTION */
     .hero {
       position: relative;
       width: 100%;
       height: 100vh;
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                  url('images/hero/hero-bg.jpg') center/cover no-repeat;
+                  #1a1a1a;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -97,8 +124,25 @@
     
     .hero-logo {
       height: 100px;
+      width: auto;
       margin-bottom: 1.5rem;
       filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+      object-fit: contain;
+    }
+    
+    .hero-logo-placeholder {
+      height: 100px;
+      width: 300px;
+      background: linear-gradient(135deg, #d4af37, #ffd700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     
     .hero h4 { 
@@ -212,15 +256,6 @@
       margin: 1rem 0;
     }
     
-    /* รูปภาพใน Cards */
-    .card-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-    
     /* ส่วน FAQ */
     .faq-item {
       margin-bottom: 1rem;
@@ -275,6 +310,15 @@
       margin-bottom: 0.5rem;
     }
     
+    .debug-info {
+      background: #f8f8f8;
+      padding: 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
     @media (max-width: 768px) {
       nav { 
         flex-direction: column; 
@@ -285,6 +329,12 @@
         height: 35px;
       }
       
+      .logo-placeholder {
+        height: 35px;
+        width: 100px;
+        font-size: 0.8rem;
+      }
+      
       .hero {
         padding-top: 120px;
         height: calc(100vh - 120px);
@@ -292,6 +342,12 @@
       
       .hero-logo {
         height: 70px;
+      }
+      
+      .hero-logo-placeholder {
+        height: 70px;
+        width: 200px;
+        font-size: 1.2rem;
       }
       
       .hero h1 { 
@@ -323,9 +379,10 @@
 
 <header>
   <nav>
-    <div>
+    <div class="logo-container">
       <!-- โลโก้ใน navigation -->
-      <img src="logo/logo.png" alt="ครัวหลวง" class="logo">
+      <img src="logo/logo.png" alt="ครัวหลวง" class="logo" id="nav-logo" onerror="handleLogoError(this, 'nav')">
+      <div class="logo-text">ครัวหลวง</div>
     </div>
     <div>
       <a href="#home" data-i18n="menu.home">หน้าแรก</a>
@@ -347,13 +404,23 @@
 <section id="home" class="hero">
   <div class="hero-content">
     <!-- โลโก้ใน hero section -->
-    <img src="logo/logo.png" alt="ครัวหลวง" class="hero-logo">
+    <img src="logo/logo.png" alt="ครัวหลวง" class="hero-logo" id="hero-logo" onerror="handleLogoError(this, 'hero')">
     <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
     <h1 data-i18n="hero.title">Royal Thai Taste</h1>
     <p data-i18n="hero.desc">ประสบการณ์อาหารไทยอันเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
     <div class="hero-buttons">
       <a href="#franchise" data-i18n="hero.cta1">ดูแฟรนไชส์</a>
       <a href="#contact" data-i18n="hero.cta2">นัดเยี่ยมชม</a>
+    </div>
+    
+    <!-- ข้อมูลสำหรับแก้ปัญหา -->
+    <div class="debug-info" id="debug-info" style="display: none;">
+      <p><strong>ปัญหาโลโก้ไม่แสดง:</strong></p>
+      <p>1. ตรวจสอบว่าไฟล์โลโก้อยู่ในโฟลเดอร์ <code>logo/logo.png</code></p>
+      <p>2. ตรวจสอบชื่อไฟล์และนามสกุลให้ถูกต้อง</p>
+      <p>3. ลองใช้ path อื่น: 
+        <button onclick="tryAlternativePaths()">ลองใช้ path อื่น</button>
+      </p>
     </div>
   </div>
 </section>
@@ -446,137 +513,35 @@
 <footer>© 2025 Krualuang — Royal Thai Cuisine</footer>
 
 <script>
-// JavaScript สำหรับระบบภาษาและฟังก์ชันอื่นๆ
-const translations = {
-  th: {
-    "menu.home": "หน้าแรก",
-    "menu.about": "เกี่ยวกับเรา",
-    "menu.franchise": "แฟรนไชส์",
-    "menu.faq": "คำถามที่พบบ่อย",
-    "menu.contact": "ติดต่อ",
-    "hero.eyebrow": "ครัวหลวง — รสชาติไทยต้นตำรับ",
-    "hero.title": "Royal Thai Taste",
-    "hero.desc": "ประสบการณ์อาหารไทยอันเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย",
-    "hero.cta1": "ดูแฟรนไชส์",
-    "hero.cta2": "นัดเยี่ยมชม",
-    "about.title": "เกี่ยวกับครัวหลวง",
-    "about.text": "ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน",
-    "franchise.title": "แพ็กเกจแฟรนไชส์",
-    "contact.title": "ติดต่อแฟรนไชส์"
-  },
-  la: {
-    "menu.home": "ໜ້າຫຼັກ",
-    "menu.about": "ກ່ຽວກັບພວກເຮົາ",
-    "menu.franchise": "ແຟຣນໄຊສ໌",
-    "menu.faq": "ຄຳຖາມທີ່ພົບເປັນປະຈຳ",
-    "menu.contact": "ຕິດຕໍ່",
-    "hero.eyebrow": "ຄັວຫຼວງ — ອາຫານໄທຕົ້ນສະບັບ",
-    "hero.title": "ຮັບປະສົບການອາຫານຄັວຫຼວງ",
-    "hero.desc": "ປະສົບການອາຫານທີ່ປະທັບໃຈ ແລະ ໂອກາດແຟຣນໄຊສ໌ ທົ່ວລາວ-ໄທ",
-    "hero.cta1": "ເບິ່ງແຟຣນໄຊສ໌",
-    "hero.cta2": "ນັດຢ້ຽມຊົມ",
-    "about.title": "ກ່ຽວກັບຄັວຫຼວງ",
-    "about.text": "ຄັວຫຼວງເປັນແບຣນອາຫານໄທຕົ້ນສະບັບ ທີ່ມີລະບົບແຟຣນໄຊສ໌ທັນສະໄໝ ລົງທຶນນ້ອຍ ແຕ່ສາມາດສ້າງລາຍໄດ້ຫຼາຍ.",
-    "franchise.title": "ແພັກແກັດແຟຣນໄຊສ໌",
-    "contact.title": "ຕິດຕໍ່ແຟຣນໄຊສ໌"
-  },
-  en: {
-    "menu.home": "Home",
-    "menu.about": "About Us",
-    "menu.franchise": "Franchise",
-    "menu.faq": "FAQ",
-    "menu.contact": "Contact",
-    "hero.eyebrow": "Krualuang — Authentic Thai Cuisine",
-    "hero.title": "Royal Thai Taste",
-    "hero.desc": "Fine dining and franchise opportunities across Laos & Thailand.",
-    "hero.cta1": "Explore Franchise",
-    "hero.cta2": "Book a Visit",
-    "about.title": "About Krualuang",
-    "about.text": "Krualuang offers authentic Thai flavors with modern franchise opportunities. Start small and scale fast with proven recipes and systems.",
-    "franchise.title": "Franchise Packages",
-    "contact.title": "Contact Franchise"
-  },
-  zh: {
-    "menu.home": "首页",
-    "menu.about": "关于我们",
-    "menu.franchise": "加盟",
-    "menu.faq": "常见问题",
-    "menu.contact": "联系我们",
-    "hero.eyebrow": "皇家厨房 — 正宗泰国美食",
-    "hero.title": "皇家泰式风味",
-    "hero.desc": "精致用餐体验与加盟机会，遍及老挝与泰国。",
-    "hero.cta1": "查看加盟方案",
-    "hero.cta2": "预约参观",
-    "about.title": "关于皇家厨房",
-    "about.text": "皇家厨房提供正宗泰式风味与现代加盟体系，投资少、回报快，是东南亚增长最快的泰餐品牌之一。",
-    "franchise.title": "加盟方案",
-    "contact.title": "联系我们"
-  }
-};
-
-function setLanguage(lang) {
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang] && translations[lang][key]) {
-      el.innerText = translations[lang][key];
-    }
-  });
-  localStorage.setItem("lang", lang);
+// ฟังก์ชันจัดการเมื่อโลโก้โหลดไม่สำเร็จ
+function handleLogoError(img, location) {
+  console.log(`โลโก้ใน ${location} โหลดไม่สำเร็จ`);
+  
+  // แสดงข้อมูลแก้ปัญหา
+  document.getElementById('debug-info').style.display = 'block';
+  
+  // สร้าง placeholder แทนโลโก้
+  const placeholder = document.createElement('div');
+  placeholder.className = location === 'nav' ? 'logo-placeholder' : 'hero-logo-placeholder';
+  placeholder.textContent = 'ครัวหลวง';
+  
+  // แทนที่รูปภาพด้วย placeholder
+  img.parentNode.replaceChild(placeholder, img);
+  
+  // ลองโหลดรูปจาก path อื่น
+  tryAlternativePath(img.src, location);
 }
 
-const savedLang = localStorage.getItem("lang") || "th";
-setLanguage(savedLang);
-
-document.querySelectorAll(".lang-flags img").forEach(flag => {
-  flag.addEventListener("click", () => setLanguage(flag.dataset.lang));
-});
-
-// FAQ Accordion
-document.querySelectorAll('.faq-question').forEach(button => {
-  button.addEventListener('click', () => {
-    const answer = button.nextElementSibling;
-    
-    // Close all other answers
-    document.querySelectorAll('.faq-answer').forEach(item => {
-      if (item !== answer) {
-        item.classList.remove('active');
-      }
-    });
-    
-    // Toggle current answer
-    answer.classList.toggle('active');
-  });
-});
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// แก้ไขปัญหา Hero Section
-document.addEventListener('DOMContentLoaded', function() {
-  const hero = document.querySelector('.hero');
-  const header = document.querySelector('header');
+// ลองใช้ path อื่น
+function tryAlternativePath(currentPath, location) {
+  const paths = [
+    './logo/logo.png',
+    '/logo/logo.png',
+    'logo.png',
+    './logo.png',
+    'images/logo.png'
+  ];
   
-  function setHeroHeight() {
-    const headerHeight = header.offsetHeight;
-    hero.style.height = `calc(100vh - ${headerHeight}px)`;
-    hero.style.marginTop = `${headerHeight}px`;
-  }
-  
-  setHeroHeight();
-  window.addEventListener('resize', setHeroHeight);
-});
-</script>
-
-</body>
-</html>
+  // ลอง path ต่างๆ
+  for (let i = 0; i < paths.length; i++) {
+    if (currentPath.includes(paths[i])) continue;
