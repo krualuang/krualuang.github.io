@@ -3,783 +3,269 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Krualuang Franchise</title>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>ครัวหลวง — Royal Thai Cuisine</title>
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Prompt', sans-serif;}
-    body {background: #fff; color: #333; scroll-behavior: smooth; overflow-x: hidden;}
-
-    /* Loading */
-    .loading {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s;
+    body {
+      font-family: "Prompt", sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #333;
     }
-    .loading.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .spinner {
-      width: 60px;
-      height: 60px;
-      border: 5px solid rgba(255, 215, 0, 0.3);
-      border-radius: 50%;
-      border-top-color: gold;
-      animation: spin 1s ease-in-out infinite;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Navbar */
     header {
-      background: #000;
-      color: #fff;
-      padding: 0.8rem 2rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 1.5rem;
     }
-    header img {height: 50px;}
-    nav {display: flex; align-items: center;}
-    nav a {color: #fff; margin-left: 1.5rem; text-decoration: none; font-weight: 500; transition: 0.3s;}
-    nav a:hover {color: gold;}
-
-    /* Language Selector */
-    .lang-select {
-      margin-left: 1.5rem; 
-      background: #111; 
-      color: #fff; 
-      border: 1px solid gold; 
-      border-radius: 4px; 
-      padding: 0.3rem 0.6rem;
-      cursor: pointer;
-    }
-    .lang-select:hover {background: gold; color: #000;}
-
-    /* Mobile Menu */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      background: #000;
-      padding: 1rem;
-      flex-direction: column;
-      z-index: 999;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-    }
-    .mobile-menu.active {
-      display: flex;
-    }
-    .mobile-menu a {
-      color: white;
+    nav a {
       text-decoration: none;
-      padding: 0.8rem 0;
-      border-bottom: 1px solid #333;
-      transition: 0.3s;
+      color: #333;
+      margin: 0 1rem;
+      font-weight: 500;
     }
-    .mobile-menu a:hover {
-      color: gold;
-      padding-left: 10px;
+    .lang-flags {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
-
-    /* HERO */
+    .lang-flags img {
+      width: 26px;
+      height: 18px;
+      cursor: pointer;
+      border-radius: 2px;
+      border: 1px solid #ccc;
+      transition: 0.2s;
+    }
+    .lang-flags img:hover {
+      transform: scale(1.15);
+      border-color: gold;
+    }
     .hero {
+      background: url('images/hero-bg.jpg') center/cover no-repeat;
       height: 90vh;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #fff;
-      padding: 0 1rem;
+      color: white;
+      position: relative;
     }
-    .hero-content {max-width: 800px;}
-    .eyebrow {
-      color: gold; 
-      letter-spacing: 2px; 
-      font-size: 0.9rem; 
-      margin-bottom: 1rem;
-      text-transform: uppercase;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
     }
     .hero h1 {
-      font-size: 2.5rem; 
-      line-height: 1.3; 
+      font-size: 3rem;
       margin-bottom: 1rem;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-    }
-    .hero h1 span {
-      color: #ffd700; 
-      font-size: 1.4rem;
-      display: block;
-      margin-top: 0.5rem;
     }
     .hero p {
-      font-size: 1.1rem; 
-      color: #ddd; 
-      margin-bottom: 2rem; 
-      line-height: 1.7;
-    }
-    .cta {
-      display: flex; 
-      gap: 1rem; 
-      justify-content: center; 
-      flex-wrap: wrap;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
     }
     .btn {
       background: gold;
       color: #000;
+      padding: 0.8rem 1.5rem;
       border: none;
-      padding: 0.8rem 1.6rem;
-      border-radius: 50px;
-      font-weight: 600;
+      border-radius: 25px;
       cursor: pointer;
+      font-size: 1rem;
+      margin: 0 0.5rem;
       transition: 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
     }
     .btn:hover {
-      background: #fff;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+      background: #e6b800;
     }
-    .btn-outline {
-      background: transparent;
-      color: #fff;
-      border: 2px solid gold;
-    }
-    .btn-outline:hover {
-      background: gold; 
-      color: #000;
-    }
-
-    /* Stats Section */
-    .stats {
-      background: #111;
-      color: white;
-      padding: 3rem 2rem;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      text-align: center;
-    }
-    .stat-item {
-      margin: 1rem;
-    }
-    .stat-item h4 {
-      font-size: 2.5rem;
-      color: gold;
-      margin-bottom: 0.5rem;
-    }
-    .stat-item p {
-      color: #ddd;
-    }
-
-    /* About */
-    .about {
-      padding: 4rem 2rem; 
-      max-width: 1000px; 
-      margin: auto; 
-      text-align: center;
-    }
-    .about h3 {
-      font-size: 2rem; 
-      color: #000; 
-      margin-bottom: 1.5rem;
-      position: relative;
-      display: inline-block;
-    }
-    .about h3:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: gold;
-    }
-    .about p {
-      color: #555; 
-      line-height: 1.8;
-      font-size: 1.1rem;
-    }
-
-    /* Franchise */
-    .franchise {
-      background: #f7f7f7; 
-      padding: 4rem 2rem; 
-      text-align: center;
-    }
-    .franchise h3 {
-      font-size: 2rem; 
-      color: #000; 
-      margin-bottom: 1.5rem;
-      position: relative;
-      display: inline-block;
-    }
-    .franchise h3:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: gold;
-    }
-    .franchise-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .card {
-      background: #fff;
-      border-radius: 15px;
-      padding: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: 0.3s;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    .card img {
-      width: 100%; 
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px; 
-      margin-bottom: 1.5rem;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    .card h4 {
-      color: gold; 
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-    .card p {
-      color: #555; 
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-    .price {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #000;
-      margin: 1rem 0;
-    }
-
-    /* FAQ */
-    .faq {
-      padding: 4rem 2rem;
+    section {
+      padding: 5rem 1.5rem;
       max-width: 1000px;
       margin: auto;
     }
-    .faq h3 {
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
       font-size: 2rem;
+    }
+    footer {
       text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .faq h3:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: gold;
-    }
-    .faq-item {
-      margin-bottom: 1rem;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .faq-question {
-      width: 100%;
-      background: #f9f9f9;
-      border: none;
-      padding: 1.2rem;
-      text-align: left;
-      font-size: 1.1rem;
-      font-weight: 500;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: 0.3s;
-    }
-    .faq-question:hover {
-      background: #f0f0f0;
-    }
-    .faq-question:after {
-      content: '+';
-      font-size: 1.5rem;
-      color: gold;
-    }
-    .faq-question.active:after {
-      content: '-';
-    }
-    .faq-answer {
-      padding: 0 1.2rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out, padding 0.3s;
-      background: white;
-    }
-    .faq-answer.active {
-      padding: 1.2rem;
-      max-height: 500px;
-    }
-
-    /* Contact */
-    .contact {
-      padding: 4rem 2rem; 
-      background: #000; 
-      color: #fff; 
-      text-align: center;
-    }
-    .contact h3 {
-      color: gold; 
-      font-size: 2rem; 
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-    }
-    .contact h3:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: gold;
-    }
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .contact-item i {
-      font-size: 1.5rem;
-      color: gold;
-      margin-bottom: 0.5rem;
-    }
-    .contact a {
-      color: #000; 
-      background: gold;
-      padding: 0.8rem 1.5rem; 
-      border-radius: 50px;
-      text-decoration: none; 
-      font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: 0.3s;
-    }
-    .contact a:hover {
-      background: #fff;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(255,215,0,0.4);
-    }
-
-    /* Contact Form */
-    .contact-form {
-      max-width: 600px;
-      margin: 2rem auto 0;
-      background: #111;
       padding: 2rem;
-      border-radius: 10px;
-    }
-    .contact-form h4 {
-      color: gold;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    .form-group {
-      margin-bottom: 1.5rem;
-      text-align: left;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #ddd;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.8rem;
-      border: 1px solid #333;
-      border-radius: 5px;
       background: #222;
       color: white;
-      font-size: 1rem;
     }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: gold;
-    }
-
-    /* Live Chat */
-    .live-chat {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-    .chat-btn {
-      background: gold;
-      color: #000;
-      border: none;
-      border-radius: 50px;
-      padding: 0.8rem 1.5rem;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: 0.3s;
-    }
-    .chat-btn:hover {
-      background: #fff;
-      transform: translateY(-3px);
-    }
-
-    footer {
-      background: #111; 
-      color: #999; 
-      text-align: center; 
-      padding: 1.5rem; 
-      font-size: 0.9rem;
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
-      .mobile-menu-btn { display: block; }
-      nav { display: none; }
-      header { padding: 0.8rem 1rem; }
-      
-      .hero h1 { font-size: 1.8rem; }
-      .hero h1 span { font-size: 1.2rem; }
-      
-      .cta { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 250px; justify-content: center; }
-      
-      .stats { flex-direction: column; }
-      .stat-item { margin: 1rem 0; }
-      
-      .franchise-cards { grid-template-columns: 1fr; }
-      
-      .contact-info { flex-direction: column; gap: 1rem; }
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .btn { margin: 0.3rem 0; display: block; width: fit-content; margin-left: auto; margin-right: auto; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Loading Screen -->
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
-  </div>
-
-  <header>
-    <img src="https://via.placeholder.com/150x50/000000/FFFFFF?text=Krualuang" alt="Krualuang Logo">
-    <button class="mobile-menu-btn" id="mobileMenuBtn">
-      <i class="fas fa-bars"></i>
-    </button>
-    <nav>
-      <a href="#home" data-i18n="menu.home">หน้าแรก</a>
-      <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
-      <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
-      <a href="#faq" data-i18n="menu.faq">คำถามที่พบบ่อย</a>
-      <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
-      <select id="language" class="lang-select">
-        <option value="th">ไทย</option>
-        <option value="la">ລາວ</option>
-        <option value="en">English</option>
-      </select>
-    </nav>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+<header>
+  <nav>
+    <div class="nav-left">
+      <strong>KRUALUANG</strong>
+    </div>
+    <div class="nav-right">
       <a href="#home" data-i18n="menu.home">หน้าแรก</a>
       <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
       <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
       <a href="#faq" data-i18n="menu.faq">คำถามที่พบบ่อย</a>
       <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
     </div>
-  </header>
+    <div class="lang-flags">
+      <img src="https://flagcdn.com/w20/th.png" data-lang="th" title="ไทย">
+      <img src="https://flagcdn.com/w20/la.png" data-lang="la" title="ລາວ">
+      <img src="https://flagcdn.com/w20/gb.png" data-lang="en" title="English">
+      <img src="https://flagcdn.com/w20/cn.png" data-lang="zh" title="中文">
+    </div>
+  </nav>
+</header>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="eyebrow" data-i18n="hero.eyebrow">Krualuang — Authentic Thai Cuisine</div>
-      <h1 data-i18n="hero.title">
-        Royal Thai Taste<br>
-        <span>ຮັບປະສົບການອາຫານຄັວຫຼວງ</span>
-      </h1>
-      <p data-i18n="hero.desc">Fine dining experience and franchise opportunities across Laos and Thailand.</p>
-      <div class="cta">
-        <button class="btn" data-i18n="hero.cta1" onclick="location.href='#franchise'">
-          <i class="fas fa-store"></i> Explore Franchise
-        </button>
-        <button class="btn btn-outline" data-i18n="hero.cta2" onclick="document.getElementById('contact').scrollIntoView()">
-          <i class="fas fa-calendar-alt"></i> Book a Visit
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats -->
-  <section class="stats">
-    <div class="stat-item">
-      <h4>50+</h4>
-      <p>สาขาทั่วประเทศ</p>
-    </div>
-    <div class="stat-item">
-      <h4>98%</h4>
-      <p>ความสำเร็จของแฟรนไชส์</p>
-    </div>
-    <div class="stat-item">
-      <h4>5,000,000+</h4>
-      <p>ยอดขายรวม</p>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <h3 data-i18n="about.title">เกี่ยวกับครัวหลวง</h3>
-    <p data-i18n="about.text">Krualuang คือแบรนด์อาหารสไตล์ไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานความสะดวกในรูปแบบแฟรนไชส์ทันสมัย ลงทุนเริ่มต้นเพียงหลักหมื่น สามารถสร้างยอดขายหลักล้านได้ภายในเวลาไม่นาน ด้วยสูตรอาหารที่เป็นเอกลักษณ์และระบบการจัดการที่ได้มาตรฐาน ทำให้ Krualuang เป็นหนึ่งในแฟรนไชส์อาหารไทยที่เติบโตเร็วที่สุดในภูมิภาค</p>
-  </section>
-
-  <!-- FRANCHISE -->
-  <section id="franchise" class="franchise">
-    <h3 data-i18n="franchise.title">แพ็กเกจแฟรนไชส์</h3>
-    <div class="franchise-cards">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Franchise Starter">
-        <h4 data-i18n="franchise.p1">ชุดเริ่มต้น</h4>
-        <div class="price">19,000 บาท</div>
-        <p data-i18n="franchise.p1desc">ลงทุนเพียง 19,000 บาท เหมาะสำหรับผู้เริ่มต้น ต้องการทดลองตลาด พร้อมคู่มือการดำเนินงานเบื้องต้น</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Franchise Standard">
-        <h4 data-i18n="franchise.p2">ชุดมาตรฐาน</h4>
-        <div class="price">49,000 บาท</div>
-        <p data-i18n="franchise.p2desc">รวมอุปกรณ์ครบชุด พร้อมอบรมสูตรและการบริหารหน้าร้าน สนับสนุนการตลาดเบื้องต้น</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Franchise Premium">
-        <h4 data-i18n="franchise.p3">ชุดพรีเมียม</h4>
-        <div class="price">99,000 บาท</div>
-        <p data-i18n="franchise.p3desc">สำหรับผู้ต้องการขยายหลายสาขา มีทีมสนับสนุนครบ ดูแลการตลาดแบบเต็มรูปแบบ พร้อมสิทธิพิเศษมากมาย</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="faq">
-    <h3 data-i18n="faq.title">คำถามที่พบบ่อย</h3>
-    <div class="faq-item">
-      <button class="faq-question">ต้องลงทุนเริ่มต้นเท่าไหร่?</button>
-      <div class="faq-answer">
-        <p>แพ็กเกจเริ่มต้นอยู่ที่ 19,000 บาท ซึ่งรวมค่าสิทธิแฟรนไชส์และคู่มือการดำเนินงานเบื้องต้นแล้ว</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question">ระยะเวลาคืนทุนประมาณกี่เดือน?</button>
-      <div class="faq-answer">
-        <p>โดยเฉลี่ยแล้ว แฟรนไชส์ของเราคืนทุนภายใน 6-12 เดือน ขึ้นอยู่กับทำเลและความขยันของเจ้าของร้าน</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question">ได้รับความช่วยเหลืออะไรบ้าง?</button>
-      <div class="faq-answer">
-        <p>เรามีทีมสนับสนุนครบวงจร ตั้งแต่การฝึกอบรม การตลาด จนถึงการให้คำปรึกษาด้านการจัดการ</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question">ต้องมีประสบการณ์ด้านอาหารหรือไม่?</button>
-      <div class="faq-answer">
-        <p>ไม่จำเป็น เราให้การฝึกอบรมตั้งแต่พื้นฐาน พร้อมคู่มือการทำงานที่เข้าใจง่าย</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <h3 data-i18n="contact.title">ติดต่อแฟรนไชส์</h3>
-    
-    <div class="contact-info">
-      <div class="contact-item">
-        <i class="fas fa-phone"></i>
-        <p>📞 <span data-i18n="contact.phone">โทร: 020 1234 5678</span></p>
-      </div>
-      <div class="contact-item">
-        <i class="fab fa-line"></i>
-        <p>💬 <span data-i18n="contact.line">Line: @krualuang</span></p>
-      </div>
-      <div class="contact-item">
-        <i class="fas fa-envelope"></i>
-        <p>📧 <span data-i18n="contact.email">Email: info@krualuang.com</span></p>
-      </div>
-    </div>
-    
-    <a href="https://line.me/" data-i18n="contact.chat">
-      <i class="fab fa-line"></i> แชทกับเรา
-    </a>
-    
-    <div class="contact-form">
-      <h4 data-i18n="contact.formTitle">ส่งข้อความถึงเรา</h4>
-      <form id="contactForm">
-        <div class="form-group">
-          <label for="name">ชื่อ</label>
-          <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">เบอร์โทร</label>
-          <input type="tel" id="phone" required>
-        </div>
-        <div class="form-group">
-          <label for="message">ข้อความ</label>
-          <textarea id="message" rows="4" placeholder="สอบถามข้อมูลเพิ่มเติม..."></textarea>
-        </div>
-        <button type="submit" class="btn">
-          <i class="fas fa-paper-plane"></i> ส่งข้อความ
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Live Chat -->
-  <div class="live-chat">
-    <button class="chat-btn" onclick="openChat()">
-      <i class="fas fa-comments"></i> แชทกับเรา
-    </button>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
+    <h1 data-i18n="hero.title">Royal Thai Taste</h1>
+    <p data-i18n="hero.desc">ประสบการณ์อาหารไทยชั้นเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
+    <button class="btn" data-i18n="hero.cta1">ดูแฟรนไชส์</button>
+    <button class="btn" data-i18n="hero.cta2">นัดเยี่ยมชม</button>
   </div>
+</section>
 
-  <footer>
-    © 2025 Krualuang Franchise. All Rights Reserved.
-  </footer>
+<!-- ABOUT -->
+<section id="about">
+  <h2 data-i18n="about.title">เกี่ยวกับครัวหลวง</h2>
+  <p data-i18n="about.text">
+    ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย
+    ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน
+  </p>
+</section>
 
-  <script>
-    // Loading Screen
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        document.getElementById('loading').classList.add('hidden');
-      }, 1000);
-    });
+<!-- FRANCHISE -->
+<section id="franchise">
+  <h2 data-i18n="franchise.title">แพ็กเกจแฟรนไชส์</h2>
+  <p>เริ่มต้นธุรกิจของคุณกับครัวหลวงวันนี้</p>
+</section>
 
-    // Mobile Menu Toggle
-    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-      document.getElementById('mobileMenu').classList.toggle('active');
-    });
+<!-- CONTACT -->
+<section id="contact">
+  <h2 data-i18n="contact.title">ติดต่อแฟรนไชส์</h2>
+  <p>โทร: +856 20 1234 5678 | Line: @krualuang</p>
+</section>
 
-    // FAQ Accordion
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
-        const faqItem = button.parentNode;
-        const answer = faqItem.querySelector('.faq-answer');
-        
-        // Close all other items
-        document.querySelectorAll('.faq-item').forEach(item => {
-          if (item !== faqItem) {
-            item.querySelector('.faq-question').classList.remove('active');
-            item.querySelector('.faq-answer').classList.remove('active');
-          }
-        });
-        
-        // Toggle current item
-        button.classList.toggle('active');
-        answer.classList.toggle('active');
-      });
-    });
+<footer>
+  © 2025 Krualuang — Royal Thai Cuisine
+</footer>
 
-    // Contact Form Submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('ขอบคุณสำหรับข้อความ! เราจะติดต่อกลับไปเร็วๆ นี้');
-      this.reset();
-    });
+<script>
+  const translations = {
+    th: {
+      "menu.home": "หน้าแรก",
+      "menu.about": "เกี่ยวกับเรา",
+      "menu.franchise": "แฟรนไชส์",
+      "menu.faq": "คำถามที่พบบ่อย",
+      "menu.contact": "ติดต่อ",
+      "hero.eyebrow": "ครัวหลวง — รสชาติไทยต้นตำรับ",
+      "hero.title": "Royal Thai Taste",
+      "hero.desc": "ประสบการณ์อาหารไทยชั้นเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย",
+      "hero.cta1": "ดูแฟรนไชส์",
+      "hero.cta2": "นัดเยี่ยมชม",
+      "about.title": "เกี่ยวกับครัวหลวง",
+      "about.text": "ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน",
+      "franchise.title": "แพ็กเกจแฟรนไชส์",
+      "contact.title": "ติดต่อแฟรนไชส์",
+    },
+    la: {
+      "menu.home": "ໜ້າຫຼັກ",
+      "menu.about": "ກ່ຽວກັບພວກເຮົາ",
+      "menu.franchise": "ແຟຣນໄຊສ໌",
+      "menu.faq": "ຄຳຖາມທີ່ພົບເປັນປະຈຳ",
+      "menu.contact": "ຕິດຕໍ່",
+      "hero.eyebrow": "ຄັວຫຼວງ — ອາຫານໄທຕົ້ນສະບັບ",
+      "hero.title": "ຮັບປະສົບການອາຫານຄັວຫຼວງ",
+      "hero.desc": "ປະສົບການອາຫານທີ່ປະທັບໃຈ ແລະ ໂອກາດແຟຣນໄຊສ໌ ທົ່ວລາວ-ໄທ",
+      "hero.cta1": "ເບິ່ງແຟຣນໄຊສ໌",
+      "hero.cta2": "ນັດຢ້ຽມຊົມ",
+      "about.title": "ກ່ຽວກັບຄັວຫຼວງ",
+      "about.text": "ຄັວຫຼວງເປັນແບຣນອາຫານໄທຕົ້ນສະບັບ ທີ່ມີລະບົບແຟຣນໄຊສ໌ທັນສະໄໝ ລົງທຶນນ້ອຍ ແຕ່ສາມາດສ້າງລາຍໄດ້ຫຼາຍ.",
+      "franchise.title": "ແພັກແກັດແຟຣນໄຊສ໌",
+      "contact.title": "ຕິດຕໍ່ແຟຣນໄຊສ໌",
+    },
+    en: {
+      "menu.home": "Home",
+      "menu.about": "About Us",
+      "menu.franchise": "Franchise",
+      "menu.faq": "FAQ",
+      "menu.contact": "Contact",
+      "hero.eyebrow": "Krualuang — Authentic Thai Cuisine",
+      "hero.title": "Royal Thai Taste",
+      "hero.desc": "Fine dining and franchise opportunities across Laos & Thailand.",
+      "hero.cta1": "Explore Franchise",
+      "hero.cta2": "Book a Visit",
+      "about.title": "About Krualuang",
+      "about.text": "Krualuang offers authentic Thai flavors with modern franchise opportunities. Start small and scale fast with proven recipes and systems.",
+      "franchise.title": "Franchise Packages",
+      "contact.title": "Contact Franchise",
+    },
+    zh: {
+      "menu.home": "首页",
+      "menu.about": "关于我们",
+      "menu.franchise": "加盟",
+      "menu.faq": "常见问题",
+      "menu.contact": "联系我们",
+      "hero.eyebrow": "皇家厨房 — 正宗泰国美食",
+      "hero.title": "皇家泰式风味",
+      "hero.desc": "精致用餐体验与加盟机会，遍及老挝与泰国。",
+      "hero.cta1": "查看加盟方案",
+      "hero.cta2": "预约参观",
+      "about.title": "关于皇家厨房",
+      "about.text": "皇家厨房提供正宗泰式风味与现代加盟体系，投资少、回报快，是东南亚增长最快的泰餐品牌之一。",
+      "franchise.title": "加盟方案",
+      "contact.title": "联系我们",
+    },
+  };
 
-    // Smooth Scroll for Anchor Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-          
-          // Close mobile menu if open
-          document.getElementById('mobileMenu').classList.remove('active');
-        }
-      });
-    });
-
-    // Language Selector (Placeholder)
-    document.getElementById('language').addEventListener('change', function() {
-      alert('ระบบหลายภาษากำลังอยู่ในระหว่างการพัฒนา');
-    });
-
-    // Live Chat Function
-    function openChat() {
-      alert('กำลังเปิดแชทกับพนักงาน... (ระบบแชทจริงจะเชื่อมต่อกับ Line OA)');
-    }
-
-    // Sticky Header
-    window.addEventListener('scroll', function() {
-      const header = document.querySelector('header');
-      if (window.scrollY > 100) {
-        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
-      } else {
-        header.style.boxShadow = 'none';
+  function setLanguage(lang) {
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (translations[lang] && translations[lang][key]) {
+        el.innerText = translations[lang][key];
       }
     });
-  </script>
+    localStorage.setItem("lang", lang);
+  }
+
+  const savedLang = localStorage.getItem("lang") || "th";
+  setLanguage(savedLang);
+
+  document.querySelectorAll(".lang-flags img").forEach(flag => {
+    flag.addEventListener("click", () => {
+      setLanguage(flag.dataset.lang);
+    });
+  });
+</script>
+
 </body>
 </html>
