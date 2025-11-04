@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ครัวหลวง — Royal Thai Cuisine</title>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -69,13 +70,13 @@
       border-color: #d4af37;
     }
     
-    /* HERO SECTION */
+    /* HERO SECTION - แก้ไขพาธรูปภาพ */
     .hero {
       position: relative;
       width: 100%;
       height: 100vh;
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                  url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+                  url('images/hero/hero-bg.jpg') center/cover no-repeat;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -210,70 +211,6 @@
       margin-bottom: 1rem;
     }
     
-    /* ส่วน Gallery */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    .gallery-item {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      transition: transform 0.3s;
-    }
-    
-    .gallery-item:hover {
-      transform: scale(1.05);
-    }
-    
-    /* ส่วน About */
-    .about-content {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .about-image {
-      width: 400px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 10px;
-      flex-shrink: 0;
-    }
-    
-    /* ส่วน Team */
-    .team {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .team-member {
-      text-align: center;
-    }
-    
-    .team-photo {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      border: 3px solid #d4af37;
-    }
-    
-    /* ส่วน Logo */
-    .logo {
-      width: 120px;
-      height: 60px;
-      object-fit: contain;
-    }
-    
     /* ส่วน FAQ */
     .faq-item {
       margin-bottom: 1rem;
@@ -328,40 +265,6 @@
       margin-bottom: 0.5rem;
     }
     
-    /* ส่วน Map */
-    .map-container {
-      width: 100%;
-      height: 300px;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 2rem;
-    }
-    
-    .map-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    /* ส่วน Social Media */
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    .social-icon {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      transition: transform 0.3s;
-    }
-    
-    .social-icon:hover {
-      transform: scale(1.2);
-    }
-    
     @media (max-width: 768px) {
       nav { 
         flex-direction: column; 
@@ -395,50 +298,18 @@
       .franchise-cards {
         grid-template-columns: 1fr;
       }
-      
-      .about-content {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .about-image {
-        width: 100%;
-        max-width: 400px;
-        height: 250px;
-      }
-      
-      .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      }
-      
-      .gallery-item {
-        height: 150px;
-      }
-      
-      .team {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      }
-      
-      .team-photo {
-        width: 120px;
-        height: 120px;
-      }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <header>
   <nav>
-    <div>
-      <img src="https://via.placeholder.com/120x60/000000/FFFFFF?text=KRUALUANG" alt="Krualuang Logo" class="logo">
-    </div>
+    <div><strong>KRUALUANG</strong></div>
     <div>
       <a href="#home" data-i18n="menu.home">หน้าแรก</a>
       <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
       <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
-      <a href="#gallery" data-i18n="menu.gallery">ภาพรวม</a>
       <a href="#faq" data-i18n="menu.faq">คำถามที่พบบ่อย</a>
       <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
     </div>
@@ -467,15 +338,10 @@
 <!-- ABOUT -->
 <section id="about">
   <h2 data-i18n="about.title">เกี่ยวกับครัวหลวง</h2>
-  <div class="about-content">
-    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" alt="เกี่ยวกับครัวหลวง" class="about-image">
-    <div>
-      <p data-i18n="about.text">
-        ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย
-        ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน
-      </p>
-    </div>
-  </div>
+  <p data-i18n="about.text">
+    ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย
+    ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน
+  </p>
 </section>
 
 <!-- FRANCHISE -->
@@ -485,55 +351,19 @@
   
   <div class="franchise-cards">
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80" alt="ชุดเริ่มต้น" class="card-image">
       <h3>ชุดเริ่มต้น</h3>
       <div class="price">19,000 บาท</div>
       <p>เหมาะสำหรับผู้เริ่มต้นธุรกิจอาหาร</p>
     </div>
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80" alt="ชุดมาตรฐาน" class="card-image">
       <h3>ชุดมาตรฐาน</h3>
       <div class="price">49,000 บาท</div>
       <p>พร้อมอุปกรณ์ครบชุดและฝึกอบรม</p>
     </div>
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80" alt="ชุดพรีเมียม" class="card-image">
       <h3>ชุดพรีเมียม</h3>
       <div class="price">99,000 บาท</div>
       <p>สำหรับผู้ต้องการขยายหลายสาขา</p>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <h2>ภาพรวมร้านครัวหลวง</h2>
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&h=200&q=80" alt="ร้านครัวหลวง 1" class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&h=200&q=80" alt="ร้านครัวหลวง 2" class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&h=200&q=80" alt="ร้านครัวหลวง 3" class="gallery-item">
-    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&h=200&q=80" alt="ร้านครัวหลวง 4" class="gallery-item">
-  </div>
-</section>
-
-<!-- TEAM -->
-<section>
-  <h2>ทีมงานครัวหลวง</h2>
-  <div class="team">
-    <div class="team-member">
-      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="เชฟใหญ่" class="team-photo">
-      <h3>เชฟสมชาย</h3>
-      <p>เชฟใหญ่</p>
-    </div>
-    <div class="team-member">
-      <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="ผู้จัดการ" class="team-photo">
-      <h3>คุณสุนิสา</h3>
-      <p>ผู้จัดการ</p>
-    </div>
-    <div class="team-member">
-      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150&q=80" alt="ที่ปรึกษา" class="team-photo">
-      <h3>ดร.อนุชา</h3>
-      <p>ที่ปรึกษาธุรกิจ</p>
     </div>
   </div>
 </section>
@@ -583,30 +413,14 @@
     </div>
   </div>
   
-  <div class="map-container">
-    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=300&q=80" alt="แผนที่ร้านครัวหลวง" class="map-image">
-  </div>
-  
-  <div class="social-links">
-    <img src="https://via.placeholder.com/40/1877F2/FFFFFF?text=FB" alt="Facebook" class="social-icon">
-    <img src="https://via.placeholder.com/40/1DA1F2/FFFFFF?text=TW" alt="Twitter" class="social-icon">
-    <img src="https://via.placeholder.com/40/E4405F/FFFFFF?text=IG" alt="Instagram" class="social-icon">
-    <img src="https://via.placeholder.com/40/00C300/FFFFFF?text=LI" alt="Line" class="social-icon">
-  </div>
-  
-  <div style="text-align: center; margin-top: 2rem;">
+  <div style="text-align: center;">
     <a href="https://line.me/" class="hero-buttons a" style="display: inline-block;">
       <i class="fab fa-line"></i> แชทกับเรา
     </a>
   </div>
 </section>
 
-<footer>
-  <div style="margin-bottom: 1rem;">
-    <img src="https://via.placeholder.com/100x50/FFFFFF/000000?text=KRUALUANG" alt="Krualuang Logo" class="logo">
-  </div>
-  © 2025 Krualuang — Royal Thai Cuisine
-</footer>
+<footer>© 2025 Krualuang — Royal Thai Cuisine</footer>
 
 <script>
 // JavaScript สำหรับระบบภาษาและฟังก์ชันอื่นๆ
@@ -615,7 +429,6 @@ const translations = {
     "menu.home": "หน้าแรก",
     "menu.about": "เกี่ยวกับเรา",
     "menu.franchise": "แฟรนไชส์",
-    "menu.gallery": "ภาพรวม",
     "menu.faq": "คำถามที่พบบ่อย",
     "menu.contact": "ติดต่อ",
     "hero.eyebrow": "ครัวหลวง — รสชาติไทยต้นตำรับ",
@@ -628,7 +441,54 @@ const translations = {
     "franchise.title": "แพ็กเกจแฟรนไชส์",
     "contact.title": "ติดต่อแฟรนไชส์"
   },
-  // ... translations อื่นๆ
+  la: {
+    "menu.home": "ໜ້າຫຼັກ",
+    "menu.about": "ກ່ຽວກັບພວກເຮົາ",
+    "menu.franchise": "ແຟຣນໄຊສ໌",
+    "menu.faq": "ຄຳຖາມທີ່ພົບເປັນປະຈຳ",
+    "menu.contact": "ຕິດຕໍ່",
+    "hero.eyebrow": "ຄັວຫຼວງ — ອາຫານໄທຕົ້ນສະບັບ",
+    "hero.title": "ຮັບປະສົບການອາຫານຄັວຫຼວງ",
+    "hero.desc": "ປະສົບການອາຫານທີ່ປະທັບໃຈ ແລະ ໂອກາດແຟຣນໄຊສ໌ ທົ່ວລາວ-ໄທ",
+    "hero.cta1": "ເບິ່ງແຟຣນໄຊສ໌",
+    "hero.cta2": "ນັດຢ້ຽມຊົມ",
+    "about.title": "ກ່ຽວກັບຄັວຫຼວງ",
+    "about.text": "ຄັວຫຼວງເປັນແບຣນອາຫານໄທຕົ້ນສະບັບ ທີ່ມີລະບົບແຟຣນໄຊສ໌ທັນສະໄໝ ລົງທຶນນ້ອຍ ແຕ່ສາມາດສ້າງລາຍໄດ້ຫຼາຍ.",
+    "franchise.title": "ແພັກແກັດແຟຣນໄຊສ໌",
+    "contact.title": "ຕິດຕໍ່ແຟຣນໄຊສ໌"
+  },
+  en: {
+    "menu.home": "Home",
+    "menu.about": "About Us",
+    "menu.franchise": "Franchise",
+    "menu.faq": "FAQ",
+    "menu.contact": "Contact",
+    "hero.eyebrow": "Krualuang — Authentic Thai Cuisine",
+    "hero.title": "Royal Thai Taste",
+    "hero.desc": "Fine dining and franchise opportunities across Laos & Thailand.",
+    "hero.cta1": "Explore Franchise",
+    "hero.cta2": "Book a Visit",
+    "about.title": "About Krualuang",
+    "about.text": "Krualuang offers authentic Thai flavors with modern franchise opportunities. Start small and scale fast with proven recipes and systems.",
+    "franchise.title": "Franchise Packages",
+    "contact.title": "Contact Franchise"
+  },
+  zh: {
+    "menu.home": "首页",
+    "menu.about": "关于我们",
+    "menu.franchise": "加盟",
+    "menu.faq": "常见问题",
+    "menu.contact": "联系我们",
+    "hero.eyebrow": "皇家厨房 — 正宗泰国美食",
+    "hero.title": "皇家泰式风味",
+    "hero.desc": "精致用餐体验与加盟机会，遍及老挝与泰国。",
+    "hero.cta1": "查看加盟方案",
+    "hero.cta2": "预约参观",
+    "about.title": "关于皇家厨房",
+    "about.text": "皇家厨房提供正宗泰式风味与现代加盟体系，投资少、回报快，是东南亚增长最快的泰餐品牌之一。",
+    "franchise.title": "加盟方案",
+    "contact.title": "联系我们"
+  }
 };
 
 function setLanguage(lang) {
