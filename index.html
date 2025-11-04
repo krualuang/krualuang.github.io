@@ -73,7 +73,7 @@
     .hero {
       position: relative;
       width: 100%;
-      min-height: 100vh; /* ใช้ min-height แทน height */
+      height: 100vh; /* ใช้ height แทน min-height */
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                   url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
       display: flex;
@@ -81,7 +81,7 @@
       align-items: center;
       color: white;
       text-align: center;
-      padding-top: 80px; /* เพิ่ม padding-top เพื่อชดเชย header */
+      margin: 0; /* กำจัด margin */
     }
     
     .hero-content {
@@ -89,6 +89,7 @@
       z-index: 2;
       max-width: 90%;
       padding: 2rem;
+      margin-top: 0; /* กำจัด margin-top */
     }
     
     .hero h4 { 
@@ -263,7 +264,7 @@
       }
       
       .hero {
-        padding-top: 120px; /* เพิ่ม padding-top บนมือถือ */
+        height: 100vh; /* ยังคงใช้ 100vh บนมือถือ */
       }
       
       .hero h1 { 
@@ -527,6 +528,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       });
     }
   });
+});
+
+// แก้ไขปัญหา Hero Section ไม่เต็มจอ
+document.addEventListener('DOMContentLoaded', function() {
+  const hero = document.querySelector('.hero');
+  const header = document.querySelector('header');
+  
+  // ตั้งค่าความสูง Hero Section ให้เต็มจอ
+  function setHeroHeight() {
+    const headerHeight = header.offsetHeight;
+    hero.style.height = `calc(100vh - ${headerHeight}px)`;
+    hero.style.marginTop = `${headerHeight}px`;
+  }
+  
+  // เรียกใช้ครั้งแรก
+  setHeroHeight();
+  
+  // เรียกใช้เมื่อปรับขนาดหน้าต่าง
+  window.addEventListener('resize', setHeroHeight);
 });
 </script>
 
