@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ครัวหลวง — Royal Thai Cuisine</title>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
@@ -38,12 +38,6 @@
       padding: 1rem 1.5rem;
     }
     
-    /* ปรับขนาดโลโก้ใน Nav Bar และทำให้จัดกึ่งกลางกับลิงก์ */
-    nav > div:first-child {
-      display: flex;
-      align-items: center;
-    }
-
     .logo {
       height: 40px;
     }
@@ -80,7 +74,7 @@
       border-color: #d4af37;
     }
     
-    /* HERO SECTION - Path รูปภาพถูกต้องแล้ว */
+    /* HERO SECTION - แก้ไขพาธรูปภาพ */
     .hero {
       position: relative;
       width: 100%;
@@ -291,6 +285,11 @@
         height: 35px;
       }
       
+      .hero {
+        padding-top: 120px;
+        height: calc(100vh - 120px);
+      }
+      
       .hero-logo {
         height: 70px;
       }
@@ -325,7 +324,8 @@
 <header>
   <nav>
     <div>
-            <img src="images/logo/logo.png" alt="Krualuang Logo" class="logo">
+      <!-- โลโก้ใน navigation -->
+      <img src="images/logo/logo.png" alt="Krualuang Logo">
     </div>
     <div>
       <a href="#home" data-i18n="menu.home">หน้าแรก</a>
@@ -343,9 +343,11 @@
   </nav>
 </header>
 
+<!-- HERO -->
 <section id="home" class="hero">
   <div class="hero-content">
-        <img src="images/logo/logo.png" alt="ครัวหลวง" class="hero-logo">
+    <!-- โลโก้ใน hero section -->
+    <img src="logo/logo.png" alt="ครัวหลวง" class="hero-logo">
     <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
     <h1 data-i18n="hero.title">Royal Thai Taste</h1>
     <p data-i18n="hero.desc">ประสบการณ์อาหารไทยอันเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
@@ -356,6 +358,7 @@
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
   <h2 data-i18n="about.title">เกี่ยวกับครัวหลวง</h2>
   <p data-i18n="about.text">
@@ -364,6 +367,7 @@
   </p>
 </section>
 
+<!-- FRANCHISE -->
 <section id="franchise">
   <h2 data-i18n="franchise.title">แพ็กเกจแฟรนไชส์</h2>
   <p>เริ่มต้นธุรกิจของคุณกับครัวหลวงวันนี้</p>
@@ -387,6 +391,7 @@
   </div>
 </section>
 
+<!-- FAQ -->
 <section id="faq">
   <h2 data-i18n="menu.faq">คำถามที่พบบ่อย</h2>
   
@@ -402,7 +407,7 @@
     <div class="faq-answer">
       <p>โดยเฉลี่ยแล้ว แฟรนไชส์ของเราคืนทุนภายใน 6-12 เดือน ขึ้นอยู่กับทำเลและความขยันของเจ้าของร้าน</p>
     </div>
-    </div>
+  </div>
   
   <div class="faq-item">
     <button class="faq-question">ได้รับความช่วยเหลืออะไรบ้าง?</button>
@@ -412,6 +417,7 @@
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <h2 data-i18n="contact.title">ติดต่อแฟรนไชส์</h2>
   
