@@ -82,8 +82,8 @@
     position: relative;
     width: 100%;
     /* ส่วนนี้คือส่วนที่เปลี่ยน */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                  url('images/hero/hero-bg.jpg') center/cover no-repeat; 
+    /* นำ URL ภาพออก และใช้สีทึบแทนเพื่อป้องกันข้อผิดพลาด */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), #333;  
     /* -------------------------------------- */
     display: flex;
     justify-content: center;
@@ -91,6 +91,8 @@
     color: white;
     text-align: center;
     margin: 0;
+    /* เพิ่มการตั้งค่าความสูงจาก JS ให้ทำงานได้ดีขึ้น */
+    min-height: 500px; /* ตั้งค่าขั้นต่ำเผื่อ JS ไม่ทำงาน */
 }
 
     .hero-content {
