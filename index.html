@@ -6,108 +6,39 @@
   <title>ครัวหลวง — Royal Thai Cuisine</title>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: "Prompt", sans-serif;
-      margin: 0;
-      background: #fff;
-      color: #333;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      z-index: 100;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: auto;
-      padding: 1rem 1.5rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: #333;
-      margin: 0 1rem;
-      font-weight: 500;
-    }
-    .lang-flags {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .lang-flags img {
-      width: 26px;
-      height: 18px;
-      cursor: pointer;
-      border-radius: 2px;
-      border: 1px solid #ccc;
-      transition: 0.2s;
-    }
-    .lang-flags img:hover {
-      transform: scale(1.15);
-      border-color: gold;
-    }
-    /* HERO SECTION */
+    body { font-family:"Prompt",sans-serif; margin:0; background:#fff; color:#333; }
+    header { position:fixed; top:0; width:100%; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); z-index:100; }
+    nav { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:1rem 1.5rem; }
+    nav a { text-decoration:none; color:#333; margin:0 1rem; font-weight:500; }
+    .lang-flags { display:flex; align-items:center; gap:0.6rem; }
+    .lang-flags img { width:26px; height:18px; cursor:pointer; border:1px solid #ccc; border-radius:2px; transition:0.2s; }
+    .lang-flags img:hover { transform:scale(1.15); border-color:gold; }
+
     .hero {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
+      position:relative; width:100vw; height:100vh;
       background: url('images/hero-bg.jpg') center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
+      display:flex; justify-content:center; align-items:center; text-align:center; color:#fff;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 90%;
-    }
-    .hero h4 { font-size: 1.3rem; letter-spacing: 1px; }
-    .hero h1 { font-size: 3.5rem; font-weight: 700; margin: 1rem 0; }
-    .hero p { font-size: 1.2rem; margin-bottom: 1.8rem; }
+    .hero::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.45); }
+    .hero-content { position:relative; z-index:2; max-width:90%; }
+    .hero h4 { font-size:1.3rem; letter-spacing:1px; }
+    .hero h1 { font-size:3.5rem; font-weight:700; margin:1rem 0; }
+    .hero p { font-size:1.2rem; margin-bottom:1.8rem; }
     .hero-buttons a {
-      background: #ffd700;
-      color: #000;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      margin: 0 0.5rem;
-      transition: 0.3s;
+      background:#ffd700; color:#000; padding:0.8rem 1.5rem; border-radius:50px;
+      text-decoration:none; margin:0 0.5rem; transition:0.3s;
     }
-    .hero-buttons a:hover { background: #ffbf00; }
-    section {
-      padding: 5rem 1.5rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #222;
-      color: white;
-    }
-    @media (max-width: 768px) {
-      nav { flex-direction: column; gap: 0.5rem; }
-      .hero h1 { font-size: 2.2rem; }
-      .hero p { font-size: 1rem; }
-      .hero-buttons a { display: block; margin: 0.5rem auto; width: fit-content; }
+    .hero-buttons a:hover { background:#ffbf00; }
+
+    section { padding:5rem 1.5rem; max-width:1000px; margin:auto; }
+    h2 { text-align:center; margin-bottom:2rem; font-size:2rem; }
+    footer { text-align:center; padding:2rem; background:#222; color:#fff; }
+
+    @media(max-width:768px){
+      nav { flex-direction:column; gap:0.5rem; }
+      .hero h1 { font-size:2.2rem; }
+      .hero p { font-size:1rem; }
+      .hero-buttons a { display:block; margin:0.5rem auto; width:fit-content; }
     }
   </style>
 </head>
@@ -120,7 +51,8 @@
       <a href="#home" data-i18n="menu.home">หน้าแรก</a>
       <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
       <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
-      <a href="#faq" data-i18n="menu.faq">คำถามที่พบบ่อย</a>
+      <a href="#menu" data-i18n="menu.menu">เมนู</a>
+      <a href="#gallery" data-i18n="menu.gallery">แกลเลอรี่</a>
       <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
     </div>
     <div class="lang-flags">
@@ -135,7 +67,7 @@
 <!-- HERO -->
 <section id="home" class="hero">
   <div class="hero-content">
-    <h4 data-i18n="hero.eyebrow">Krualuang — Authentic Thai Cuisine</h4>
+    <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
     <h1 data-i18n="hero.title">Royal Thai Taste</h1>
     <p data-i18n="hero.desc">Fine dining and franchise opportunities across Laos & Thailand.</p>
     <div class="hero-buttons">
@@ -148,25 +80,36 @@
 <!-- ABOUT -->
 <section id="about">
   <h2 data-i18n="about.title">เกี่ยวกับครัวหลวง</h2>
-  <p data-i18n="about.text">
-    ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย
-    ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน
-  </p>
+  <p data-i18n="about.text">(ใส่ข้อความเกี่ยวกับร้านของคุณที่นี่…)</p>
 </section>
 
 <!-- FRANCHISE -->
 <section id="franchise">
   <h2 data-i18n="franchise.title">แพ็กเกจแฟรนไชส์</h2>
-  <p>เริ่มต้นธุรกิจของคุณกับครัวหลวงวันนี้</p>
+  <p>(ใส่รายละเอียดแฟรนไชส์ของร้านคุณ…)</p>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <h2 data-i18n="menu.title">เมนูของเรา</h2>
+  <p>(รายละเอียดเมนูหรือภาพอาหาร…)</p>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <h2 data-i18n="gallery.title">แกลเลอรี่</h2>
+  <p>(ใส่ภาพบรรยากาศร้านหรืออาหาร…) </p>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2 data-i18n="contact.title">ติดต่อแฟรนไชส์</h2>
-  <p>โทร: +856 20 1234 5678 | Line: @krualuang</p>
+  <h2 data-i18n="contact.title">ติดต่อเรา</h2>
+  <p>(ช่องทางติดต่อ, แผนที่, โซเชียล…)</p>
 </section>
 
-<footer>© 2025 Krualuang — Royal Thai Cuisine</footer>
+<footer>
+  © 2025 ครัวหลวง — Royal Thai Cuisine
+</footer>
 
 <script>
 const translations = {
@@ -174,7 +117,8 @@ const translations = {
     "menu.home": "หน้าแรก",
     "menu.about": "เกี่ยวกับเรา",
     "menu.franchise": "แฟรนไชส์",
-    "menu.faq": "คำถามที่พบบ่อย",
+    "menu.menu": "เมนู",
+    "menu.gallery": "แกลเลอรี่",
     "menu.contact": "ติดต่อ",
     "hero.eyebrow": "ครัวหลวง — รสชาติไทยต้นตำรับ",
     "hero.title": "Royal Thai Taste",
@@ -182,15 +126,18 @@ const translations = {
     "hero.cta1": "ดูแฟรนไชส์",
     "hero.cta2": "นัดเยี่ยมชม",
     "about.title": "เกี่ยวกับครัวหลวง",
-    "about.text": "ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน",
+    "about.text": "ครัวหลวงคือแบรนด์…(ใส่ข้อความของคุณ)",
     "franchise.title": "แพ็กเกจแฟรนไชส์",
-    "contact.title": "ติดต่อแฟรนไชส์"
+    "menu.title": "เมนูของเรา",
+    "gallery.title": "แกลเลอรี่",
+    "contact.title": "ติดต่อเรา"
   },
   la: {
     "menu.home": "ໜ້າຫຼັກ",
     "menu.about": "ກ່ຽວກັບພວກເຮົາ",
     "menu.franchise": "ແຟຣນໄຊສ໌",
-    "menu.faq": "ຄຳຖາມທີ່ພົບເປັນປະຈຳ",
+    "menu.menu": "ເມື່ອລ",
+    "menu.gallery": "ກໍລະນີ",
     "menu.contact": "ຕິດຕໍ່",
     "hero.eyebrow": "ຄັວຫຼວງ — ອາຫານໄທຕົ້ນສະບັບ",
     "hero.title": "ຮັບປະສົບການອາຫານຄັວຫຼວງ",
@@ -198,15 +145,18 @@ const translations = {
     "hero.cta1": "ເບິ່ງແຟຣນໄຊສ໌",
     "hero.cta2": "ນັດຢ້ຽມຊົມ",
     "about.title": "ກ່ຽວກັບຄັວຫຼວງ",
-    "about.text": "ຄັວຫຼວງເປັນແບຣນອາຫານໄທຕົ້ນສະບັບ ທີ່ມີລະບົບແຟຣນໄຊສ໌ທັນສະໄໝ ລົງທຶນນ້ອຍ ແຕ່ສາມາດສ້າງລາຍໄດ້ຫຼາຍ.",
+    "about.text": "ຄັວຫຼວງເປັນແບຣນ…(ใส่ข้อความ)",
     "franchise.title": "ແພັກແກັດແຟຣນໄຊສ໌",
-    "contact.title": "ຕິດຕໍ່ແຟຣນໄຊສ໌"
+    "menu.title": "ເມນູຂອງເຮົາ",
+    "gallery.title": "ພາບບັນຍາຍ",
+    "contact.title": "ຕິດຕໍ່ເຮົາ"
   },
   en: {
     "menu.home": "Home",
     "menu.about": "About Us",
     "menu.franchise": "Franchise",
-    "menu.faq": "FAQ",
+    "menu.menu": "Menu",
+    "menu.gallery": "Gallery",
     "menu.contact": "Contact",
     "hero.eyebrow": "Krualuang — Authentic Thai Cuisine",
     "hero.title": "Royal Thai Taste",
@@ -214,24 +164,29 @@ const translations = {
     "hero.cta1": "Explore Franchise",
     "hero.cta2": "Book a Visit",
     "about.title": "About Krualuang",
-    "about.text": "Krualuang offers authentic Thai flavors with modern franchise opportunities. Start small and scale fast with proven recipes and systems.",
+    "about.text": "Krualuang offers authentic Thai flavors…(ใส่ข้อความ)",
     "franchise.title": "Franchise Packages",
-    "contact.title": "Contact Franchise"
+    "menu.title": "Our Menu",
+    "gallery.title": "Gallery",
+    "contact.title": "Contact Us"
   },
   zh: {
     "menu.home": "首页",
     "menu.about": "关于我们",
     "menu.franchise": "加盟",
-    "menu.faq": "常见问题",
+    "menu.menu": "菜单",
+    "menu.gallery": "画廊",
     "menu.contact": "联系我们",
     "hero.eyebrow": "皇家厨房 — 正宗泰国美食",
     "hero.title": "皇家泰式风味",
-    "hero.desc": "精致用餐体验与加盟机会，遍及老挝与泰国。",
+    "hero.desc": "精致用餐与加盟机会，遍及老挝和泰国。",
     "hero.cta1": "查看加盟方案",
     "hero.cta2": "预约参观",
-    "about.title": "关于皇家厨房",
-    "about.text": "皇家厨房提供正宗泰式风味与现代加盟体系，投资少、回报快，是东南亚增长最快的泰餐品牌之一。",
+    "about.title": "关于 Krualuang",
+    "about.text": "Krualuang 提供正宗泰式风味…(插入你的内容)",
     "franchise.title": "加盟方案",
+    "menu.title": "我们的菜单",
+    "gallery.title": "画廊",
     "contact.title": "联系我们"
   }
 };
