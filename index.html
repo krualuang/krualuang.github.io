@@ -27,14 +27,29 @@
       line-height: 1.6;
     }
     
-    header { 
-      position: fixed; 
-      top: 0; 
-      width: 100%; 
-      background: #fff; 
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-      z-index: 100; 
-    }
+    <header>
+  <nav>
+    <div class="brand-container"> 
+      <img src="images/logo/logo.png" alt="Krualuang Logo" class="logo-img" id="logoImg">
+      <div class="logo-text">KRUALUANG</div> 
+    </div>
+    
+    <div class="nav-links">
+      <a href="#home" data-i18n="menu.home">หน้าแรก</a>
+      <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
+      <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
+      <a href="#menu" data-i18n="menu.menu">เมนู</a>
+      <a href="#gallery" data-i18n="menu.gallery">แกลเลอรี่</a>
+      <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
+    <div class="lang-flags">
+        <img src="https://flagcdn.com/w20/th.png" data-lang="th" title="ไทย">
+        <img src="https://flagcdn.com/w20/la.png" data-lang="la" title="Lao">
+        <img src="https://flagcdn.com/w20/gb.png" data-lang="en" title="English">
+        <img src="https://flagcdn.com/w20/cn.png" data-lang="zh" title="中文">
+    </div>
+    </div>
+  </nav>
+</header>
     
     nav { 
       display: flex; 
