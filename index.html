@@ -31,14 +31,60 @@
     /* 📌 CSS ส่วนปรับปรุงโลโก้             */
     /* =============================================== */
     
-    header { 
-      position: fixed; 
-      top: 0; 
-      width: 100%; 
-      background: #fff; 
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-      z-index: 100; 
-    }
+/* ส่วนของ Header Bar */
+#header {
+    background-color: #191970; /* Midnight Blue */
+    color: #ffffff; /* สีตัวอักษรหลักเป็นสีขาว */
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ปรับ Menu Bar และ Navigation Links */
+#header .main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* ควรตรงกับขนาดคอนเทนเนอร์ของคุณ */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#header .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#header .main-nav ul li a {
+    color: #ffffff; /* ลิงก์เป็นสีขาว */
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+#header .main-nav ul li a:hover {
+    color: #ffd700; /* เปลี่ยนเป็นสีทองเมื่อโฮเวอร์ */
+}
+
+/* ส่วนของโลโก้ */
+.logo-img {
+    height: 40px; 
+    width: auto;
+    display: block;
+}
+
+/* เพิ่ม Padding ด้านบนให้กับ Body เพื่อไม่ให้ Header บังคอนเทนต์ */
+body {
+    padding-top: 60px; /* ปรับค่านี้ให้มากกว่าความสูงของ Header เล็กน้อย */
+}
     
     nav { 
       display: flex; 
