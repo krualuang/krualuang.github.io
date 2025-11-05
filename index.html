@@ -451,7 +451,51 @@
     .back-to-top.visible { 
       opacity: 1; 
     }
+/* --- โลโก้ใหม่ --- */
+    .brand-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem; /* ระยะห่างระหว่างรูปภาพและข้อความ */
+    }
 
+    .logo-img {
+        height: 40px; /* ปรับขนาดโลโก้รูปภาพตามต้องการ */
+        width: auto;
+        display: block; /* ซ่อนถ้าไม่มีไฟล์ */
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+    }
+    /* ---------------- */
+
+    header { 
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
+      background: #fff; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+      z-index: 100; 
+    }
+    
+    nav { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; /* ทำให้ทุกอย่างใน nav ตรงกัน */
+      max-width: 1200px; 
+      margin: auto; 
+      padding: 1rem 1.5rem; 
+    }
+    
+    /* .logo เดิมถูกแทนที่ด้วย .brand-container และ .logo-text */
+    
+    .nav-links {
+      display: flex;
+      align-items: center; 
+    }
+    /* ... CSS ส่วนที่เหลือ ... */
     @media(max-width: 768px){
       nav { 
         flex-direction: column; 
