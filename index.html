@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
-      --primary-color: #d4af37; /* สีทอง/เหลือง */
-      --secondary-color: #8b0000; /* สีแดงเข้ม */
-      --text-color: #333;
-      --light-bg: #f9f9f9;
-    }
+  --primary-color: #d4af37; /* สีทอง */
+  --secondary-color: #8b0000; /* สีแดงเข้ม */
+  --midnight-blue: #191970; /* มิดไนท์บลู */
+  --text-light: #ffffff; /* สีขาว */
+}
     
     * {
       box-sizing: border-box;
@@ -107,63 +107,33 @@
     }
 
     .hero {
-      position: relative; 
-      width: 100vw; 
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero/hero_bg.jpg') center/cover no-repeat; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      text-align: center; 
-      color: #fff;
-      margin-top: 70px; /* ปรับให้มีระยะห่างจาก Header ที่ถูก fix ไว้ */
-    }
-    
-    .hero-content { 
-      position: relative; 
-      z-index: 2; 
-      max-width: 90%; 
-    }
-    
-    .hero h4 { 
-      font-size: 1.3rem; 
-      letter-spacing: 1px; 
-      margin-bottom: 1rem; 
-    }
-    
-    .hero h1 { 
-      font-size: 3.5rem; 
-      font-weight: 700; 
-      margin: 1rem 0; 
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    .hero p { 
-      font-size: 1.2rem; 
-      margin-bottom: 1.8rem; 
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .hero-buttons a { 
-      background: var(--primary-color); 
-      color: #000; 
-      padding: 0.8rem 1.5rem; 
-      border-radius: 50px;
-      text-decoration: none; 
-      margin: 0 0.5rem; 
-      transition: 0.3s;
-      display: inline-block;
-      font-weight: 600;
-    }
-    
-    .hero-buttons a:hover { 
-      background: #ffbf00; 
-      transform: translateY(-3px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+  background-color: var(--midnight-blue);
+  color: var(--text-light);
+  text-align: center;
+  padding: 8rem 1.5rem 6rem;
+}
 
+.hero h1, 
+.hero h2, 
+.hero p {
+  color: var(--text-light);
+}
+
+/* ปุ่มใน hero */
+.hero-buttons a {
+  background: var(--primary-color);
+  color: #000;
+  font-weight: 600;
+  margin: 0 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  display: inline-block;
+  transition: 0.3s;
+}
+.hero-buttons a:hover {
+  background: #ffcc00;
+  transform: translateY(-3px);
+}
     section { 
       padding: 5rem 1.5rem; 
       max-width: 1000px; 
@@ -423,14 +393,20 @@
       transform: translateY(-3px); 
     }
     
-    footer { 
-      text-align: center; 
-      padding: 2rem; 
-      background: #222; 
-      color: #fff; 
-    }
-    
-    .back-to-top { 
+    footer {
+  background-color: var(--midnight-blue);
+  color: var(--text-light);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+footer a:hover {
+  color: #ffcc00;
+}
+      .back-to-top { 
       position: fixed; 
       bottom: 20px; 
       right: 20px; 
