@@ -1,580 +1,598 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ครัวหลวง — Royal Thai Cuisine</title>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: "Prompt", sans-serif;
-      background: #fff;
-      color: #333;
-      overflow-x: hidden;
-    }
-    
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: auto;
-      padding: 1rem 1.5rem;
-    }
-    
-    .logo {
-      height: 40px;
-    }
-    
-    nav a {
-      text-decoration: none;
-      color: #333;
-      margin: 0 1rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    
-    nav a:hover {
-      color: #d4af37;
-    }
-    
-    .lang-flags {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    
-    .lang-flags img {
-      width: 26px;
-      height: 18px;
-      cursor: pointer;
-      border-radius: 2px;
-      border: 1px solid #ccc;
-      transition: 0.2s;
-    }
-    
-    .lang-flags img:hover {
-      transform: scale(1.15);
-      border-color: #d4af37;
-    }
-    
-    /* HERO SECTION - แก้ไขพาธรูปภาพ */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                  url('images/hero/hero-bg.jpg') center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 90%;
-      padding: 2rem;
-    }
-    
-    .hero-logo {
-      height: 100px;
-      margin-bottom: 1.5rem;
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-    }
-    
-    .hero h4 { 
-      font-size: 1.3rem; 
-      letter-spacing: 1px; 
-      margin-bottom: 1rem;
-      color: #ffd700;
-    }
-    
-    .hero h1 { 
-      font-size: 3.5rem; 
-      font-weight: 700; 
-      margin: 1rem 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    .hero p { 
-      font-size: 1.2rem; 
-      margin-bottom: 1.8rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-    
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    
-    .hero-buttons a {
-      background: #ffd700;
-      color: #000;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-      display: inline-block;
-    }
-    
-    .hero-buttons a:hover { 
-      background: #ffbf00; 
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    
-    section {
-      padding: 5rem 1.5rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    
-    h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      position: relative;
-    }
-    
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: #d4af37;
-    }
-    
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #222;
-      color: white;
-    }
-    
-    /* ส่วน Franchise Cards */
-    .franchise-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .card {
-      background: #f9f9f9;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-      text-align: center;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .card h3 {
-      color: #d4af37;
-      margin-bottom: 1rem;
-    }
-    
-    .price {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #333;
-      margin: 1rem 0;
-    }
-    
-    /* รูปภาพใน Cards */
-    .card-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-    
-    /* ส่วน FAQ */
-    .faq-item {
-      margin-bottom: 1rem;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    
-    .faq-question {
-      width: 100%;
-      background: #f9f9f9;
-      border: none;
-      padding: 1.2rem;
-      text-align: left;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .faq-answer {
-      padding: 0 1.2rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out, padding 0.3s;
-    }
-    
-    .faq-answer.active {
-      padding: 1.2rem;
-      max-height: 500px;
-    }
-    
-    /* ส่วน Contact */
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-    
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .contact-item i {
-      font-size: 1.5rem;
-      color: #d4af37;
-      margin-bottom: 0.5rem;
-    }
-    
-    @media (max-width: 768px) {
-      nav { 
-        flex-direction: column; 
-        gap: 0.5rem; 
-      }
-      
-      .logo {
-        height: 35px;
-      }
-      
-      .hero {
-        padding-top: 120px;
-        height: calc(100vh - 120px);
-      }
-      
-      .hero-logo {
-        height: 70px;
-      }
-      
-      .hero h1 { 
-        font-size: 2.2rem; 
-      }
-      
-      .hero p { 
-        font-size: 1rem; 
-      }
-      
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .hero-buttons a { 
-        width: 100%;
-        max-width: 250px;
-        text-align: center;
-      }
-      
-      .franchise-cards {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ครัวหลวง — Royal Thai Cuisine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Prompt", sans-serif;
+      background: #fff;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 1.5rem;
+    }
+
+    /* ทำให้ชื่อแบรนด์เด่นขึ้น */
+    nav > div:first-child strong { 
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #d4af37; /* เพิ่มสีทองให้โลโก้ */
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 0.8rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #d4af37;
+    }
+
+    .lang-flags {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .lang-flags img {
+      width: 28px; /* เพิ่มขนาดธงเล็กน้อย */
+      height: 20px;
+      cursor: pointer;
+      border-radius: 2px;
+      border: 1px solid #ccc;
+      transition: 0.2s;
+    }
+
+    .lang-flags img:hover {
+      transform: scale(1.15);
+      border-color: #d4af37;
+    }
+
+    /* HERO SECTION - แก้ไขให้เต็มจอด้วย JS */
+    .hero {
+      position: relative;
+      width: 100%;
+      /* height: 100vh; ถูกควบคุมด้วย JS */
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                  url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+      padding: 2rem;
+    }
+
+    .hero h4 { 
+      font-size: 1.4rem; /* ปรับขนาด */
+      letter-spacing: 2px; /* ปรับ spacing */
+      margin-bottom: 1rem;
+      color: #ffd700; /* สีทองสว่าง */
+      font-weight: 600;
+    }
+
+    .hero h1 { 
+      font-size: 4rem; /* ปรับขนาด */
+      font-weight: 700; 
+      margin: 1rem 0;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* เงาเข้มขึ้น */
+    }
+
+    .hero p { 
+      font-size: 1.25rem; /* ปรับขนาด */
+      margin-bottom: 2rem;
+      max-width: 700px; /* เพิ่มความกว้าง */
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem; /* เพิ่มระยะห่าง */
+      flex-wrap: wrap;
+    }
+
+    .hero-buttons a {
+      background: #ffd700;
+      color: #000;
+      padding: 0.9rem 1.8rem; /* ปรับขนาดปุ่ม */
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      display: inline-block;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .hero-buttons a:hover { 
+      background: #ffbf00; 
+      transform: translateY(-3px); /* เลื่อนขึ้นเล็กน้อย */
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2.5rem; /* เพิ่มระยะห่าง */
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #333;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px; /* ขยายเส้นใต้ */
+      height: 4px; /* ทำให้หนาขึ้น */
+      background: #d4af37;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #222;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* Franchise Cards */
+    .franchise-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      grid-auto-rows: 1fr; /* ทำให้ทุกการ์ดสูงเท่ากัน */
+    }
+
+    .card {
+      background: #f9f9f9;
+      border-radius: 12px; /* ขอบโค้งมากขึ้น */
+      padding: 2.5rem 1.5rem; /* เพิ่ม padding */
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1); /* เงาเข้มขึ้น */
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-8px); /* เลื่อนขึ้นมากขึ้น */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      color: #d4af37;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .card p {
+      flex-grow: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .price {
+      font-size: 2.2rem; /* ขยายขนาดราคา */
+      font-weight: 700;
+      color: #333;
+      margin: 1rem 0;
+      color: #cc0000; /* เปลี่ยนสีราคาให้เด่น */
+    }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 1.2rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: #fcfcfc;
+      border: none;
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .faq-question:hover {
+        background: #f0f0f0;
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out, padding 0.4s;
+      background: #fff;
+    }
+
+    .faq-answer.active {
+      padding: 1rem 1.5rem;
+      max-height: 500px;
+    }
+
+    /* Contact */
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem; /* เพิ่มระยะห่าง */
+      margin-bottom: 3rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-item i {
+      font-size: 2rem; /* เพิ่มขนาดไอคอน */
+      color: #d4af37;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      nav { 
+        flex-direction: column; 
+        gap: 0.8rem; /* เพิ่มระยะห่างใน nav มือถือ */
+        padding: 0.8rem 1.5rem;
+      }
+      
+      nav > div:first-child strong {
+        font-size: 1.5rem; /* ขยายโลโก้บนมือถือ */
+      }
+
+      .hero {
+        text-align: center;
+      }
+      
+      .hero h1 { 
+        font-size: 3rem; /* ปรับขนาด h1 มือถือ */
+      }
+      
+      .hero p { 
+        font-size: 1.1rem; 
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero-buttons a { 
+        width: 100%;
+        max-width: 300px; /* ปรับขนาดปุ่ม */
+        text-align: center;
+      }
+      
+      .franchise-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
 <header>
-  <nav>
-    <div>
-      <!-- โลโก้ใน navigation -->
-      <img src="images/logo/logo.png" alt="Krualuang Logo">
-    </div>
-    <div>
-      <a href="#home" data-i18n="menu.home">หน้าแรก</a>
-      <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
-      <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
-      <a href="#faq" data-i18n="menu.faq">คำถามที่พบบ่อย</a>
-      <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
-    </div>
-    <div class="lang-flags">
-      <img src="https://flagcdn.com/w20/th.png" data-lang="th" title="ไทย">
-      <img src="https://flagcdn.com/w20/la.png" data-lang="la" title="ລາວ">
-      <img src="https://flagcdn.com/w20/gb.png" data-lang="en" title="English">
-      <img src="https://flagcdn.com/w20/cn.png" data-lang="zh" title="中文">
-    </div>
-  </nav>
+  <nav>
+    <div><strong>KRUALUANG</strong></div>
+    <div>
+      <a href="#home" data-i18n="menu.home">หน้าแรก</a>
+      <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
+      <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
+      <a href="#faq" data-i18n="menu.faq">คำถามที่พบบ่อย</a>
+      <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
+    </div>
+    <div class="lang-flags">
+      <img src="https://flagcdn.com/w20/th.png" data-lang="th" title="ไทย">
+      <img src="https://flagcdn.com/w20/la.png" data-lang="la" title="ລາວ">
+      <img src="https://flagcdn.com/w20/gb.png" data-lang="en" title="English">
+      <img src="https://flagcdn.com/w20/cn.png" data-lang="zh" title="中文">
+    </div>
+  </nav>
 </header>
 
-<!-- HERO -->
 <section id="home" class="hero">
-  <div class="hero-content">
-    <!-- โลโก้ใน hero section -->
-    <img src="logo/logo.png" alt="ครัวหลวง" class="hero-logo">
-    <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
-    <h1 data-i18n="hero.title">Royal Thai Taste</h1>
-    <p data-i18n="hero.desc">ประสบการณ์อาหารไทยอันเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
-    <div class="hero-buttons">
-      <a href="#franchise" data-i18n="hero.cta1">ดูแฟรนไชส์</a>
-      <a href="#contact" data-i18n="hero.cta2">นัดเยี่ยมชม</a>
-    </div>
-  </div>
+  <div class="hero-content">
+    <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
+    <h1 data-i18n="hero.title">Royal Thai Taste</h1>
+    <p data-i18n="hero.desc">ประสบการณ์อาหารไทยอันเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
+    <div class="hero-buttons">
+      <a href="#franchise" data-i18n="hero.cta1">ดูแฟรนไชส์</a>
+      <a href="#contact" data-i18n="hero.cta2">นัดเยี่ยมชม</a>
+    </div>
+  </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
-  <h2 data-i18n="about.title">เกี่ยวกับครัวหลวง</h2>
-  <p data-i18n="about.text">
-    ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย
-    ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน
-  </p>
+  <h2 data-i18n="about.title">เกี่ยวกับครัวหลวง 🌶️</h2>
+  <p style="text-align: center; line-height: 1.8;">
+    ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย
+    ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน
+  </p>
 </section>
 
-<!-- FRANCHISE -->
 <section id="franchise">
-  <h2 data-i18n="franchise.title">แพ็กเกจแฟรนไชส์</h2>
-  <p>เริ่มต้นธุรกิจของคุณกับครัวหลวงวันนี้</p>
-  
-  <div class="franchise-cards">
-    <div class="card">
-      <h3>ชุดเริ่มต้น</h3>
-      <div class="price">19,000 บาท</div>
-      <p>เหมาะสำหรับผู้เริ่มต้นธุรกิจอาหาร</p>
-    </div>
-    <div class="card">
-      <h3>ชุดมาตรฐาน</h3>
-      <div class="price">49,000 บาท</div>
-      <p>พร้อมอุปกรณ์ครบชุดและฝึกอบรม</p>
-    </div>
-    <div class="card">
-      <h3>ชุดพรีเมียม</h3>
-      <div class="price">99,000 บาท</div>
-      <p>สำหรับผู้ต้องการขยายหลายสาขา</p>
-    </div>
-  </div>
+  <h2 data-i18n="franchise.title">แพ็กเกจแฟรนไชส์ 💰</h2>
+  <p style="text-align: center; margin-bottom: 3rem;">เริ่มต้นธุรกิจของคุณกับครัวหลวงวันนี้</p>
+
+  <div class="franchise-cards">
+    <div class="card">
+      <h3>ชุดเริ่มต้น</h3>
+      <div class="price">19,000 บาท</div>
+      <p>เหมาะสำหรับผู้เริ่มต้นธุรกิจอาหารขนาดเล็ก ต้องการความเสี่ยงต่ำและมีระบบให้ใช้ได้ทันที</p>
+      <a href="#contact" class="hero-buttons a" style="margin-top: auto;">ติดต่อสอบถาม</a>
+    </div>
+    <div class="card">
+      <h3>ชุดมาตรฐาน</h3>
+      <div class="price">49,000 บาท</div>
+      <p>พร้อมอุปกรณ์ครบชุดและฝึกอบรมอย่างเข้มข้น เหมาะสำหรับเปิดร้านขนาดกลางที่มีพื้นที่จำกัด</p>
+      <a href="#contact" class="hero-buttons a" style="margin-top: auto;">ติดต่อสอบถาม</a>
+    </div>
+    <div class="card">
+      <h3>ชุดพรีเมียม</h3>
+      <div class="price">99,000 บาท</div>
+      <p>สำหรับผู้ต้องการขยายหลายสาขาหรือร้านขนาดใหญ่ ได้รับสิทธิพิเศษในการเลือกทำเลและวัตถุดิบพรีเมียม</p>
+      <a href="#contact" class="hero-buttons a" style="margin-top: auto;">ติดต่อสอบถาม</a>
+    </div>
+  </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq">
-  <h2 data-i18n="menu.faq">คำถามที่พบบ่อย</h2>
-  
-  <div class="faq-item">
-    <button class="faq-question">ต้องลงทุนเริ่มต้นเท่าไหร่?</button>
-    <div class="faq-answer">
-      <p>แพ็กเกจเริ่มต้นอยู่ที่ 19,000 บาท ซึ่งรวมค่าสิทธิแฟรนไชส์และคู่มือการดำเนินงานเบื้องต้นแล้ว</p>
-    </div>
-  </div>
-  
-  <div class="faq-item">
-    <button class="faq-question">ระยะเวลาคืนทุนประมาณกี่เดือน?</button>
-    <div class="faq-answer">
-      <p>โดยเฉลี่ยแล้ว แฟรนไชส์ของเราคืนทุนภายใน 6-12 เดือน ขึ้นอยู่กับทำเลและความขยันของเจ้าของร้าน</p>
-    </div>
-  </div>
-  
-  <div class="faq-item">
-    <button class="faq-question">ได้รับความช่วยเหลืออะไรบ้าง?</button>
-    <div class="faq-answer">
-      <p>เรามีทีมสนับสนุนครบวงจร ตั้งแต่การฝึกอบรม การตลาด จนถึงการให้คำปรึกษาด้านการจัดการ</p>
-    </div>
-  </div>
+  <h2 data-i18n="menu.faq">คำถามที่พบบ่อย ❓</h2>
+
+  <div class="faq-item">
+    <button class="faq-question">ต้องลงทุนเริ่มต้นเท่าไหร่?</button>
+    <div class="faq-answer">
+      <p>แพ็กเกจเริ่มต้นอยู่ที่ **19,000 บาท** ซึ่งรวมค่าสิทธิแฟรนไชส์และคู่มือการดำเนินงานเบื้องต้นแล้ว (ไม่รวมค่าตกแต่งสถานที่และวัตถุดิบเริ่มต้น)</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">ระยะเวลาคืนทุนประมาณกี่เดือน?</button>
+    <div class="faq-answer">
+      <p>โดยเฉลี่ยแล้ว แฟรนไชส์ของเราคืนทุนภายใน **6-12 เดือน** ขึ้นอยู่กับทำเล, การจัดการต้นทุน, และความขยันของเจ้าของร้าน</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">ได้รับความช่วยเหลืออะไรบ้าง?</button>
+    <div class="faq-answer">
+      <p>เรามีทีมสนับสนุนครบวงจร ครอบคลุมการ **ฝึกอบรมสูตรอาหาร**, **การตลาดออนไลน์-ออฟไลน์**, **ระบบการจัดการร้าน (POS)**, และการให้คำปรึกษาด้านการจัดการตลอดระยะเวลาสัญญา</p>
+    </div>
+  </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
-  <h2 data-i18n="contact.title">ติดต่อแฟรนไชส์</h2>
-  
-  <div class="contact-info">
-    <div class="contact-item">
-      <i class="fas fa-phone"></i>
-      <p>โทร: +856 20 1234 5678</p>
-    </div>
-    <div class="contact-item">
-      <i class="fab fa-line"></i>
-      <p>Line: @krualuang</p>
-    </div>
-    <div class="contact-item">
-      <i class="fas fa-envelope"></i>
-      <p>Email: info@krualuang.com</p>
-    </div>
-  </div>
-  
-  <div style="text-align: center;">
-    <a href="https://line.me/" class="hero-buttons a" style="display: inline-block;">
-      <i class="fab fa-line"></i> แชทกับเรา
-    </a>
-  </div>
+  <h2 data-i18n="contact.title">ติดต่อแฟรนไชส์ 📞</h2>
+  
+  <p style="text-align: center; margin-bottom: 2rem;">พร้อมลงทุนสร้างอาณาจักรอาหารไทยแล้วหรือยัง? ติดต่อเราได้ทันที</p>
+
+  <div class="contact-info">
+    <div class="contact-item">
+      <i class="fas fa-phone"></i>
+      <p>โทร: **+856 20 1234 5678**</p>
+    </div>
+    <div class="contact-item">
+      <i class="fab fa-line"></i>
+      <p>Line: **@krualuang**</p>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-envelope"></i>
+      <p>Email: **info@krualuang.com**</p>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <a href="https://line.me/" class="hero-buttons a" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #00b900; color: white;">
+      <i class="fab fa-line"></i> แชทกับเราผ่าน Line
+    </a>
+  </div>
 </section>
 
-<footer>© 2025 Krualuang — Royal Thai Cuisine</footer>
+<footer>© 2025 **Krualuang — Royal Thai Cuisine** | All Rights Reserved.</footer>
 
 <script>
-// JavaScript สำหรับระบบภาษาและฟังก์ชันอื่นๆ
+// Translations remain the same
 const translations = {
-  th: {
-    "menu.home": "หน้าแรก",
-    "menu.about": "เกี่ยวกับเรา",
-    "menu.franchise": "แฟรนไชส์",
-    "menu.faq": "คำถามที่พบบ่อย",
-    "menu.contact": "ติดต่อ",
-    "hero.eyebrow": "ครัวหลวง — รสชาติไทยต้นตำรับ",
-    "hero.title": "Royal Thai Taste",
-    "hero.desc": "ประสบการณ์อาหารไทยอันเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย",
-    "hero.cta1": "ดูแฟรนไชส์",
-    "hero.cta2": "นัดเยี่ยมชม",
-    "about.title": "เกี่ยวกับครัวหลวง",
-    "about.text": "ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน",
-    "franchise.title": "แพ็กเกจแฟรนไชส์",
-    "contact.title": "ติดต่อแฟรนไชส์"
-  },
-  la: {
-    "menu.home": "ໜ້າຫຼັກ",
-    "menu.about": "ກ່ຽວກັບພວກເຮົາ",
-    "menu.franchise": "ແຟຣນໄຊສ໌",
-    "menu.faq": "ຄຳຖາມທີ່ພົບເປັນປະຈຳ",
-    "menu.contact": "ຕິດຕໍ່",
-    "hero.eyebrow": "ຄັວຫຼວງ — ອາຫານໄທຕົ້ນສະບັບ",
-    "hero.title": "ຮັບປະສົບການອາຫານຄັວຫຼວງ",
-    "hero.desc": "ປະສົບການອາຫານທີ່ປະທັບໃຈ ແລະ ໂອກາດແຟຣນໄຊສ໌ ທົ່ວລາວ-ໄທ",
-    "hero.cta1": "ເບິ່ງແຟຣນໄຊສ໌",
-    "hero.cta2": "ນັດຢ້ຽມຊົມ",
-    "about.title": "ກ່ຽວກັບຄັວຫຼວງ",
-    "about.text": "ຄັວຫຼວງເປັນແບຣນອາຫານໄທຕົ້ນສະບັບ ທີ່ມີລະບົບແຟຣນໄຊສ໌ທັນສະໄໝ ລົງທຶນນ້ອຍ ແຕ່ສາມາດສ້າງລາຍໄດ້ຫຼາຍ.",
-    "franchise.title": "ແພັກແກັດແຟຣນໄຊສ໌",
-    "contact.title": "ຕິດຕໍ່ແຟຣນໄຊສ໌"
-  },
-  en: {
-    "menu.home": "Home",
-    "menu.about": "About Us",
-    "menu.franchise": "Franchise",
-    "menu.faq": "FAQ",
-    "menu.contact": "Contact",
-    "hero.eyebrow": "Krualuang — Authentic Thai Cuisine",
-    "hero.title": "Royal Thai Taste",
-    "hero.desc": "Fine dining and franchise opportunities across Laos & Thailand.",
-    "hero.cta1": "Explore Franchise",
-    "hero.cta2": "Book a Visit",
-    "about.title": "About Krualuang",
-    "about.text": "Krualuang offers authentic Thai flavors with modern franchise opportunities. Start small and scale fast with proven recipes and systems.",
-    "franchise.title": "Franchise Packages",
-    "contact.title": "Contact Franchise"
-  },
-  zh: {
-    "menu.home": "首页",
-    "menu.about": "关于我们",
-    "menu.franchise": "加盟",
-    "menu.faq": "常见问题",
-    "menu.contact": "联系我们",
-    "hero.eyebrow": "皇家厨房 — 正宗泰国美食",
-    "hero.title": "皇家泰式风味",
-    "hero.desc": "精致用餐体验与加盟机会，遍及老挝与泰国。",
-    "hero.cta1": "查看加盟方案",
-    "hero.cta2": "预约参观",
-    "about.title": "关于皇家厨房",
-    "about.text": "皇家厨房提供正宗泰式风味与现代加盟体系，投资少、回报快，是东南亚增长最快的泰餐品牌之一。",
-    "franchise.title": "加盟方案",
-    "contact.title": "联系我们"
-  }
+  th: {
+    "menu.home": "หน้าแรก",
+    "menu.about": "เกี่ยวกับเรา",
+    "menu.franchise": "แฟรนไชส์",
+    "menu.faq": "คำถามที่พบบ่อย",
+    "menu.contact": "ติดต่อ",
+    "hero.eyebrow": "ครัวหลวง — รสชาติไทยต้นตำรับ",
+    "hero.title": "Royal Thai Taste",
+    "hero.desc": "ประสบการณ์อาหารไทยอันเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย",
+    "hero.cta1": "ดูแฟรนไชส์",
+    "hero.cta2": "นัดเยี่ยมชม",
+    "about.title": "เกี่ยวกับครัวหลวง",
+    "about.text": "ครัวหลวงคือแบรนด์อาหารไทยที่เน้นความอร่อยแบบต้นตำรับ ผสานแฟรนไชส์ทันสมัย ลงทุนเริ่มต้นหลักหมื่น สร้างยอดขายหลักล้านได้ง่าย ด้วยสูตรเฉพาะและระบบมาตรฐาน",
+    "franchise.title": "แพ็กเกจแฟรนไชส์",
+    "contact.title": "ติดต่อแฟรนไชส์"
+  },
+  la: {
+    "menu.home": "ໜ້າຫຼັກ",
+    "menu.about": "ກ່ຽວກັບພວກເຮົາ",
+    "menu.franchise": "ແຟຣນໄຊສ໌",
+    "menu.faq": "ຄຳຖາມທີ່ພົບເປັນປະຈຳ",
+    "menu.contact": "ຕິດຕໍ່",
+    "hero.eyebrow": "ຄັວຫຼວງ — ອາຫານໄທຕົ້ນສະບັບ",
+    "hero.title": "ຮັບປະສົບການອາຫານຄັວຫຼວງ",
+    "hero.desc": "ປະສົບການອາຫານທີ່ປະທັບໃຈ ແລະ ໂອກາດແຟຣນໄຊສ໌ ທົ່ວລາວ-ໄທ",
+    "hero.cta1": "ເບິ່ງແຟຣນໄຊສ໌",
+    "hero.cta2": "ນັດຢ້ຽມຊົມ",
+    "about.title": "ກ່ຽວກັບຄັວຫຼວງ",
+    "about.text": "ຄັວຫຼວງເປັນແບຣນອາຫານໄທຕົ້ນສະບັບ ທີ່ມີລະບົບແຟຣນໄຊສ໌ທັນສະໄໝ ລົງທຶນນ້ອຍ ແຕ່ສາມາດສ້າງລາຍໄດ້ຫຼາຍ.",
+    "franchise.title": "ແພັກແກັດແຟຣນໄຊສ໌",
+    "contact.title": "ຕິດຕໍ່ແຟຣນໄຊສ໌"
+  },
+  en: {
+    "menu.home": "Home",
+    "menu.about": "About Us",
+    "menu.franchise": "Franchise",
+    "menu.faq": "FAQ",
+    "menu.contact": "Contact",
+    "hero.eyebrow": "Krualuang — Authentic Thai Cuisine",
+    "hero.title": "Royal Thai Taste",
+    "hero.desc": "Fine dining and franchise opportunities across Laos & Thailand.",
+    "hero.cta1": "Explore Franchise",
+    "hero.cta2": "Book a Visit",
+    "about.title": "About Krualuang",
+    "about.text": "Krualuang offers authentic Thai flavors with modern franchise opportunities. Start small and scale fast with proven recipes and systems.",
+    "franchise.title": "Franchise Packages",
+    "contact.title": "Contact Franchise"
+  },
+  zh: {
+    "menu.home": "首页",
+    "menu.about": "关于我们",
+    "menu.franchise": "加盟",
+    "menu.faq": "常见问题",
+    "menu.contact": "联系我们",
+    "hero.eyebrow": "皇家厨房 — 正宗泰国美食",
+    "hero.title": "皇家泰式风味",
+    "hero.desc": "精致用餐体验与加盟机会，遍及老挝与泰国。",
+    "hero.cta1": "查看加盟方案",
+    "hero.cta2": "预约参观",
+    "about.title": "关于皇家厨房",
+    "about.text": "皇家厨房提供正宗泰式风味与现代加盟体系，投资少、回报快，是东南เอเชีย增长最快的泰餐品牌之一。",
+    "franchise.title": "加盟方案",
+    "contact.title": "联系我们"
+  }
 };
 
 function setLanguage(lang) {
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang] && translations[lang][key]) {
-      el.innerText = translations[lang][key];
-    }
-  });
-  localStorage.setItem("lang", lang);
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang] && translations[lang][key]) {
+      el.innerText = translations[lang][key];
+    }
+  });
+  localStorage.setItem("lang", lang);
 }
 
 const savedLang = localStorage.getItem("lang") || "th";
 setLanguage(savedLang);
 
 document.querySelectorAll(".lang-flags img").forEach(flag => {
-  flag.addEventListener("click", () => setLanguage(flag.dataset.lang));
+  flag.addEventListener("click", () => setLanguage(flag.dataset.lang));
 });
 
 // FAQ Accordion
 document.querySelectorAll('.faq-question').forEach(button => {
-  button.addEventListener('click', () => {
-    const answer = button.nextElementSibling;
-    
-    // Close all other answers
-    document.querySelectorAll('.faq-answer').forEach(item => {
-      if (item !== answer) {
-        item.classList.remove('active');
-      }
-    });
-    
-    // Toggle current answer
-    answer.classList.toggle('active');
-  });
+  button.addEventListener('click', () => {
+    const answer = button.nextElementSibling;
+    
+    // Close all other answers
+    document.querySelectorAll('.faq-answer').forEach(item => {
+      if (item !== answer) {
+        item.classList.remove('active');
+      }
+    });
+    
+    // Toggle current answer
+    answer.classList.toggle('active');
+  });
 });
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      // คำนวณความสูงของ header
+      const headerHeight = document.querySelector('header').offsetHeight;
+      const targetPosition = target.offsetTop - headerHeight; // ลบความสูง header ออก
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
 });
 
-// แก้ไขปัญหา Hero Section
+// แก้ไขปัญหา Hero Section ไม่เต็มจอและถูกบัง
 document.addEventListener('DOMContentLoaded', function() {
-  const hero = document.querySelector('.hero');
-  const header = document.querySelector('header');
-  
-  function setHeroHeight() {
-    const headerHeight = header.offsetHeight;
-    hero.style.height = `calc(100vh - ${headerHeight}px)`;
-    hero.style.marginTop = `${headerHeight}px`;
-  }
-  
-  setHeroHeight();
-  window.addEventListener('resize', setHeroHeight);
+  const hero = document.querySelector('.hero');
+  const header = document.querySelector('header');
+  
+  // ตั้งค่าความสูง Hero Section ให้เต็มจอและเว้นระยะห่างด้านบน
+  function setHeroHeight() {
+    const headerHeight = header.offsetHeight;
+    if(hero && header) {
+        hero.style.height = `calc(100vh - ${headerHeight}px)`;
+        hero.style.marginTop = `${headerHeight}px`;
+    }
+  }
+  
+  // เรียกใช้ครั้งแรก
+  setHeroHeight();
+  
+  // เรียกใช้เมื่อปรับขนาดหน้าต่าง
+  window.addEventListener('resize', setHeroHeight);
 });
 </script>
 
