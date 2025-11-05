@@ -1,363 +1,357 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ครัวหลวง — Royal Thai Cuisine</title>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: "Prompt", sans-serif;
-      background: #fff;
-      color: #333;
-      overflow-x: hidden;
-    }
-    
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: auto;
-      padding: 1rem 1.5rem;
-    }
-    
-    .logo {
-      height: 40px;
-    }
-    
-    nav a {
-      text-decoration: none;
-      color: #333;
-      margin: 0 1rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    
-    nav a:hover {
-      color: #d4af37;
-    }
-    
-    .lang-flags {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    
-    .lang-flags img {
-      width: 26px;
-      height: 18px;
-      cursor: pointer;
-      border-radius: 2px;
-      border: 1px solid #ccc;
-      transition: 0.2s;
-    }
-    
-    .lang-flags img:hover {
-      transform: scale(1.15);
-      border-color: #d4af37;
-    }
-    
-    /* HERO SECTION - แก้ไขพาธรูปภาพ */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                  url('images/hero/hero-bg.jpg') center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-align: center;
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 90%;
-      padding: 2rem;
-    }
-    
-    .hero-logo {
-      height: 100px;
-      margin-bottom: 1.5rem;
-      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
-    }
-    
-    .hero h4 { 
-      font-size: 1.3rem; 
-      letter-spacing: 1px; 
-      margin-bottom: 1rem;
-      color: #ffd700;
-    }
-    
-    .hero h1 { 
-      font-size: 3.5rem; 
-      font-weight: 700; 
-      margin: 1rem 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    .hero p { 
-      font-size: 1.2rem; 
-      margin-bottom: 1.8rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-    
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    
-    .hero-buttons a {
-      background: #ffd700;
-      color: #000;
-      padding: 0.8rem 1.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-      display: inline-block;
-    }
-    
-    .hero-buttons a:hover { 
-      background: #ffbf00; 
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    
-    section {
-      padding: 5rem 1.5rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    
-    h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      position: relative;
-    }
-    
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: #d4af37;
-    }
-    
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #222;
-      color: white;
-    }
-    
-    /* ส่วน Franchise Cards */
-    .franchise-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .card {
-      background: #f9f9f9;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-      text-align: center;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .card h3 {
-      color: #d4af37;
-      margin-bottom: 1rem;
-    }
-    
-    .price {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #333;
-      margin: 1rem 0;
-    }
-    
-    /* รูปภาพใน Cards */
-    .card-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-    
-    /* ส่วน FAQ */
-    .faq-item {
-      margin-bottom: 1rem;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    
-    .faq-question {
-      width: 100%;
-      background: #f9f9f9;
-      border: none;
-      padding: 1.2rem;
-      text-align: left;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .faq-answer {
-      padding: 0 1.2rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out, padding 0.3s;
-    }
-    
-    .faq-answer.active {
-      padding: 1.2rem;
-      max-height: 500px;
-    }
-    
-    /* ส่วน Contact */
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-    
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .contact-item i {
-      font-size: 1.5rem;
-      color: #d4af37;
-      margin-bottom: 0.5rem;
-    }
-    
-    @media (max-width: 768px) {
-      nav { 
-        flex-direction: column; 
-        gap: 0.5rem; 
-      }
-      
-      .logo {
-        height: 35px;
-      }
-      
-      .hero {
-        padding-top: 120px;
-        height: calc(100vh - 120px);
-      }
-      
-      .hero-logo {
-        height: 70px;
-      }
-      
-      .hero h1 { 
-        font-size: 2.2rem; 
-      }
-      
-      .hero p { 
-        font-size: 1rem; 
-      }
-      
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .hero-buttons a { 
-        width: 100%;
-        max-width: 250px;
-        text-align: center;
-      }
-      
-      .franchise-cards {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ครัวหลวง — Royal Thai Cuisine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "Prompt", sans-serif;
+      background: #fff;
+      color: #333;
+      overflow-x: hidden;
+    }
+    
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 1.5rem;
+    }
+    
+    /* ปรับขนาดโลโก้ใน Nav Bar และทำให้จัดกึ่งกลางกับลิงก์ */
+    nav > div:first-child {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      height: 40px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 1rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: #d4af37;
+    }
+    
+    .lang-flags {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    
+    .lang-flags img {
+      width: 26px;
+      height: 18px;
+      cursor: pointer;
+      border-radius: 2px;
+      border: 1px solid #ccc;
+      transition: 0.2s;
+    }
+    
+    .lang-flags img:hover {
+      transform: scale(1.15);
+      border-color: #d4af37;
+    }
+    
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                  url('images/hero/hero-bg.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+      padding: 2rem;
+    }
+    
+    .hero-logo {
+      height: 100px;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+    }
+    
+    .hero h4 { 
+      font-size: 1.3rem; 
+      letter-spacing: 1px; 
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+    
+    .hero h1 { 
+      font-size: 3.5rem; 
+      font-weight: 700; 
+      margin: 1rem 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hero p { 
+      font-size: 1.2rem; 
+      margin-bottom: 1.8rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .hero-buttons a {
+      background: #ffd700;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    
+    .hero-buttons a:hover { 
+      background: #ffbf00; 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    section {
+      padding: 5rem 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: #d4af37;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #222;
+      color: white;
+    }
+    
+    /* ส่วน Franchise Cards */
+    .franchise-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .card {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card h3 {
+      color: #d4af37;
+      margin-bottom: 1rem;
+    }
+    
+    .price {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333;
+      margin: 1rem 0;
+    }
+    
+    /* รูปภาพใน Cards */
+    .card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    
+    /* ส่วน FAQ */
+    .faq-item {
+      margin-bottom: 1rem;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      width: 100%;
+      background: #f9f9f9;
+      border: none;
+      padding: 1.2rem;
+      text-align: left;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      padding: 0 1.2rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s;
+    }
+    
+    .faq-answer.active {
+      padding: 1.2rem;
+      max-height: 500px;
+    }
+    
+    /* ส่วน Contact */
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .contact-item i {
+      font-size: 1.5rem;
+      color: #d4af37;
+      margin-bottom: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      nav { 
+        flex-direction: column; 
+        gap: 0.5rem; 
+      }
+      
+      .logo {
+        height: 35px;
+      }
+      
+      .hero {
+        /* ลบ padding-top และ height ออกเพื่อให้ JS จัดการ */
+      }
+      
+      .hero-logo {
+        height: 70px;
+      }
+      
+      .hero h1 { 
+        font-size: 2.2rem; 
+      }
+      
+      .hero p { 
+        font-size: 1rem; 
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero-buttons a { 
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+      }
+      
+      .franchise-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <nav>
-    <div>
-      <!-- โลโก้ใน navigation -->
-      <img src="images/logo/logo.png" alt="Krualuang Logo">
-    </div>
-    <div>
-      <a href="#home" data-i18n="menu.home">หน้าแรก</a>
-      <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
-      <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
-      <a href="#faq" data-i18n="menu.faq">คำถามที่พบบ่อย</a>
-      <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
-    </div>
-    <div class="lang-flags">
-      <img src="https://flagcdn.com/w20/th.png" data-lang="th" title="ไทย">
-      <img src="https://flagcdn.com/w20/la.png" data-lang="la" title="ລາວ">
-      <img src="https://flagcdn.com/w20/gb.png" data-lang="en" title="English">
-      <img src="https://flagcdn.com/w20/cn.png" data-lang="zh" title="中文">
-    </div>
-  </nav>
+  <nav>
+    <div>
+            <img src="images/logo/logo.png" alt="Krualuang Logo" class="logo"> 
+    </div>
+    <div>
+      <a href="#home" data-i18n="menu.home">หน้าแรก</a>
+      <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
+      <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
+      <a href="#faq" data-i18n="menu.faq">คำถามที่พบบ่อย</a>
+      <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
+    </div>
+    <div class="lang-flags">
+      <img src="https://flagcdn.com/w20/th.png" data-lang="th" title="ไทย">
+      <img src="https://flagcdn.com/w20/la.png" data-lang="la" title="ລາວ">
+      <img src="https://flagcdn.com/w20/gb.png" data-lang="en" title="English">
+      <img src="https://flagcdn.com/w20/cn.png" data-lang="zh" title="中文">
+    </div>
+  </nav>
 </header>
 
-<!-- HERO -->
 <section id="home" class="hero">
-  <div class="hero-content">
-    <!-- โลโก้ใน hero section -->
-    <img src="logo/logo.png" alt="ครัวหลวง" class="hero-logo">
-    <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
-    <h1 data-i18n="hero.title">Royal Thai Taste</h1>
-    <p data-i18n="hero.desc">ประสบการณ์อาหารไทยอันเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
-    <div class="hero-buttons">
-      <a href="#franchise" data-i18n="hero.cta1">ดูแฟรนไชส์</a>
-      <a href="#contact" data-i18n="hero.cta2">นัดเยี่ยมชม</a>
-    </div>
-  </div>
-</section>
-
+  <div class="hero-content">
+        <img src="images/logo/logo.png" alt="ครัวหลวง" class="hero-logo">
+    <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
+    ...
 <!-- ABOUT -->
 <section id="about">
   <h2 data-i18n="about.title">เกี่ยวกับครัวหลวง</h2>
