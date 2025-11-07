@@ -698,6 +698,56 @@
 </footer>
 
 <a href="#" class="back-to-top" id="backToTop">↑</a>
+<script>
+// === ฟังก์ชันเปลี่ยนภาษา ===
+const langFlags = document.querySelectorAll('.lang-flags img');
+const textElements = document.querySelectorAll('[data-i18n]');
+
+// โหลดภาษาที่เคยเลือกไว้ (ถ้ามี)
+let currentLang = localStorage.getItem('lang') || 'th';
+applyLanguage(currentLang);
+
+// เมื่อคลิกธง เปลี่ยนภาษา
+langFlags.forEach(flag => {
+  flag.addEventListener('click', () => {
+    const selectedLang = flag.getAttribute('data-lang');
+    applyLanguage(selectedLang);
+    localStorage.setItem('lang', selectedLang);
+  });
+});
+
+function applyLanguage(lang) {
+  if (!translations[lang]) return;
+  textElements.forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+}
+
+// === ปุ่มกลับขึ้นบน ===
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+backToTop.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// === ป้องกันรีเฟรชตอนส่งฟอร์ม ===
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('ขอบคุณที่ติดต่อเรา! เราจะตอบกลับโดยเร็วที่สุด.');
+  this.reset();
+});
+</script>
 
 <script>
 const translations = {
