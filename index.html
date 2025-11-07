@@ -1,845 +1,895 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ครัวหลวง — รสชาติไทยต้นตำรับ อาหารไทยแท้พร้อมโอกาสแฟรนไชส์">
-  <title>ครัวหลวง — Royal Thai Cuisine</title>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    :root {
-      --primary-color: #d4af37; /* สีทอง/เหลือง */
-      --secondary-color: #8b0000; /* สีแดงเข้ม */
-      --text-color: #333;
-      --light-bg: #f9f9f9;
-    }
-    
-    * {
-      box-sizing: border-box;
-    }
-    
-    body { 
-      font-family: "Prompt", sans-serif; 
-      margin: 0; 
-      background: #fff; 
-      color: var(--text-color); 
-      line-height: 1.6;
-    }
-    
-    /* =============================================== */
-    /* 📌 CSS ส่วนปรับปรุงโลโก้             */
-    /* =============================================== */
-    
-    header { 
-      position: fixed; 
-      top: 0; 
-      width: 100%; 
-      background: #fff; 
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-      z-index: 100; 
-    }
-    
-    nav { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; /* ทำให้ทุกอย่างใน nav ตรงกัน */
-      max-width: 1200px; 
-      margin: auto; 
-      padding: 1rem 1.5rem; 
-    }
-    
-    /* 🌟 โครงสร้างใหม่สำหรับโลโก้ */
-    .brand-container {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem; /* ระยะห่างระหว่างรูปภาพและข้อความ */
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ครัวหลวง — รสชาติไทยต้นตำรับ อาหารไทยแท้พร้อมโอกาสแฟรนไชส์">
+  <title>ครัวหลวง — Royal Thai Cuisine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #d4af37; /* สีทอง/เหลือง */
+      --secondary-color: #8b0000; /* สีแดงเข้ม */
+      --text-color: #333;
+      --light-bg: #f9f9f9;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body { 
+      font-family: "Prompt", sans-serif; 
+      margin: 0; 
+      background: #fff; 
+      color: var(--text-color); 
+      line-height: 1.6;
+    }
+    
+    /* =============================================== */
+    /* CSS สำหรับ Header และ Navigation             */
+    /* =============================================== */
+    
+    header { 
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
+      background: #fff; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+      z-index: 100; 
+    }
+    
+    nav { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      max-width: 1200px; 
+      margin: auto; 
+      padding: 1rem 1.5rem; 
+    }
+    
+    .brand-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
 
-    .logo-img {
-        height: 40px; /* ปรับขนาดโลโก้รูปภาพตามต้องการ */
-        width: auto;
-        display: block; 
-    }
+    .logo-img {
+        height: 40px;
+        width: auto;
+        display: block; 
+    }
 
-    .logo-text {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--secondary-color);
-    }
-    /* ----------------------------------------------- */
-    
-    .nav-links {
-      display: flex;
-      align-items: center; /* จัดให้ธงอยู่แถวเดียวกับเมนู */
-    }
-    
-    nav a { 
-      text-decoration: none; 
-      color: var(--text-color); 
-      margin: 0 1rem; 
-      font-weight: 500; 
-      transition: color 0.3s;
-    }
-    
-    nav a:hover { 
-      color: var(--primary-color); 
-    }
-    
-    .lang-flags { 
-      display: flex; 
-      align-items: center; 
-      gap: 0.6rem; 
-      margin-left: 1rem; /* เพิ่มระยะห่างจากเมนู */
-    }
-    
-    .lang-flags img { 
-      width: 26px; 
-      height: 18px; 
-      cursor: pointer; 
-      border: 1px solid #ccc; 
-      border-radius: 2px; 
-      transition: 0.2s; 
-    }
-    
-    .lang-flags img:hover { 
-      transform: scale(1.15); 
-      border-color: var(--primary-color); 
-    }
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+    
+    nav a { 
+      text-decoration: none; 
+      color: var(--text-color); 
+      margin: 0 1rem; 
+      font-weight: 500; 
+      transition: color 0.3s;
+    }
+    
+    nav a:hover { 
+      color: var(--primary-color); 
+    }
+    
+    .lang-flags { 
+      display: flex; 
+      align-items: center; 
+      gap: 0.6rem; 
+      margin-left: 1rem;
+    }
+    
+    .lang-flags img { 
+      width: 26px; 
+      height: 18px; 
+      cursor: pointer; 
+      border: 1px solid #ccc; 
+      border-radius: 2px; 
+      transition: 0.2s; 
+      /* เพิ่ม border พิเศษสำหรับธงที่เลือกใน JS */
+    }
+    
+    .lang-flags img:hover { 
+      transform: scale(1.15); 
+      border-color: var(--primary-color); 
+    }
 
-    .hero {
-      position: relative; 
-      width: 100vw; 
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero/hero_bg.jpg') center/cover no-repeat; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      text-align: center; 
-      color: #fff;
-      margin-top: 70px; /* ปรับให้มีระยะห่างจาก Header ที่ถูก fix ไว้ */
-    }
-    
-    .hero-content { 
-      position: relative; 
-      z-index: 2; 
-      max-width: 90%; 
-    }
-    
-    .hero h4 { 
-      font-size: 1.3rem; 
-      letter-spacing: 1px; 
-      margin-bottom: 1rem; 
-    }
-    
-    .hero h1 { 
-      font-size: 3.5rem; 
-      font-weight: 700; 
-      margin: 1rem 0; 
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    .hero p { 
-      font-size: 1.2rem; 
-      margin-bottom: 1.8rem; 
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .hero-buttons a { 
-      background: var(--primary-color); 
-      color: #000; 
-      padding: 0.8rem 1.5rem; 
-      border-radius: 50px;
-      text-decoration: none; 
-      margin: 0 0.5rem; 
-      transition: 0.3s;
-      display: inline-block;
-      font-weight: 600;
-    }
-    
-    .hero-buttons a:hover { 
-      background: #ffbf00; 
-      transform: translateY(-3px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+    /* =============================================== */
+    /* CSS ส่วนอื่นๆ (Hero, Sections, Footer)          */
+    /* =============================================== */
 
-    section { 
-      padding: 5rem 1.5rem; 
-      max-width: 1000px; 
-      margin: auto; 
-    }
-    
-    .section-dark {
-      background-color: var(--light-bg);
-    }
-    
-    h2 { 
-      text-align: center; 
-      margin-bottom: 2rem; 
-      font-size: 2rem; 
-      color: var(--secondary-color);
-      position: relative;
-    }
-    
-    h2::after { 
-      content: ''; 
-      display: block; 
-      width: 80px; 
-      height: 3px; 
-      background: var(--primary-color); 
-      margin: 10px auto; 
-    }
-    
-    .about-content { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 2rem; 
-      align-items: center; 
-    }
-    
-    .about-text { 
-      flex: 1; 
-      min-width: 300px; 
-    }
-    
-    .about-image { 
-      flex: 1; 
-      min-width: 300px; 
-      border-radius: 10px; 
-      overflow: hidden; 
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
-    }
-    
-    .about-image img { 
-      width: 100%; 
-      height: auto; 
-      display: block; 
-    }
-    
-    .franchise-packages { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-      gap: 2rem; 
-      margin-top: 2rem; 
-    }
-    
-    .package { 
-      background: white; 
-      border-radius: 10px; 
-      padding: 2rem; 
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-      text-align: center; 
-      transition: transform 0.3s; 
-    }
-    
-    .package:hover { 
-      transform: translateY(-10px); 
-    }
-    
-    .package h3 { 
-      color: var(--secondary-color); 
-      margin-bottom: 1rem; 
-    }
-    
-    .package .price { 
-      font-size: 1.5rem; 
-      font-weight: 700; 
-      color: var(--primary-color); 
-      margin: 1rem 0; 
-    }
-    
-    .package ul { 
-      list-style: none; 
-      padding: 0; 
-      text-align: left; 
-    }
-    
-    .package ul li { 
-      margin-bottom: 0.5rem; 
-      position: relative; 
-      padding-left: 1.5rem; 
-    }
-    
-    .package ul li::before { 
-      content: '✓'; 
-      color: var(--primary-color); 
-      position: absolute; 
-      left: 0; 
-    }
-    
-    .menu-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-      gap: 2rem; 
-      margin-top: 2rem; 
-    }
-    
-    .menu-item { 
-      background: white; 
-      border-radius: 10px; 
-      overflow: hidden; 
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-    }
-    
-    .menu-item img { 
-      width: 100%; 
-      height: 200px; 
-      object-fit: cover; 
-    }
-    
-    .menu-item-content { 
-      padding: 1.5rem; 
-    }
-    
-    .menu-item h3 { 
-      margin: 0 0 0.5rem; 
-      color: var(--secondary-color); 
-    }
-    
-    .menu-item .price { 
-      color: var(--primary-color); 
-      font-weight: 700; 
-    }
-    
-    .gallery-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-      gap: 1rem; 
-      margin-top: 2rem; 
-    }
-    
-    .gallery-item { 
-      border-radius: 10px; 
-      overflow: hidden; 
-      height: 250px; 
-    }
-    
-    .gallery-item img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      transition: transform 0.5s; 
-    }
-    
-    .gallery-item:hover img { 
-      transform: scale(1.1); 
-    }
-    
-    .contact-container { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 2rem; 
-    }
-    
-    .contact-info { 
-      flex: 1; 
-      min-width: 300px; 
-    }
-    
-    .contact-form { 
-      flex: 1; 
-      min-width: 300px; 
-    }
-    
-    .contact-details { 
-      margin-bottom: 2rem; 
-    }
-    
-    .contact-details div { 
-      margin-bottom: 1rem; 
-      display: flex; 
-      align-items: center; 
-    }
-    
-    .contact-details i { 
-      margin-right: 10px; 
-      color: var(--primary-color);
-      font-style: normal; 
-    }
-    
-    .form-group { 
-      margin-bottom: 1.5rem; 
-    }
-    
-    .form-group label { 
-      display: block; 
-      margin-bottom: 0.5rem; 
-      font-weight: 600; 
-    }
-    
-    .form-group input,
-    .form-group textarea { 
-      width: 100%; 
-      padding: 0.8rem; 
-      border: 1px solid #ddd; 
-      border-radius: 5px; 
-      font-family: "Prompt", sans-serif; 
-    }
-    
-    .form-group textarea { 
-      height: 150px; 
-      resize: vertical; 
-    }
-    
-    .submit-btn { 
-      background: var(--primary-color); 
-      color: #000; 
-      border: none; 
-      padding: 0.8rem 1.5rem; 
-      border-radius: 50px; 
-      cursor: pointer; 
-      font-weight: 600; 
-      transition: 0.3s; 
-      font-family: "Prompt", sans-serif; 
-    }
-    
-    .submit-btn:hover { 
-      background: #ffbf00; 
-    }
-    
-    .social-links { 
-      display: flex; 
-      gap: 1rem; 
-      margin-top: 2rem; 
-    }
-    
-    .social-links a { 
-      display: inline-flex; 
-      align-items: center; 
-      justify-content: center; 
-      width: 40px; 
-      height: 40px; 
-      background: var(--secondary-color); 
-      color: white; 
-      border-radius: 50%; 
-      text-decoration: none; 
-      transition: 0.3s;
-      font-size: 1.2rem; 
-    }
-    
-    .social-links a:hover { 
-      background: var(--primary-color); 
-      transform: translateY(-3px); 
-    }
-    
-    footer { 
-      text-align: center; 
-      padding: 2rem; 
-      background: #222; 
-      color: #fff; 
-    }
-    
-    .back-to-top { 
-      position: fixed; 
-      bottom: 20px; 
-      right: 20px; 
-      background: var(--primary-color); 
-      color: #000; 
-      width: 50px; 
-      height: 50px; 
-      border-radius: 50%; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      text-decoration: none; 
-      font-size: 1.5rem; 
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
-      z-index: 99; 
-      opacity: 0; 
-      transition: opacity 0.3s; 
-    }
-    
-    .back-to-top.visible { 
-      opacity: 1; 
-    }
+    .hero {
+      position: relative; 
+      width: 100vw; 
+      height: 100vh;
+      /* ต้องมีไฟล์รูปภาพ hero_bg.jpg ในโฟลเดอร์ images/hero/ */
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero/hero_bg.jpg') center/cover no-repeat; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      text-align: center; 
+      color: #fff;
+      margin-top: 70px;
+    }
+    
+    .hero-content { 
+      position: relative; 
+      z-index: 2; 
+      max-width: 90%; 
+    }
+    
+    .hero h4 { 
+      font-size: 1.3rem; 
+      letter-spacing: 1px; 
+      margin-bottom: 1rem; 
+    }
+    
+    .hero h1 { 
+      font-size: 3.5rem; 
+      font-weight: 700; 
+      margin: 1rem 0; 
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hero p { 
+      font-size: 1.2rem; 
+      margin-bottom: 1.8rem; 
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-buttons a { 
+      background: var(--primary-color); 
+      color: #000; 
+      padding: 0.8rem 1.5rem; 
+      border-radius: 50px;
+      text-decoration: none; 
+      margin: 0 0.5rem; 
+      transition: 0.3s;
+      display: inline-block;
+      font-weight: 600;
+    }
+    
+    .hero-buttons a:hover { 
+      background: #ffbf00; 
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
 
-    /* 🛑 สไตล์ CSS เก่าสำหรับ .logo ต้องถูกลบออกไป เพื่อไม่ให้ขัดแย้งกับ .logo-text */
-    /* .logo { ... }  <-- ถูกลบออกไปแล้ว */
+    section { 
+      padding: 5rem 1.5rem; 
+      max-width: 1000px; 
+      margin: auto; 
+    }
+    
+    .section-dark {
+      background-color: var(--light-bg);
+    }
+    
+    h2 { 
+      text-align: center; 
+      margin-bottom: 2rem; 
+      font-size: 2rem; 
+      color: var(--secondary-color);
+      position: relative;
+    }
+    
+    h2::after { 
+      content: ''; 
+      display: block; 
+      width: 80px; 
+      height: 3px; 
+      background: var(--primary-color); 
+      margin: 10px auto; 
+    }
+    
+    .about-content { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 2rem; 
+      align-items: center; 
+    }
+    
+    .about-text { 
+      flex: 1; 
+      min-width: 300px; 
+    }
+    
+    .about-image { 
+      flex: 1; 
+      min-width: 300px; 
+      border-radius: 10px; 
+      overflow: hidden; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+    }
+    
+    .about-image img { 
+      width: 100%; 
+      height: auto; 
+      display: block; 
+    }
+    
+    .franchise-packages { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 2rem; 
+      margin-top: 2rem; 
+    }
+    
+    .package { 
+      background: white; 
+      border-radius: 10px; 
+      padding: 2rem; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+      text-align: center; 
+      transition: transform 0.3s; 
+    }
+    
+    .package:hover { 
+      transform: translateY(-10px); 
+    }
+    
+    .package h3 { 
+      color: var(--secondary-color); 
+      margin-bottom: 1rem; 
+    }
+    
+    .package .price { 
+      font-size: 1.5rem; 
+      font-weight: 700; 
+      color: var(--primary-color); 
+      margin: 1rem 0; 
+    }
+    
+    .package ul { 
+      list-style: none; 
+      padding: 0; 
+      text-align: left; 
+    }
+    
+    .package ul li { 
+      margin-bottom: 0.5rem; 
+      position: relative; 
+      padding-left: 1.5rem; 
+    }
+    
+    .package ul li::before { 
+      content: '✓'; 
+      color: var(--primary-color); 
+      position: absolute; 
+      left: 0; 
+    }
+    
+    .menu-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+      gap: 2rem; 
+      margin-top: 2rem; 
+    }
+    
+    .menu-item { 
+      background: white; 
+      border-radius: 10px; 
+      overflow: hidden; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+    }
+    
+    .menu-item img { 
+      width: 100%; 
+      height: 200px; 
+      object-fit: cover; 
+    }
+    
+    .menu-item-content { 
+      padding: 1.5rem; 
+    }
+    
+    .menu-item h3 { 
+      margin: 0 0 0.5rem; 
+      color: var(--secondary-color); 
+    }
+    
+    .menu-item .price { 
+      color: var(--primary-color); 
+      font-weight: 700; 
+    }
+    
+    .gallery-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+      gap: 1rem; 
+      margin-top: 2rem; 
+    }
+    
+    .gallery-item { 
+      border-radius: 10px; 
+      overflow: hidden; 
+      height: 250px; 
+    }
+    
+    .gallery-item img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      transition: transform 0.5s; 
+    }
+    
+    .gallery-item:hover img { 
+      transform: scale(1.1); 
+    }
+    
+    .contact-container { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 2rem; 
+    }
+    
+    .contact-info { 
+      flex: 1; 
+      min-width: 300px; 
+    }
+    
+    .contact-form { 
+      flex: 1; 
+      min-width: 300px; 
+    }
+    
+    .contact-details { 
+      margin-bottom: 2rem; 
+    }
+    
+    .contact-details div { 
+      margin-bottom: 1rem; 
+      display: flex; 
+      align-items: center; 
+    }
+    
+    .contact-details i { 
+      margin-right: 10px; 
+      color: var(--primary-color);
+      font-style: normal; 
+    }
+    
+    .form-group { 
+      margin-bottom: 1.5rem; 
+    }
+    
+    .form-group label { 
+      display: block; 
+      margin-bottom: 0.5rem; 
+      font-weight: 600; 
+    }
+    
+    .form-group input,
+    .form-group textarea { 
+      width: 100%; 
+      padding: 0.8rem; 
+      border: 1px solid #ddd; 
+      border-radius: 5px; 
+      font-family: "Prompt", sans-serif; 
+    }
+    
+    .form-group textarea { 
+      height: 150px; 
+      resize: vertical; 
+    }
+    
+    .submit-btn { 
+      background: var(--primary-color); 
+      color: #000; 
+      border: none; 
+      padding: 0.8rem 1.5rem; 
+      border-radius: 50px; 
+      cursor: pointer; 
+      font-weight: 600; 
+      transition: 0.3s; 
+      font-family: "Prompt", sans-serif; 
+    }
+    
+    .submit-btn:hover { 
+      background: #ffbf00; 
+    }
+    
+    .social-links { 
+      display: flex; 
+      gap: 1rem; 
+      margin-top: 2rem; 
+    }
+    
+    .social-links a { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      width: 40px; 
+      height: 40px; 
+      background: var(--secondary-color); 
+      color: white; 
+      border-radius: 50%; 
+      text-decoration: none; 
+      transition: 0.3s;
+      font-size: 1.2rem; 
+    }
+    
+    .social-links a:hover { 
+      background: var(--primary-color); 
+      transform: translateY(-3px); 
+    }
+    
+    footer { 
+      text-align: center; 
+      padding: 2rem; 
+      background: #222; 
+      color: #fff; 
+    }
+    
+    .back-to-top { 
+      position: fixed; 
+      bottom: 20px; 
+      right: 20px; 
+      background: var(--primary-color); 
+      color: #000; 
+      width: 50px; 
+      height: 50px; 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      text-decoration: none; 
+      font-size: 1.5rem; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2); 
+      z-index: 99; 
+      opacity: 0; 
+      transition: opacity 0.3s; 
+    }
+    
+    .back-to-top.visible { 
+      opacity: 1; 
+    }
 
-    @media(max-width: 768px){
-      nav { 
-        flex-direction: column; 
-        gap: 0.5rem; 
-      }
-      
-      .nav-links { 
-        flex-wrap: wrap; 
-        justify-content: center; 
-        margin: 1rem 0; 
-      }
-      
-      .hero { 
-        margin-top: 120px;
-        height: 80vh;
-      }
-      
-      .hero h1 { 
-        font-size: 2.2rem; 
-      }
-      
-      .hero p { 
-        font-size: 1rem; 
-      }
-      
-      .hero-buttons a { 
-        display: block; 
-        margin: 0.5rem auto; 
-        width: fit-content; 
-      }
-    }
-  </style>
+    /* =============================================== */
+    /* Responsive Design (Media Query)                */
+    /* =============================================== */
+
+    @media(max-width: 768px){
+      nav { 
+        flex-direction: column; 
+        gap: 0.5rem; 
+      }
+      
+      .nav-links { 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        margin: 1rem 0; 
+      }
+      
+      .hero { 
+        margin-top: 120px;
+        height: 80vh;
+      }
+      
+      .hero h1 { 
+        font-size: 2.2rem; 
+      }
+      
+      .hero p { 
+        font-size: 1rem; 
+      }
+      
+      .hero-buttons a { 
+        display: block; 
+        margin: 0.5rem auto; 
+        width: fit-content; 
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <nav>
-    <div class="brand-container"> 
-     <img src="images/logo/logo.png" alt="Krualuang Logo" class="logo-img" id="logoImg">
-      <div class="logo-text">KRUALUANG</div> 
-    </div>
-    
-    <div class="nav-links">
-      <a href="#home" data-i18n="menu.home">หน้าแรก</a>
-      <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
-      <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
-      <a href="#menu" data-i18n="menu.menu">เมนู</a>
-      <a href="#gallery" data-i18n="menu.gallery">แกลเลอรี่</a>
-      <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
-    <div class="lang-flags">
-        <img src="https://flagcdn.com/w20/th.png" data-lang="th" title="ไทย">
-        <img src="https://flagcdn.com/w20/la.png" data-lang="la" title="Lao">
-        <img src="https://flagcdn.com/w20/gb.png" data-lang="en" title="English">
-        <img src="https://flagcdn.com/w20/cn.png" data-lang="zh" title="中文">
-    </div>
-    </div>
-  </nav>
+  <nav>
+    <div class="brand-container"> 
+     <img src="images/logo/logo.png" alt="Krualuang Logo" class="logo-img" id="logoImg">
+      <div class="logo-text">KRUALUANG</div> 
+    </div>
+    
+    <div class="nav-links">
+      <a href="#home" data-i18n="menu.home">หน้าแรก</a>
+      <a href="#about" data-i18n="menu.about">เกี่ยวกับเรา</a>
+      <a href="#franchise" data-i18n="menu.franchise">แฟรนไชส์</a>
+      <a href="#menu" data-i18n="menu.menu">เมนู</a>
+      <a href="#gallery" data-i18n="menu.gallery">แกลเลอรี่</a>
+      <a href="#contact" data-i18n="menu.contact">ติดต่อ</a>
+    <div class="lang-flags">
+                <img src="https://flagcdn.com/w20/th.png" data-lang="th" title="ไทย" style="border: 2px solid var(--secondary-color); transform: scale(1.15);">
+        <img src="https://flagcdn.com/w20/la.png" data-lang="la" title="Lao">
+        <img src="https://flagcdn.com/w20/gb.png" data-lang="en" title="English">
+        <img src="https://flagcdn.com/w20/cn.png" data-lang="zh" title="中文">
+    </div>
+    </div>
+  </nav>
 </header>
 
 <section id="home" class="hero">
-  <div class="hero-content">
-    <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
-    <h1 data-i18n="hero.title">Royal Thai Taste</h1>
-    <p data-i18n="hero.desc">ประสบการณ์อาหารไทยชั้นเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
-    <div class="hero-buttons">
-      <a href="#franchise" data-i18n="hero.cta1">ดูแฟรนไชส์</a>
-      <a href="#contact" data-i18n="hero.cta2">นัดเยี่ยมชม</a>
-    </div>
-  </div>
+  <div class="hero-content">
+    <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
+    <h1 data-i18n="hero.title">Royal Thai Taste</h1>
+    <p data-i18n="hero.desc">ประสบการณ์อาหารไทยชั้นเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
+    <div class="hero-buttons">
+      <a href="#franchise" data-i18n="hero.cta1">ดูแฟรนไชส์</a>
+      <a href="#contact" data-i18n="hero.cta2">นัดเยี่ยมชม</a>
+    </div>
+  </div>
 </section>
 
 <section id="about">
-  <h2 data-i18n="about.title">เกี่ยวกับครัวหลวง</h2>
-  <div class="about-content">
-    <div class="about-text">
-      <p data-i18n="about.text1">ครัวหลวงคือแบรนด์ร้านอาหารไทยแท้ที่นำเสนอรสชาติอันเป็นเอกลักษณ์ของอาหารไทยแบบดั้งเดิม ด้วยความพิถีพิถันในการคัดสรรวัตถุดิบคุณภาพ และกรรมวิธีการปรุงที่คงไว้ซึ่งรสชาติอันเป็นต้นตำรับ</p>
-      <p data-i18n="about.text2">เราให้ความสำคัญกับประสบการณ์การรับประทานอาหารของลูกค้า โดยผสมผสานบรรยากาศการบริการที่อบอุ่นเป็นกันเอง กับความประณีตของอาหารไทยแท้ในสไตล์ Fine Dining</p>
-      <p data-i18n="about.text3">ปัจจุบันครัวหลวงมีสาขาในประเทศไทยและกำลังขยายโอกาสแฟรนไชส์ไปยังประเทศลาว เพื่อเผยแพร่รสชาติอาหารไทยแท้สู่สายตาชาวโลก</p>
-    </div>
-    <div class="about-image">
-      <img src="images/about/about_interior.jpg" alt="บรรยากาศภายในร้านครัวหลวง">
-    </div>
-  </div>
+  <h2 data-i18n="about.title">เกี่ยวกับครัวหลวง</h2>
+  <div class="about-content">
+    <div class="about-text">
+      <p data-i18n="about.text1">ครัวหลวงคือแบรนด์ร้านอาหารไทยแท้ที่นำเสนอรสชาติอันเป็นเอกลักษณ์ของอาหารไทยแบบดั้งเดิม ด้วยความพิถีพิถันในการคัดสรรวัตถุดิบคุณภาพ และกรรมวิธีการปรุงที่คงไว้ซึ่งรสชาติอันเป็นต้นตำรับ</p>
+      <p data-i18n="about.text2">เราให้ความสำคัญกับประสบการณ์การรับประทานอาหารของลูกค้า โดยผสมผสานบรรยากาศการบริการที่อบอุ่นเป็นกันเอง กับความประณีตของอาหารไทยแท้ในสไตล์ Fine Dining</p>
+      <p data-i18n="about.text3">ปัจจุบันครัวหลวงมีสาขาในประเทศไทยและกำลังขยายโอกาสแฟรนไชส์ไปยังประเทศลาว เพื่อเผยแพร่รสชาติอาหารไทยแท้สู่สายตาชาวโลก</p>
+    </div>
+    <div class="about-image">
+            <img src="images/about/about_interior.jpg" alt="บรรยากาศภายในร้านครัวหลวง">
+    </div>
+  </div>
 </section>
 
 <section id="franchise" class="section-dark">
-  <h2 data-i18n="franchise.title">แพ็กเกจแฟรนไชส์</h2>
-  <p data-i18n="franchise.desc">ร่วมเป็นส่วนหนึ่งของครัวหลวงกับแพ็กเกจแฟรนไชส์ที่ออกแบบมาสำหรับผู้ประกอบการทุกระดับ</p>
-  
-  <div class="franchise-packages">
-    <div class="package">
-      <h3 data-i18n="franchise.package1.name">สตาร์ทเตอร์</h3>
-      <div class="price" data-i18n="franchise.package1.price">1.2 ล้านบาท</div>
-      <ul>
-        <li data-i18n="franchise.package1.item1">สิทธิ์ในการใช้แบรนด์ 3 ปี</li>
-        <li data-i18n="franchise.package1.item2">คู่มือการดำเนินงานครบถ้วน</li>
-        <li data-i18n="franchise.package1.item3">การฝึกอบรมทีมงาน 2 สัปดาห์</li>
-        <li data-i18n="franchise.package1.item4">การสนับสนุนด้านการตลาด 3 เดือน</li>
-      </ul>
-    </div>
-    
-    <div class="package">
-      <h3 data-i18n="franchise.package2.name">มาตรฐาน</h3>
-      <div class="price" data-i18n="franchise.package2.price">2.5 ล้านบาท</div>
-      <ul>
-        <li data-i18n="franchise.package2.item1">สิทธิ์ในการใช้แบรนด์ 5 ปี</li>
-        <li data-i18n="franchise.package2.item2">การออกแบบร้านและควบคุมการก่อสร้าง</li>
-        <li data-i18n="franchise.package2.item3">การฝึกอบรมทีมงาน 1 เดือน</li>
-        <li data-i18n="franchise.package2.item4">การสนับสนุนด้านการตลาด 6 เดือน</li>
-        <li data-i18n="franchise.package2.item5">ระบบซอฟต์แวร์จัดการร้าน</li>
-      </ul>
-    </div>
-    
-    <div class="package">
-      <h3 data-i18n="franchise.package3.name">พรีเมียม</h3>
-      <div class="price" data-i18n="franchise.package3.price">4 ล้านบาท</div>
-      <ul>
-        <li data-i18n="franchise.package3.item1">สิทธิ์ในการใช้แบรนด์ 7 ปี</li>
-        <li data-i18n="franchise.package3.item2">การออกแบบร้านพรีเมียมและควบคุมการก่อสร้าง</li>
-        <li data-i18n="franchise.package3.item3">การฝึกอบรมทีมงาน 2 เดือน</li>
-        <li data-i18n="franchise.package3.item4">การสนับสนุนด้านการตลาด 1 ปี</li>
-        <li data-i18n="franchise.package3.item5">ระบบซอฟต์แวร์จัดการร้านขั้นสูง</li>
-        <li data-i18n="franchise.package3.item6">ที่ปรึกษาด้านการดำเนินธุรกิจ 1 ปี</li>
-      </ul>
-    </div>
-  </div>
+  <h2 data-i18n="franchise.title">แพ็กเกจแฟรนไชส์</h2>
+  <p data-i18n="franchise.desc">ร่วมเป็นส่วนหนึ่งของครัวหลวงกับแพ็กเกจแฟรนไชส์ที่ออกแบบมาสำหรับผู้ประกอบการทุกระดับ</p>
+  
+  <div class="franchise-packages">
+    <div class="package">
+      <h3 data-i18n="franchise.package1.name">สตาร์ทเตอร์</h3>
+      <div class="price" data-i18n="franchise.package1.price">1.2 ล้านบาท</div>
+      <ul>
+        <li data-i18n="franchise.package1.item1">สิทธิ์ในการใช้แบรนด์ 3 ปี</li>
+        <li data-i18n="franchise.package1.item2">คู่มือการดำเนินงานครบถ้วน</li>
+        <li data-i18n="franchise.package1.item3">การฝึกอบรมทีมงาน 2 สัปดาห์</li>
+        <li data-i18n="franchise.package1.item4">การสนับสนุนด้านการตลาด 3 เดือน</li>
+      </ul>
+      <a href="#contact" class="submit-btn" style="margin-top: 1rem;" data-i18n="hero.cta1">ดูรายละเอียด</a>
+    </div>
+    
+    <div class="package">
+      <h3 data-i18n="franchise.package2.name">มาตรฐาน</h3>
+      <div class="price" data-i18n="franchise.package2.price">2.5 ล้านบาท</div>
+      <ul>
+        <li data-i18n="franchise.package2.item1">สิทธิ์ในการใช้แบรนด์ 5 ปี</li>
+        <li data-i18n="franchise.package2.item2">การออกแบบร้านและควบคุมการก่อสร้าง</li>
+        <li data-i18n="franchise.package2.item3">การฝึกอบรมทีมงาน 1 เดือน</li>
+        <li data-i18n="franchise.package2.item4">การสนับสนุนด้านการตลาด 6 เดือน</li>
+        <li data-i18n="franchise.package2.item5">ระบบซอฟต์แวร์จัดการร้าน</li>
+      </ul>
+      <a href="#contact" class="submit-btn" style="margin-top: 1rem;" data-i18n="hero.cta1">ดูรายละเอียด</a>
+    </div>
+    
+    <div class="package">
+      <h3 data-i18n="franchise.package3.name">พรีเมียม</h3>
+      <div class="price" data-i18n="franchise.package3.price">4 ล้านบาท</div>
+      <ul>
+        <li data-i18n="franchise.package3.item1">สิทธิ์ในการใช้แบรนด์ 7 ปี</li>
+        <li data-i18n="franchise.package3.item2">การออกแบบร้านพรีเมียมและควบคุมการก่อสร้าง</li>
+        <li data-i18n="franchise.package3.item3">การฝึกอบรมทีมงาน 2 เดือน</li>
+        <li data-i18n="franchise.package3.item4">การสนับสนุนด้านการตลาด 1 ปี</li>
+        <li data-i18n="franchise.package3.item5">ระบบซอฟต์แวร์จัดการร้านขั้นสูง</li>
+        <li data-i18n="franchise.package3.item6">ที่ปรึกษาด้านการดำเนินธุรกิจ 1 ปี</li>
+      </ul>
+      <a href="#contact" class="submit-btn" style="margin-top: 1rem;" data-i18n="hero.cta1">ดูรายละเอียด</a>
+    </div>
+  </div>
 </section>
 
 <section id="menu">
-  <h2 data-i18n="menu.title">เมนูของเรา</h2>
-  <p data-i18n="menu.desc">สัมผัสรสชาติอาหารไทยแท้ที่คัดสรรมาเป็นอย่างดีจากครัวหลวง</p>
-  
-  <div class="menu-grid">
-    <div class="menu-item">
-      <img src="images/menu/menu_tom_yum.jpg" alt="ต้มยำกุ้ง">
-      <div class="menu-item-content">
-        <h3 data-i18n="menu.item1.name">ต้มยำกุ้ง</h3>
-        <p data-i18n="menu.item1.desc">ต้มยำกุ้งแม่น้ำรสชาติจัดจ้าน เปรี้ยวเผ็ดร้อน</p>
-        <div class="price" data-i18n="menu.item1.price">220 บาท</div>
-      </div>
-    </div>
-    
-    <div class="menu-item">
-      <img src="images/menu/menu_pad_thai.jpg" alt="ผัดไทย">
-      <div class="menu-item-content">
-        <h3 data-i18n="menu.item2.name">ผัดไทยครัวหลวง</h3>
-        <p data-i18n="menu.item2.desc">ผัดไทยสูตรต้นตำรับ กุ้งสดไข่หวาน</p>
-        <div class="price" data-i18n="menu.item2.price">180 บาท</div>
-      </div>
-    </div>
-    
-    <div class="menu-item">
-      <img src="images/menu/menu_green_curry.jpg" alt="แกงเขียวหวาน">
-      <div class="menu-item-content">
-        <h3 data-i18n="menu.item3.name">แกงเขียวหวานไก่</h3>
-        <p data-i18n="menu.item3.desc">แกงเขียวหวานไก่ใบโหระพา หอมเครื่องแกง</p>
-        <div class="price" data-i18n="menu.item3.price">190 บาท</div>
-      </div>
-    </div>
-    
-    <div class="menu-item">
-      <img src="images/menu/menu_massaman.jpg" alt="มัสมั่น">
-      <div class="menu-item-content">
-        <h3 data-i18n="menu.item4.name">มัสมั่นเนื้อ</h3>
-        <p data-i18n="menu.item4.desc">มัสมั่นเนื้อสูตรโบราณ หวานมันหอมเครื่องเทศ</p>
-        <div class="price" data-i18n="menu.item4.price">250 บาท</div>
-      </div>
-    </div>
-  </div>
+  <h2 data-i18n="menu.title">เมนูของเรา</h2>
+  <p data-i18n="menu.desc">สัมผัสรสชาติอาหารไทยแท้ที่คัดสรรมาเป็นอย่างดีจากครัวหลวง</p>
+  
+  <div class="menu-grid">
+    <div class="menu-item">
+            <img src="images/menu/menu_tom_yum.jpg" alt="ต้มยำกุ้ง">
+      <div class="menu-item-content">
+        <h3 data-i18n="menu.item1.name">ต้มยำกุ้ง</h3>
+        <p data-i18n="menu.item1.desc">ต้มยำกุ้งแม่น้ำรสชาติจัดจ้าน เปรี้ยวเผ็ดร้อน</p>
+        <div class="price" data-i18n="menu.item1.price">220 บาท</div>
+      </div>
+    </div>
+    
+    <div class="menu-item">
+            <img src="images/menu/menu_pad_thai.jpg" alt="ผัดไทย">
+      <div class="menu-item-content">
+        <h3 data-i18n="menu.item2.name">ผัดไทยครัวหลวง</h3>
+        <p data-i18n="menu.item2.desc">ผัดไทยสูตรต้นตำรับ กุ้งสดไข่หวาน</p>
+        <div class="price" data-i18n="menu.item2.price">180 บาท</div>
+      </div>
+    </div>
+    
+    <div class="menu-item">
+            <img src="images/menu/menu_green_curry.jpg" alt="แกงเขียวหวาน">
+      <div class="menu-item-content">
+        <h3 data-i18n="menu.item3.name">แกงเขียวหวานไก่</h3>
+        <p data-i18n="menu.item3.desc">แกงเขียวหวานไก่ใบโหระพา หอมเครื่องแกง</p>
+        <div class="price" data-i18n="menu.item3.price">190 บาท</div>
+      </div>
+    </div>
+    
+    <div class="menu-item">
+            <img src="images/menu/menu_massaman.jpg" alt="มัสมั่น">
+      <div class="menu-item-content">
+        <h3 data-i18n="menu.item4.name">มัสมั่นเนื้อ</h3>
+        <p data-i18n="menu.item4.desc">มัสมั่นเนื้อสูตรโบราณ หวานมันหอมเครื่องเทศ</p>
+        <div class="price" data-i18n="menu.item4.price">250 บาท</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="gallery" class="section-dark">
-  <h2 data-i18n="gallery.title">แกลเลอรี่</h2>
-  <p data-i18n="gallery.desc">บรรยากาศและเมนูอาหารจากครัวหลวง</p>
-  
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="images/gallery/gallery_1_interior.jpg" alt="บรรยากาศร้านครัวหลวง">
-    </div>
-    <div class="gallery-item">
-      <img src="images/gallery/gallery_2_tom_yum.jpg" alt="ต้มยำกุ้ง">
-    </div>
-    <div class="gallery-item">
-      <img src="images/gallery/gallery_3_pad_thai.jpg" alt="ผัดไทย">
-    </div>
-    <div class="gallery-item">
-      <img src="images/gallery/gallery_4_green_curry.jpg" alt="แกงเขียวหวาน">
-    </div>
-    <div class="gallery-item">
-      <img src="images/gallery/gallery_5_massaman.jpg" alt="มัสมั่น">
-    </div>
-    <div class="gallery-item">
-      <img src="images/gallery/gallery_6_team.jpg" alt="ทีมงานครัวหลวง">
-    </div>
-  </div>
+  <h2 data-i18n="gallery.title">แกลเลอรี่</h2>
+  <p data-i18n="gallery.desc">บรรยากาศและเมนูอาหารจากครัวหลวง</p>
+  
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="images/gallery/gallery_1_interior.jpg" alt="บรรยากาศร้านครัวหลวง">
+    </div>
+    <div class="gallery-item">
+      <img src="images/gallery/gallery_2_tom_yum.jpg" alt="ต้มยำกุ้ง">
+    </div>
+    <div class="gallery-item">
+      <img src="images/gallery/gallery_3_pad_thai.jpg" alt="ผัดไทย">
+    </div>
+    <div class="gallery-item">
+      <img src="images/gallery/gallery_4_green_curry.jpg" alt="แกงเขียวหวาน">
+    </div>
+    <div class="gallery-item">
+      <img src="images/gallery/gallery_5_massaman.jpg" alt="มัสมั่น">
+    </div>
+    <div class="gallery-item">
+      <img src="images/gallery/gallery_6_team.jpg" alt="ทีมงานครัวหลวง">
+    </div>
+  </div>
 </section>
 
 <section id="contact">
-  <h2 data-i18n="contact.title">ติดต่อเรา</h2>
-  
-  <div class="contact-container">
-    <div class="contact-info">
-      <h3 data-i18n="contact.info">ข้อมูลติดต่อ</h3>
-      <div class="contact-details">
-        <div>
-          <i class="fas fa-map-marker-alt"></i>
-          <span data-i18n="contact.address">KRUA LUANG - Royal Thai Cuisine Vientiane (ຄົວຫຼວງ)
-Ban Thôngkang Hom 10, No 395, Sisatanak District, Vientiane, Laos 01000</span>
-        </div>
-        <div>
-          <i class="fas fa-phone"></i>
-          <span data-i18n="contact.phone">02-345-6789</span>
-        </div>
-        <div>
-          <i class="fas fa-envelope"></i>
-          <span data-i18n="contact.email">info@krualuang.com</span>
-        </div>
-        <div>
-          <i class="fas fa-clock"></i>
-          <span data-i18n="contact.hours">เปิดบริการทุกวัน 10:00 - 22:00 น.</span>
-        </div>
-      </div>
-      
-      <h3 data-i18n="contact.social">ติดตามเรา</h3>
-      <div class="social-links">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="Line"><i class="fab fa-line"></i></a>  
-        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-      </div>
-    </div>
-    
-    <div class="contact-form">
-      <h3 data-i18n="contact.form.title">ส่งข้อความถึงเรา</h3>
-      <form id="contactForm">
-        <div class="form-group">
-          <label for="name" data-i18n="contact.form.name">ชื่อ-นามสกุล</label>
-          <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email" data-i18n="contact.form.email">อีเมล</label>
-          <input type="email" id="email" required>
-        </div>
-        <div class="form-group">
-          <label for="phone" data-i18n="contact.form.phone">เบอร์โทรศัพท์</label>
-          <input type="tel" id="phone">
-        </div>
-        <div class="form-group">
-          <label for="subject" data-i18n="contact.form.subject">หัวข้อ</label>
-          <input type="text" id="subject" required>
-        </div>
-        <div class="form-group">
-          <label for="message" data-i18n="contact.form.message">ข้อความ</label>
-          <textarea id="message" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn" data-i18n="contact.form.submit">ส่งข้อความ</button>
-      </form>
-    </div>
-  </div>
+  <h2 data-i18n="contact.title">ติดต่อเรา</h2>
+  
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3 data-i18n="contact.info">ข้อมูลติดต่อ</h3>
+      <div class="contact-details">
+        <div>
+          <i class="fas fa-map-marker-alt"></i>
+                    <span data-i18n="contact.address">บ้านทงกางห่ม 10, เลขที่ 395, เขตศรีสัตตนาค, เวียงจันทน์, ลาว 01000</span>
+        </div>
+        <div>
+          <i class="fas fa-phone"></i>
+          <span data-i18n="contact.phone">+856 20 566 05450</span>
+        </div>
+        <div>
+          <i class="fas fa-envelope"></i>
+          <span data-i18n="contact.email">krualuanglao@gmail.com</span>
+        </div>
+        <div>
+          <i class="fas fa-clock"></i>
+          <span data-i18n="contact.hours">เปิดบริการทุกวัน 10:00 - 22:00 น.</span>
+        </div>
+      </div>
+      
+      <h3 data-i18n="contact.social">ติดตามเรา</h3>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Line"><i class="fab fa-line"></i></a>  
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+    
+    <div class="contact-form">
+      <h3 data-i18n="contact.form.title">ส่งข้อความถึงเรา</h3>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name" data-i18n="contact.form.name">ชื่อ-นามสกุล</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email" data-i18n="contact.form.email">อีเมล</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone" data-i18n="contact.form.phone">เบอร์โทรศัพท์</label>
+          <input type="tel" id="phone">
+        </div>
+        <div class="form-group">
+          <label for="subject" data-i18n="contact.form.subject">หัวข้อ</label>
+          <input type="text" id="subject" required>
+        </div>
+        <div class="form-group">
+          <label for="message" data-i18n="contact.form.message">ข้อความ</label>
+          <textarea id="message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn" data-i18n="contact.form.submit">ส่งข้อความ</button>
+      </form>
+    </div>
+  </div>
 </section>
 
 <footer>
-  <p>© 2025 ครัวหลวง — Royal Thai Cuisine</p>
+  <p>© 2025 ครัวหลวง — Royal Thai Cuisine</p>
 </footer>
 
-<a href="#" class="back-to-top" id="backToTop">↑</a>
+<a href="#home" class="back-to-top" id="backToTop">↑</a>
 
 <script>
-// ... (โค้ด JavaScript ยังคงเดิม) ...
+// -----------------------------------------------------------------
+// 🌐 JavaScript สำหรับระบบเปลี่ยนภาษา (i18n) และการทำงานอื่นๆ
+// -----------------------------------------------------------------
 const translations = {
   th: {
     "menu.home": "หน้าแรก", "menu.about": "เกี่ยวกับเรา", "menu.franchise": "แฟรนไชส์", "menu.menu": "เมนู", "menu.gallery": "แกลเลอรี่", "menu.contact": "ติดต่อ",
     "hero.eyebrow": "ครัวหลวง — รสชาติไทยต้นตำรับ", "hero.title": "Royal Thai Taste", "hero.desc": "ประสบการณ์อาหารไทยชั้นเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย", "hero.cta1": "ดูแฟรนไชส์", "hero.cta2": "นัดเยี่ยมชม",
     "about.title": "เกี่ยวกับครัวหลวง", "about.text1": "ครัวหลวงคือแบรนด์ร้านอาหารไทยแท้ที่นำเสนอรสชาติอันเป็นเอกลักษณ์ของอาหารไทยแบบดั้งเดิม ด้วยความพิถีพิถันในการคัดสรรวัตถุดิบคุณภาพ และกรรมวิธีการปรุงที่คงไว้ซึ่งรสชาติอันเป็นต้นตำรับ", "about.text2": "เราให้ความสำคัญกับประสบการณ์การรับประทานอาหารของลูกค้า โดยผสมผสานบรรยากาศการบริการที่อบอุ่นเป็นกันเอง กับความประณีตของอาหารไทยแท้ในสไตล์ Fine Dining", "about.text3": "ปัจจุบันครัวหลวงมีสาขาในประเทศไทยและกำลังขยายโอกาสแฟรนไชส์ไปยังประเทศลาว เพื่อเผยแพร่รสชาติอาหารไทยแท้สู่สายตาชาวโลก",
     "franchise.title": "แพ็กเกจแฟรนไชส์", "franchise.desc": "ร่วมเป็นส่วนหนึ่งของครัวหลวงกับแพ็กเกจแฟรนไชส์ที่ออกแบบมาสำหรับผู้ประกอบการทุกระดับ",
-    "franchise.package1.name": "สตาร์ทเตอร์", "franchise.package1.item1": "สิทธิ์ในการใช้แบรนด์ 3 ปี", "franchise.package1.item2": "คู่มือการดำเนินงานครบถ้วน", "franchise.package1.item3": "การฝึกอบรมทีมงาน 2 สัปดาห์", "franchise.package1.item4": "การสนับสนุนด้านการตลาด 3 เดือน",
-    "franchise.package2.name": "มาตรฐาน", "franchise.package2.item1": "สิทธิ์ในการใช้แบรนด์ 5 ปี", "franchise.package2.item2": "การออกแบบร้านและควบคุมการก่อสร้าง", "franchise.package2.item3": "การฝึกอบรมทีมงาน 1 เดือน", "franchise.package2.item4": "การสนับสนุนด้านการตลาด 6 เดือน", "franchise.package2.item5": "ระบบซอฟต์แวร์จัดการร้าน",
-    "franchise.package3.name": "พรีเมียม", "franchise.package3.item1": "สิทธิ์ในการใช้แบรนด์ 7 ปี", "franchise.package3.item2": "การออกแบบร้านพรีเมียมและควบคุมการก่อสร้าง", "franchise.package3.item3": "การฝึกอบรมทีมงาน 2 เดือน", "franchise.package3.item4": "การสนับสนุนด้านการตลาด 1 ปี", "franchise.package3.item5": "ระบบซอฟต์แวร์จัดการร้านขั้นสูง", "franchise.package3.item6": "ที่ปรึกษาด้านการดำเนินธุรกิจ 1 ปี",
+    "franchise.package1.name": "สตาร์ทเตอร์", "franchise.package1.price": "1.2 ล้านบาท", "franchise.package1.item1": "สิทธิ์ในการใช้แบรนด์ 3 ปี", "franchise.package1.item2": "คู่มือการดำเนินงานครบถ้วน", "franchise.package1.item3": "การฝึกอบรมทีมงาน 2 สัปดาห์", "franchise.package1.item4": "การสนับสนุนด้านการตลาด 3 เดือน",
+    "franchise.package2.name": "มาตรฐาน", "franchise.package2.price": "2.5 ล้านบาท", "franchise.package2.item1": "สิทธิ์ในการใช้แบรนด์ 5 ปี", "franchise.package2.item2": "การออกแบบร้านและควบคุมการก่อสร้าง", "franchise.package2.item3": "การฝึกอบรมทีมงาน 1 เดือน", "franchise.package2.item4": "การสนับสนุนด้านการตลาด 6 เดือน", "franchise.package2.item5": "ระบบซอฟต์แวร์จัดการร้าน",
+    "franchise.package3.name": "พรีเมียม", "franchise.package3.price": "4 ล้านบาท", "franchise.package3.item1": "สิทธิ์ในการใช้แบรนด์ 7 ปี", "franchise.package3.item2": "การออกแบบร้านพรีเมียมและควบคุมการก่อสร้าง", "franchise.package3.item3": "การฝึกอบรมทีมงาน 2 เดือน", "franchise.package3.item4": "การสนับสนุนด้านการตลาด 1 ปี", "franchise.package3.item5": "ระบบซอฟต์แวร์จัดการร้านขั้นสูง", "franchise.package3.item6": "ที่ปรึกษาด้านการดำเนินธุรกิจ 1 ปี",
     "menu.title": "เมนูของเรา", "menu.desc": "สัมผัสรสชาติอาหารไทยแท้ที่คัดสรรมาเป็นอย่างดีจากครัวหลวง",
-    "menu.item1.name": "ต้มยำกุ้ง", "menu.item1.desc": "ต้มยำกุ้งแม่น้ำรสชาติจัดจ้าน เปรี้ยวเผ็ดร้อน", "menu.item2.name": "ผัดไทยครัวหลวง", "menu.item2.desc": "ผัดไทยสูตรต้นตำรับ กุ้งสดไข่หวาน", "menu.item3.name": "แกงเขียวหวานไก่", "menu.item3.desc": "แกงเขียวหวานไก่ใบโหระพา หอมเครื่องแกง", "menu.item4.name": "มัสมั่นเนื้อ", "menu.item4.desc": "มัสมั่นเนื้อสูตรโบราณ หวานมันหอมเครื่องเทศ",
+    "menu.item1.name": "ต้มยำกุ้ง", "menu.item1.desc": "ต้มยำกุ้งแม่น้ำรสชาติจัดจ้าน เปรี้ยวเผ็ดร้อน", "menu.item1.price": "220 บาท", "menu.item2.name": "ผัดไทยครัวหลวง", "menu.item2.desc": "ผัดไทยสูตรต้นตำรับ กุ้งสดไข่หวาน", "menu.item2.price": "180 บาท", "menu.item3.name": "แกงเขียวหวานไก่", "menu.item3.desc": "แกงเขียวหวานไก่ใบโหระพา หอมเครื่องแกง", "menu.item3.price": "190 บาท", "menu.item4.name": "มัสมั่นเนื้อ", "menu.item4.desc": "มัสมั่นเนื้อสูตรโบราณ หวานมันหอมเครื่องเทศ", "menu.item4.price": "250 บาท",
     "gallery.title": "แกลเลอรี่", "gallery.desc": "บรรยากาศและเมนูอาหารจากครัวหลวง",
     "contact.title": "ติดต่อเรา", "contact.info": "ข้อมูลติดต่อ", "contact.social": "ติดตามเรา", "contact.form.title": "ส่งข้อความถึงเรา", "contact.form.name": "ชื่อ-นามสกุล", "contact.form.email": "อีเมล", "contact.form.phone": "เบอร์โทรศัพท์", "contact.form.subject": "หัวข้อ", "contact.form.message": "ข้อความ", "contact.form.submit": "ส่งข้อความ",
-    "contact.address": "123 ถนนอาหารไทย แขวงบางซื่อ เขตบางซื่อ กรุงเทพฯ 10800", "contact.phone": "02-345-6789", "contact.email": "info@krualuang.com", "contact.hours": "เปิดบริการทุกวัน 10:00 - 22:00 น."
+    "contact.address": "บ้านทงกางห่ม 10, เลขที่ 395, เขตศรีสัตตนาค, เวียงจันทน์, ลาว 01000",
+    "contact.phone": "+856 20 566 05450", 
+    "contact.email": "krualuanglao@gmail.com", 
+    "contact.hours": "เปิดบริการทุกวัน 10:00 - 22:00 น."
   },
   en: {
     "menu.home": "Home", "menu.about": "About Us", "menu.franchise": "Franchise", "menu.menu": "Menu", "menu.gallery": "Gallery", "menu.contact": "Contact",
     "hero.eyebrow": "Krualuang — Authentic Royal Thai Taste", "hero.title": "Royal Thai Taste", "hero.desc": "Experience exquisite Thai cuisine and franchise opportunities across Laos and Thailand.", "hero.cta1": "View Franchise", "hero.cta2": "Book a Visit",
     "about.title": "About Krualuang", "about.text1": "Krualuang is an authentic Thai restaurant brand offering unique traditional Thai flavors, meticulously prepared with high-quality ingredients.", "about.text2": "We prioritize the dining experience by blending warm, friendly service with the refinement of authentic Thai cuisine in a Fine Dining style.", "about.text3": "Krualuang currently has branches in Thailand and is expanding franchise opportunities into Laos to share authentic Thai flavors globally.",
     "franchise.title": "Franchise Packages", "franchise.desc": "Join Krualuang with franchise packages designed for all levels of entrepreneurs.",
-    "franchise.package1.name": "Starter", "franchise.package1.item1": "3-Year Brand License", "franchise.package1.item2": "Complete Operations Manual", "franchise.package1.item3": "2 Weeks Team Training", "franchise.package1.item4": "3 Months Marketing Support",
-    "franchise.package2.name": "Standard", "franchise.package2.item1": "5-Year Brand License", "franchise.package2.item2": "Store Design & Construction Oversight", "franchise.package2.item3": "1 Month Team Training", "franchise.package2.item4": "6 Months Marketing Support", "franchise.package2.item5": "POS System Integration",
-    "franchise.package3.name": "Premium", "franchise.package3.item1": "7-Year Brand License", "franchise.package3.item2": "Premium Store Design & Oversight", "franchise.package3.item3": "2 Months Team Training", "franchise.package3.item4": "1-Year Marketing Support", "franchise.package3.item5": "Advanced POS System", "franchise.package3.item6": "1-Year Business Consultant",
+    "franchise.package1.name": "Starter", "franchise.package1.price": "1.2 Million THB", "franchise.package1.item1": "3-Year Brand License", "franchise.package1.item2": "Complete Operations Manual", "franchise.package1.item3": "2 Weeks Team Training", "franchise.package1.item4": "3 Months Marketing Support",
+    "franchise.package2.name": "Standard", "franchise.package2.price": "2.5 Million THB", "franchise.package2.item1": "5-Year Brand License", "franchise.package2.item2": "Store Design & Construction Oversight", "franchise.package2.item3": "1 Month Team Training", "franchise.package2.item4": "6 Months Marketing Support", "franchise.package2.item5": "POS System Integration",
+    "franchise.package3.name": "Premium", "franchise.package3.price": "4 Million THB", "franchise.package3.item1": "7-Year Brand License", "franchise.package3.item2": "Premium Store Design & Oversight", "franchise.package3.item3": "2 Months Team Training", "franchise.package3.item4": "1-Year Marketing Support", "franchise.package3.item5": "Advanced POS System", "franchise.package3.item6": "1-Year Business Consultant",
     "menu.title": "Our Menu", "menu.desc": "Experience authentic Thai tastes carefully selected from the Krualuang kitchen.",
-    "menu.item1.name": "Tom Yum Goong", "menu.item1.desc": "Zesty and intensely sour-spicy river prawn soup.", "menu.item2.name": "Krualuang Pad Thai", "menu.item2.desc": "Authentic Pad Thai with fresh shrimp and sweet egg.", "menu.item3.name": "Green Curry with Chicken", "menu.item3.desc": "Aromatic green curry with holy basil.", "menu.item4.name": "Massaman Beef", "menu.item4.desc": "Traditional Massaman curry with rich, fragrant spices.",
+    "menu.item1.name": "Tom Yum Goong", "menu.item1.desc": "Zesty and intensely sour-spicy river prawn soup.", "menu.item1.price": "220 THB", "menu.item2.name": "Krualuang Pad Thai", "menu.item2.desc": "Authentic Pad Thai with fresh shrimp and sweet egg.", "menu.item2.price": "180 THB", "menu.item3.name": "Green Curry with Chicken", "menu.item3.desc": "Aromatic green curry with holy basil.", "menu.item3.price": "190 THB", "menu.item4.name": "Massaman Beef", "menu.item4.desc": "Traditional Massaman curry with rich, fragrant spices.", "menu.item4.price": "250 THB",
     "gallery.title": "Gallery", "gallery.desc": "Ambiance and signature dishes from Krualuang.",
     "contact.title": "Contact Us", "contact.info": "Contact Information", "contact.social": "Follow Us", "contact.form.title": "Send Us a Message", "contact.form.name": "Name", "contact.form.email": "Email", "contact.form.phone": "Phone", "contact.form.subject": "Subject", "contact.form.message": "Message", "contact.form.submit": "Send Message",
-    "contact.address": "123 Food St., Bang Sue Sub-district, Bang Sue District, Bangkok 10800", "contact.phone": "02-345-6789", "contact.email": "info@krualuang.com", "contact.hours": "Open Daily 10:00 - 22:00"
+    "contact.address": "Ban Thongkang Hom 10, No 395, Sisatanak District, Vientiane, Laos 01000", 
+    "contact.phone": "+856 20 566 05450", 
+    "contact.email": "krualuanglao@gmail.com", 
+    "contact.hours": "Open Daily 10:00 AM - 10:00 PM"
   },
   la: {
-    "menu.home": "ໜ້າທຳອິດ", "menu.about": "ກ່ຽວກັບພວກເຮົາ", "menu.franchise": "ແຟຣນໄຊส์", "menu.menu": "ເມນູ", "menu.gallery": "ຄັງຮູບພາບ", "menu.contact": "ຕິດຕໍ່",
-    "hero.eyebrow": "ຄົວຫຼວງ — ລົດຊາດໄທແທ້", "hero.title": "Royal Thai Taste", "hero.desc": "ປະສົບການອາຫານໄທທີ່ດີທີ່ສຸດ ພ້ອມໂອກາດແຟຣນໄຊສ໌ທົ່ວລາວ ແລະ ໄທ.", "hero.cta1": "ເບິ່ງແຟຣນໄຊส์", "hero.cta2": "ນັດໝາຍເຂົ້າຊົມ",
+    "menu.home": "ໜ້າທຳອິດ", "menu.about": "ກ່ຽວກັບພວກເຮົາ", "menu.franchise": "ແຟຣນໄຊສ໌", "menu.menu": "ເມນູ", "menu.gallery": "ຄັງຮູບພາບ", "menu.contact": "ຕິດຕໍ່",
+    "hero.eyebrow": "ຄົວຫຼວງ — ລົດຊາດໄທແທ້", "hero.title": "Royal Thai Taste", "hero.desc": "ປະສົບການອາຫານໄທທີ່ດີທີ່ສຸດ ພ້ອມໂອກາດແຟຣນໄຊສ໌ທົ່ວລາວ ແລະ ໄທ.", "hero.cta1": "ເບິ່ງແຟຣນໄຊສ໌", "hero.cta2": "ນັດໝາຍເຂົ້າຊົມ",
     "about.title": "ກ່ຽວກັບຄົວຫຼວງ", "about.text1": "ຄົວຫຼວງເປັນຮ້ານອາຫານໄທແທ້ທີ່ນຳສະເໜີລົດຊາດອັນເປັນເອກະລັກຂອງອາຫານໄທແບບດັ້ງເດີມ ດ້ວຍຄວາມເອົາໃຈໃສ່ໃນການຄັດເລືອກວັດຖຸດິບຄຸນນະພາບ ແລະ ວິທີການປຸງທີ່ຮັກສາລົດຊາດຕົ້ນຕຳຮັບ.", "about.text2": "ພວກເຮົາໃຫ້ຄວາມສຳຄັນກັບປະສົບການການຮັບປະທານອາຫານຂອງລູກຄ້າ ໂດຍປະສົມປະສານບັນຍາກາດການບໍລິການທີ່ອົບອຸ່ນເປັນກັນເອງ ກັບຄວາມປະນີດຂອງອາຫານໄທແທ້ໃນແບບ Fine Dining.", "about.text3": "ປັດຈຸບັນ ຄົວຫຼວງມີສາຂາໃນປະເທດໄທ ແລະ ກໍາລັງຂະຫຍາຍໂອກາດແຟຣນໄຊສ໌ໄປຍັງປະເທດລາວ ເພື່ອເຜີຍແຜ່ລົດຊາດອາຫານໄທແທ້ສູ່ສາຍຕາຊາວໂລກ.",
-    "franchise.title": "ຊຸດແພັກເກດແຟຣນໄຊส์", "franchise.desc": "ຮ່ວມເປັນສ່ວນໜຶ່ງຂອງຄົວຫຼວງກັບຊຸດແພັກເກດແຟຣນໄຊส์ທີ່ອອກແບບມາສຳລັບຜູ້ປະກອບການທຸກລະດັບ.",
-    "franchise.package1.name": "ເລີ່ມຕົ້ນ", "franchise.package1.item1": "ສິດທິໃນການໃຊ້ຊື່ 3 ປີ", "franchise.package1.item2": "ຄູ່ມືການດໍາເນີນງານຄົບຖ້ວນ", "franchise.package1.item3": "ການຝຶກອົບຮົມທີມງານ 2 ອາທິດ", "franchise.package1.item4": "ການສະໜັບສະໜູນດ້ານການຕະຫຼາດ 3 ເດືອນ",
-    "franchise.package2.name": "ມາດຕະຖານ", "franchise.package2.item1": "ສິດທິໃນການໃຊ້ຊື່ 5 ປີ", "franchise.package2.item2": "ການອອກແບບຮ້ານ ແລະ ຄວບຄຸມການກໍ່ສ້າງ", "franchise.package2.item3": "ການຝຶກອົບຮົມທີມງານ 1 ເດືອນ", "franchise.package2.item4": "ການສະໜັບສະໜູນດ້ານການຕະຫຼາດ 6 ເດືອນ", "franchise.package2.item5": "ລະບົບຊອບແວร์ຈັດການຮ້ານ",
-    "franchise.package3.name": "ພຣີມຽມ", "franchise.package3.item1": "ສິດທິໃນການໃຊ້ຊື່ 7 ປີ", "franchise.package3.item2": "ການອອກແບບຮ້ານພຣີມຽມ ແລະ ຄວບຄຸມການກໍ່ສ້າງ", "franchise.package3.item3": "ການຝຶກອົບຮົມທີມງານ 2 ເດືອນ", "franchise.package3.item4": "ການສະໜັບສະໜູນດ້ານການຕະຫຼາດ 1 ປີ", "franchise.package3.item5": "ລະບົບຊອບແວร์ຈັດການຮ້ານຂັ້ນສູງ", "franchise.package3.item6": "ທີ່ປຶກສາດ້ານການດໍາເນີນທຸລະກິດ 1 ປີ",
+    "franchise.title": "ຊຸດແພັກເກດແຟຣນໄຊສ໌", "franchise.desc": "ຮ່ວມເປັນສ່ວນໜຶ່ງຂອງຄົວຫຼວງກັບຊຸດແພັກເກດແຟຣນໄຊສ໌ທີ່ອອກແບບມາສຳລັບຜູ້ປະກອບການທຸກລະດັບ.",
+    "franchise.package1.name": "ເລີ່ມຕົ້ນ", "franchise.package1.price": "1.2 ລ້ານກີບ", "franchise.package1.item1": "ສິດທິໃນການໃຊ້ຊື່ 3 ປີ", "franchise.package1.item2": "ຄູ່ມືການດໍາເນີນງານຄົບຖ້ວນ", "franchise.package1.item3": "ການຝຶກອົບຮົມທີມງານ 2 ອາທິດ", "franchise.package1.item4": "ການສະໜັບສະໜູນດ້ານການຕະຫຼາດ 3 ເດືອນ",
+    "franchise.package2.name": "ມາດຕະຖານ", "franchise.package2.price": "2.5 ລ້ານກີບ", "franchise.package2.item1": "ສິດທິໃນການໃຊ້ຊື່ 5 ປີ", "franchise.package2.item2": "ການອອກແບບຮ້ານ ແລະ ຄວບຄຸມການກໍ່ສ້າງ", "franchise.package2.item3": "ການຝຶກອົບຮົມທີມງານ 1 ເດືອນ", "franchise.package2.item4": "ການສະໜັບສະໜູນດ້ານການຕະຫຼາດ 6 ເດືອນ", "franchise.package2.item5": "ລະບົບຊອບແວຈັດການຮ້ານ",
+    "franchise.package3.name": "ພຣີມຽມ", "franchise.package3.price": "4 ລ້ານກີບ", "franchise.package3.item1": "ສິດທິໃນການໃຊ້ຊື່ 7 ປີ", "franchise.package3.item2": "ການອອກແບບຮ້ານພຣີມຽມ ແລະ ຄວບຄຸມການກໍ່ສ້າງ", "franchise.package3.item3": "ການຝຶກອົບຮົມທີມງານ 2 ເດືອນ", "franchise.package3.item4": "ການສະໜັບສະໜູນດ້ານການຕະຫຼາດ 1 ປີ", "franchise.package3.item5": "ລະບົບຊອບແວຈັດການຮ້ານຂັ້ນສູງ", "franchise.package3.item6": "ທີ່ປຶກສາດ້ານການດໍາເນີນທຸລະກິດ 1 ປີ",
     "menu.title": "ເມນູຂອງພວກເຮົາ", "menu.desc": "ສຳຜັດລົດຊາດອາຫານໄທແທ້ທີ່ຄັດສັນມາຢ່າງດີຈາກຄົວຫຼວງ",
-    "menu.item1.name": "ຕ້ມຍຳກຸ້ງ", "menu.item1.desc": "ຕ້ມຍຳກຸ້ງແມ່ນ້ຳລົດຊາດຈັດຈ້ານ ຫວານສົ້ມເຜັດຮ້ອນ", "menu.item2.name": "ຜັດໄທຄົວຫຼວງ", "menu.item2.desc": "ຜັດໄທສູດຕົ້ນຕຳຮັບ ກຸ້ງສົດໃສ່ໄຂ່ຫວານ", "menu.item3.name": "ແກງຂຽວຫວານໃສ່ໄກ່", "menu.item3.desc": "ແກງຂຽວຫວານໃສ່ໃບໂຫລະພາ ຫອມເຄື່ອງແກງ", "menu.item4.name": "ມັດສະມັ້ນຊີ້ນ", "menu.item4.desc": "ມັດສະມັ້ນຊີ້ນສູດໂບຮານ ຫວານມັນຫອມເຄື່ອງເທດ",
+    "menu.item1.name": "ຕ້ມຍຳກຸ້ງ", "menu.item1.desc": "ຕ້ມຍຳກຸ້ງແມ່ນ້ຳລົດຊາດຈັດຈ້ານ ຫວານສົ້ມເຜັດຮ້ອນ", "menu.item1.price": "220,000 ກີບ", "menu.item2.name": "ຜັດໄທຄົວຫຼວງ", "menu.item2.desc": "ຜັດໄທສູດຕົ້ນຕຳຮັບ ກຸ້ງສົດໃສ່ໄຂ່ຫວານ", "menu.item2.price": "180,000 ກີບ", "menu.item3.name": "ແກງຂຽວຫວານໃສ່ໄກ່", "menu.item3.desc": "ແກງຂຽວຫວານໃສ່ໃບໂຫລະພາ ຫອມເຄື່ອງແກງ", "menu.item3.price": "190,000 ກີບ", "menu.item4.name": "ມັດສະມັ້ນຊີ້ນ", "menu.item4.desc": "ມັດສະມັ້ນຊີ້ນສູດໂບຮານ ຫວານມັນຫອມເຄື່ອງເທດ", "menu.item4.price": "250,000 ກີບ",
     "gallery.title": "ຄັງຮູບພາບ", "gallery.desc": "ບັນຍາກາດ ແລະ ເມນູອາຫານຈາກຄົວຫຼວງ",
     "contact.title": "ຕິດຕໍ່ພວກເຮົາ", "contact.info": "ຂໍ້ມູນຕິດຕໍ່", "contact.social": "ຕິດຕາມພວກເຮົາ", "contact.form.title": "ສົ່ງຂໍ້ຄວາມຫາພວກເຮົາ", "contact.form.name": "ຊື່-ນາມສະກຸນ", "contact.form.email": "ອີເມວ", "contact.form.phone": "ເບີໂທລະສັບ", "contact.form.subject": "ຫົວຂໍ້", "contact.form.message": "ຂໍ້ຄວາມ", "contact.form.submit": "ສົ່ງຂໍ້ຄວາມ",
-    "contact.address": "123 ຖະໜົນອາຫານໄທ, ບາງຊື່, ບາງຊື່, ບາງກອກ 10800", "contact.phone": "02-345-6789", "contact.email": "info@krualuang.com", "contact.hours": "ເປີດບໍລິການທຸກມື້ 10:00 - 22:00"
+    "contact.address": "ບ້ານທົ່ງກາງຫ້ອມ 10, ເລກທີ 395, ເມືອງສີສັດຕະນາກ, ນະຄອນຫຼວງວຽງຈັນ, ສປປ ລາວ 01000", 
+    "contact.phone": "+856 20 566 05450", 
+    "contact.email": "krualuanglao@gmail.com", 
+    "contact.hours": "ເປີດບໍລິການທຸກມື້ 10:00 - 22:00"
   },
   zh: {
     "menu.home": "首页", "menu.about": "关于我们", "menu.franchise": "特许经营", "menu.menu": "菜单", "menu.gallery": "图库", "menu.contact": "联系我们",
     "hero.eyebrow": "Krualuang — 正宗泰皇御膳风味", "hero.title": "Royal Thai Taste", "hero.desc": "体验精致泰国美食，把握遍布老挝和泰国的特许经营机会。", "hero.cta1": "查看特许经营", "hero.cta2": "预约参观",
     "about.title": "关于Krualuang", "about.text1": "Krualuang是一个正宗泰国餐厅品牌，提供独特传统的泰国风味，采用高品质原料精心烹制。", "about.text2": "我们注重客户的用餐体验，将热情友好的服务与精致的泰式美食相结合，打造出高档用餐体验。", "about.text3": "Krualuang目前在泰国设有分店，并正将特许经营机会扩展到老挝，向世界展示正宗泰国美食。",
     "franchise.title": "特许经营方案", "franchise.desc": "加入Krualuang，利用专为各类企业家设计的特许经营方案。",
-    "franchise.package1.name": "入门级", "franchise.package1.item1": "3年品牌使用权", "franchise.package1.item2": "完整运营手册", "franchise.package1.item3": "2周团队培训", "franchise.package1.item4": "3个月市场支持",
-    "franchise.package2.name": "标准级", "franchise.package2.item1": "5年品牌使用权", "franchise.package2.item2": "店铺设计与施工监督", "franchise.package2.item3": "1个月团队培训", "franchise.package2.item4": "6个月市场支持", "franchise.package2.item5": "销售点(POS)系统",
-    "franchise.package3.name": "豪华级", "franchise.package3.item1": "7年品牌使用权", "franchise.package3.item2": "豪华店铺设计与监督", "franchise.package3.item3": "2个月团队培训", "franchise.package3.item4": "1年市场支持", "franchise.package3.item5": "高级销售点(POS)系统", "franchise.package3.item6": "1年业务顾问",
-    "menu.title": "我们的菜单", "menu.desc": "体验Krualuang厨房精心挑选的正宗泰国风味",
-    "menu.item1.name": "冬阴功汤", "menu.item1.desc": "酸辣浓郁的河虾冬阴功汤", "menu.item2.name": "Krualuang泰式炒河粉", "menu.item2.desc": "正宗泰式炒河粉配新鲜大虾甜蛋", "menu.item3.name": "泰式绿咖喱鸡", "menu.item3.desc": "香草味浓郁的泰式绿咖喱鸡", "menu.item4.name": "泰式马萨曼咖喱牛腩", "menu.item4.desc": "传统马萨曼咖喱，香料浓郁甜美",
+    "franchise.package1.name": "入门级", "franchise.package1.price": "120 万泰铢", "franchise.package1.item1": "3年品牌使用权", "franchise.package1.item2": "完整运营手册", "franchise.package1.item3": "2周团队培训", "franchise.package1.item4": "3个月市场支持",
+    "franchise.package2.name": "标准级", "franchise.package2.price": "250 万泰铢", "franchise.package2.item1": "5年品牌使用权", "franchise.package2.item2": "店铺设计与施工监督", "franchise.package2.item3": "1个月团队培训", "franchise.package2.item4": "6个月市场支持", "franchise.package2.item5": "销售点(POS)系统",
+    "franchise.package3.name": "豪华级", "franchise.package3.price": "400 万泰铢", "franchise.package3.item1": "7年品牌使用权", "franchise.package3.item2": "豪华店铺设计与监督", "franchise.package3.item3": "2个月团队培训", "franchise.package3.item4": "1年市场支持", "franchise.package3.item5": "高级销售点(POS)系统", "franchise.package3.item6": "1年业务顾问",
+    "menu.title": "我们的菜单", "menu.desc": "Experience authentic Thai tastes carefully selected from the Krualuang kitchen.",
+    "menu.item1.name": "冬阴功汤", "menu.item1.desc": "酸辣浓郁的河虾冬阴功汤", "menu.item1.price": "220 泰铢", "menu.item2.name": "Krualuang泰式炒河粉", "menu.item2.desc": "正宗泰式炒河粉配新鲜大虾甜蛋", "menu.item2.price": "180 泰铢", "menu.item3.name": "泰式绿咖喱鸡", "menu.item3.desc": "香草味浓郁的泰式绿咖喱鸡", "menu.item3.price": "190 泰铢", "menu.item4.name": "泰式马萨曼咖喱牛腩", "menu.item4.desc": "传统马萨曼咖喱，香料浓郁甜美", "menu.item4.price": "250 泰铢",
     "gallery.title": "图库", "gallery.desc": "Krualuang的环境和招牌菜肴",
     "contact.title": "联系我们", "contact.info": "联系信息", "contact.social": "关注我们", "contact.form.title": "给我们留言", "contact.form.name": "姓名", "contact.form.email": "电子邮件", "contact.form.phone": "电话", "contact.form.subject": "主题", "contact.form.message": "信息", "contact.form.submit": "发送信息",
-    "contact.address": "曼谷 10800, Bang Sue区, Bang Sue分区, 123 Food St.", "contact.phone": "02-345-6789", "contact.email": "info@krualuang.com", "contact.hours": "每日营业 10:00 - 22:00"
+    "contact.address": "Ban Thongkang Hom 10, No 395, Sisatanak District, Vientiane, Laos 01000", 
+    "contact.phone": "+856 20 566 05450", 
+    "contact.email": "krualuanglao@gmail.com", 
+    "contact.hours": "每日营业 10:00 - 22:00"
   }
 };
-function setLanguage(lang) {
-    const elements = document.querySelectorAll('[data-i18n]');
-    elements.forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            if (el.tagName === 'IMG') {
-                // สำหรับธงชาติ อาจต้องมีการปรับ src หรือ alt ตามภาษา หากจำเป็น
-                // ในที่นี้เราจะข้ามการเปลี่ยน src ธงชาติ เพราะเป็น URL คงที่
-            } else {
-                el.textContent = translations[lang][key];
-            }
-        }
-    });
-    localStorage.setItem('language', lang);
+
+let currentLang = 'th'; // ตั้งค่าภาษาเริ่มต้นเป็นไทย
+
+// ฟังก์ชันอัปเดตข้อความทั้งหมดตามภาษาที่เลือก
+function updateContent(lang) {
+  const elements = document.querySelectorAll('[data-i18n]');
+  const data = translations[lang];
+  
+  elements.forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (data[key]) {
+      // จัดการกับข้อความที่มีการขึ้นบรรทัดใหม่ (\n) สำหรับที่อยู่
+      if (element.tagName === 'SPAN' && (key === 'contact.address' || key === 'contact.hours' || key === 'contact.phone' || key === 'contact.email')) {
+        // ใช้ innerHTML สำหรับการจัดการ <br> ในที่อยู่
+        element.innerHTML = data[key].replace(/\n/g, '<br>');
+      } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+        // สำหรับ input/textarea ใช้ placeholder (ถ้าต้องการ) หรือไม่ต้องทำอะไร
+      } else {
+        // ใช้ textContent สำหรับองค์ประกอบอื่นๆ เพื่อหลีกเลี่ยง XSS
+        element.textContent = data[key];
+      }
+    }
+  });
+  
+  // อัปเดตภาพธงที่ถูกเลือก
+  document.querySelectorAll('.lang-flags img').forEach(flag => {
+    const isSelected = flag.getAttribute('data-lang') === lang;
+    flag.style.border = isSelected ? `2px solid var(--secondary-color)` : '1px solid #ccc';
+    flag.style.transform = isSelected ? 'scale(1.15)' : 'scale(1)';
+    if (isSelected) {
+      flag.style.zIndex = '5'; // ให้ธงที่เลือกอยู่ด้านบนเล็กน้อย
+    } else {
+      flag.style.zIndex = '1';
+    }
+  });
+  
+  currentLang = lang;
+  localStorage.setItem('preferredLang', lang); // บันทึกภาษาที่เลือก
 }
 
+// 1. จัดการการคลิกเปลี่ยนภาษา
+document.querySelectorAll('.lang-flags img').forEach(flag => {
+  flag.addEventListener('click', function() {
+    const lang = this.getAttribute('data-lang');
+    updateContent(lang);
+  });
+});
+
+// 2. จัดการ Scroll เพื่อแสดงปุ่ม Back to Top
+const backToTopButton = document.getElementById('backToTop');
+
+window.onscroll = function() {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    backToTopButton.classList.add('visible');
+  } else {
+    backToTopButton.classList.remove('visible');
+  }
+}
+
+// 3. จัดการการส่งฟอร์ม (ตัวอย่างง่ายๆ)
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('ขอบคุณที่ติดต่อเรา! (จำลองการส่งฟอร์ม)');
+  this.reset(); // ล้างฟอร์ม
+});
+
+
+// 4. โหลดภาษาที่ผู้ใช้เคยเลือกไว้ หรือตั้งเป็นค่าเริ่มต้น
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. โหลดภาษาเริ่มต้น
-    const savedLang = localStorage.getItem('language') || 'th';
-    setLanguage(savedLang);
-    
-    // 2. จัดการการเปลี่ยนภาษาจากธง
-    document.querySelectorAll('.lang-flags img').forEach(img => {
-        img.addEventListener('click', function() {
-            const lang = this.getAttribute('data-lang');
-            setLanguage(lang);
-            // โหลดซ้ำเพื่ออัปเดตข้อความ
-            setLanguage(lang); 
-        });
-    });
+  // ตั้งค่าภาษาเริ่มต้น (ถ้าไม่มีใน localStorage) หรือใช้ภาษาที่บันทึกไว้
+  const savedLang = localStorage.getItem('preferredLang') || 'th';
+  updateContent(savedLang);
 
-    // 3. จัดการ Back to Top Button
-    const backToTop = document.getElementById('backToTop');
-    window.onscroll = function() {
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            backToTop.classList.add("visible");
-        } else {
-            backToTop.classList.remove("visible");
-        }
-    };
-
-    backToTop.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // 4. จัดการฟอร์มติดต่อ (Placeholder - ต้องมีโค้ดสำหรับส่งข้อมูลจริง)
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('การส่งข้อความจำลองสำเร็จ! (ต้องเพิ่มโค้ดส่งข้อมูลจริง)');
-        this.reset();
-    });
+  // จัดการให้ปุ่ม Back to Top กดแล้วเลื่อนไปด้านบนอย่างนุ่มนวล
+  backToTopButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
 });
 </script>
 </body>
