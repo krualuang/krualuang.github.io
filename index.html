@@ -107,18 +107,98 @@
       border-color: var(--primary-color); 
     }
 
-    .hero {
-      position: relative; 
-      width: 100vw; 
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero/hero_bg.jpg') center/cover no-repeat; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      text-align: center; 
-      color: #fff;
-      margin-top: 70px; /* ปรับให้มีระยะห่างจาก Header ที่ถูก fix ไว้ */
+    /* =============================================== */
+/* 📌 CSS ส่วน Hero Slider ใหม่                 */
+/* =============================================== */
+
+.hero {
+    /* ลบโค้ด hero เดิมที่ใช้ background: url(...) ทิ้งไป */
+    /* หรือเปลี่ยนชื่อเป็น hero-slider-container */
+}
+
+.hero-slider-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* สำคัญ: ซ่อนสไลด์ที่ไม่แสดง */
+    margin-top: 70px; /* ปรับให้มีระยะห่างจาก Header ที่ถูก fix ไว้ */
+}
+
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* คุณสมบัติภาพพื้นหลัง */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Overlay และ Transition */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out; /* ความเร็วในการเปลี่ยนภาพ */
+    
+    /* Overlay สีดำ */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    /* ต้องปรับ style="background-image: url(...)" ใน HTML ด้วย */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.slide.active {
+    opacity: 1; /* สไลด์ที่กำลังแสดง */
+}
+
+/* นำ hero-content/h1/h4/p/buttons เดิม มาใช้ แต่ไม่ต้องมี background overlay ซ้ำซ้อน */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 90%;
+    /* ... (CSS ส่วน hero-content/h1/h4/p/buttons ที่มีอยู่แล้ว) ... */
+}
+
+/* จุดนำทาง (Dots Navigation) */
+.dots-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5; /* ให้อยู่ด้านบนสุด */
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+@media(max-width: 768px){
+    .hero-slider-container {
+      margin-top: 120px;
+      height: 80vh;
     }
+    /* ... (โค้ด responsive อื่น ๆ ที่คุณมีอยู่) ... */
+}
     
     .hero-content { 
       position: relative; 
@@ -517,16 +597,47 @@
   </nav>
 </header>
 
-<section id="home" class="hero">
-  <div class="hero-content">
-    <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
-    <h1 data-i18n="hero.title">Royal Thai Taste</h1>
-    <p data-i18n="hero.desc">ประสบการณ์อาหารไทยชั้นเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
-    <div class="hero-buttons">
-      <a href="#franchise" data-i18n="hero.cta1">ดูแฟรนไชส์</a>
-      <a href="#contact" data-i18n="hero.cta2">นัดเยี่ยมชม</a>
+<section id="home" class="hero-slider-container">
+    <div class="slides">
+        <div class="slide active" style="background-image: url('images/hero/hero_bg.jpg');">
+            <div class="hero-content">
+                <h4 data-i18n="hero.eyebrow">ครัวหลวง — รสชาติไทยต้นตำรับ</h4>
+                <h1 data-i18n="hero.title">Royal Thai Taste</h1>
+                <p data-i18n="hero.desc">ประสบการณ์อาหารไทยชั้นเลิศ พร้อมโอกาสแฟรนไชส์ทั่วลาวและไทย</p>
+                <div class="hero-buttons">
+                    <a href="#franchise" data-i18n="hero.cta1">ดูแฟรนไชส์</a>
+                    <a href="#contact" data-i18n="hero.cta2">นัดเยี่ยมชม</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" style="background-image: url('images/hero/hero_bg_2.jpg');">
+            <div class="hero-content">
+                <h4>ร่วมเป็นเจ้าของกิจการ</h4>
+                <h1>Royal Thai Franchise</h1>
+                <p>เริ่มต้นธุรกิจร้านอาหารไทยต้นตำรับได้ง่ายๆ ด้วยแพ็กเกจที่ยืดหยุ่น</p>
+                <div class="hero-buttons">
+                    <a href="#franchise" data-i18n="hero.cta1">ดูแพ็กเกจ</a>
+                    <a href="#contact" data-i18n="hero.cta2">ติดต่อฝ่ายขาย</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide" style="background-image: url('images/hero/hero_bg_3.jpg');">
+            <div class="hero-content">
+                <h4>เมนูแนะนำจากเชฟ</h4>
+                <h1>World-Class Thai Dishes</h1>
+                <p>คัดสรรเมนูยอดนิยมระดับโลก พร้อมรสชาติที่ถูกปากคนท้องถิ่น</p>
+                <div class="hero-buttons">
+                    <a href="#menu" data-i18n="hero.cta1">ดูเมนูทั้งหมด</a>
+                    <a href="#contact" data-i18n="hero.cta2">จองโต๊ะ</a>
+                </div>
+            </div>
+        </div>
+
     </div>
-  </div>
+    <div class="dots-container">
+        </div>
 </section>
 
 <section id="about">
@@ -927,6 +1038,62 @@ document.addEventListener('DOMContentLoaded', () => {
         this.reset();
     });
 });
+  <script>
+// ... (โค้ดสำหรับ Translations และ Back-to-Top ที่มีอยู่เดิม) ...
+
+// ===========================================
+// *** โค้ด Image Slider (นำโค้ดที่ให้มาใส่ตรงนี้) ***
+// ===========================================
+
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.querySelector('.dots-container');
+let slideInterval;
+
+// ฟังก์ชันสร้างจุดควบคุม
+function createDots() {
+    // ... (โค้ด createDots) ...
+}
+
+// ฟังก์ชันแสดงสไลด์ที่ต้องการ
+function showSlides(n) {
+    // ... (โค้ด showSlides) ...
+}
+
+// ฟังก์ชันสำหรับควบคุมการเปลี่ยนสไลด์เมื่อคลิกจุด
+function currentSlide(n) {
+    // ... (โค้ด currentSlide) ...
+}
+
+// ฟังก์ชันเลื่อนสไลด์อัตโนมัติ
+function autoSlide() {
+    // ... (โค้ด autoSlide) ...
+}
+
+// ฟังก์ชันเริ่มต้นการเล่นอัตโนมัติ
+function startInterval() {
+    // ... (โค้ด startInterval) ...
+}
+
+// ฟังก์ชันรีเซ็ต Interval เมื่อผู้ใช้คลิกเอง
+function resetInterval() {
+    // ... (โค้ด resetInterval) ...
+}
+
+// เรียกใช้เมื่อโหลดหน้าเว็บ
+document.addEventListener('DOMContentLoaded', () => {
+    // (โค้ดภาษาเดิมอยู่ที่นี่)
+
+    // ** โค้ดสำหรับ Slider **
+    if (slides.length > 0) {
+        createDots();
+        showSlides(slideIndex); // แสดงสไลด์แรก
+        startInterval(); // เริ่มเล่นสไลด์อัตโนมัติ
+    }
+});
+
+</script>
+</body>
 </script>
 </body>
 </html>
