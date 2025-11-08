@@ -104,11 +104,11 @@ nav a:hover {
 /* =============================================== */
 
 .hero {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  /* *** โปรดตรวจสอบ path รูปภาพ hero_bg.jpg *** */
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero/hero_bg.jpg') center/cover no-repeat;
+  /* ... โค้ดอื่นๆ ... */
+  /* *** แก้ไข: ใช้ ../ เพื่อออกจากโฟลเดอร์ css/ ก่อน แล้วจึงเข้า images/ *** */
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero/hero_bg.jpg') center/cover no-repeat;
+  /* ... โค้ดอื่นๆ ... */
+}
   display: flex;
   justify-content: center;
   align-items: center;
