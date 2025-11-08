@@ -178,6 +178,39 @@
       cursor: pointer;
       display: none;
     }
+        /* ---- CSS เดิมทั้งหมดของคุณอยู่ข้างบน ---- */
+
+
+    /* ✅ เพิ่มส่วนนี้ไว้ท้ายสุดของ <style> */
+    /* ปรับให้รูปภาพทั้งหมดแสดงผลแบบ responsive */
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    /* ปรับ hero ให้ไม่เพี้ยน */
+    .hero {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 80vh; /* สูงประมาณ 80% ของจอ */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ป้องกันภาพเมนูเพี้ยนในอนาคต */
+    .menu img {
+      width: 100%;
+      aspect-ratio: 4/3; /* หรือ 1/1 ถ้าอยากได้สี่เหลี่ยมจัตุรัส */
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+  </style>
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
