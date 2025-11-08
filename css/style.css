@@ -102,7 +102,36 @@ nav a:hover {
 /* =============================================== */
 /* 📌 CSS ส่วน Hero Section */
 /* =============================================== */
+/* =============================================== */
+/* 📌 CSS ส่วน Layout ทั่วไป และ Headings (โค้ดที่ขาดหายไป) */
+/* =============================================== */
 
+section {
+  padding: 5rem 1.5rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.section-dark {
+  background-color: var(--light-bg);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: var(--secondary-color);
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--primary-color);
+  margin: 10px auto;
+}
 /* =============================================== */
 /* 📌 CSS ส่วน Hero Section (แก้ไขให้สมบูรณ์) */
 /* =============================================== */
