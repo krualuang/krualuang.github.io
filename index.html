@@ -726,7 +726,42 @@ Ban Thôngkang Hom 10, No 395, Sisatanak District, Vientiane, Laos 01000</span>
 <a href="#" class="back-to-top" id="backToTop">↑</a>
 
 <script>
-// ... (โค้ด JavaScript ยังคงเดิม) ...
+document.addEventListener("DOMContentLoaded", () => {
+  const flags = document.querySelectorAll(".lang-flags img");
+  
+  // ฟังก์ชันเปลี่ยนภาษา
+  const changeLanguage = (lang) => {
+    const elements = document.querySelectorAll("[data-i18n]");
+    elements.forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (translations[lang] && translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
+    });
+    localStorage.setItem("lang", lang);
+  };
+
+  // โหลดภาษาที่เคยเลือกไว้
+  const savedLang = localStorage.getItem("lang") || "th";
+  changeLanguage(savedLang);
+
+  // เมื่อคลิกธง
+  flags.forEach(flag => {
+    flag.addEventListener("click", () => {
+      const lang = flag.getAttribute("data-lang");
+      changeLanguage(lang);
+    });
+  });
+
+  // ปุ่มกลับขึ้นบน
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) backToTop.classList.add("visible");
+    else backToTop.classList.remove("visible");
+  });
+});
+</script>
+
 const translations = {
   th: {
     "menu.home": "หน้าแรก", "menu.about": "เกี่ยวกับเรา", "menu.franchise": "แฟรนไชส์", "menu.menu": "เมนู", "menu.gallery": "แกลเลอรี่", "menu.contact": "ติดต่อ",
