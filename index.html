@@ -63,10 +63,11 @@
     }
 
     .logo-text {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--secondary-color);
-    }
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
     /* ----------------------------------------------- */
     
     .nav-links {
@@ -692,7 +693,45 @@ Ban Thôngkang Hom 10, No 395, Sisatanak District, Vientiane, Laos 01000</span>
     
     <div class="contact-form">
       <h3 data-i18n="contact.form.title">ส่งข้อความถึงเรา</h3>
-      <form id="contactForm">
+      <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class="space-y-4">
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+
+  <input type="text" name="name" placeholder="ชื่อของคุณ" required>
+  <input type="email" name="email" placeholder="อีเมล" required>
+  <textarea name="message" placeholder="ข้อความ" required></textarea>
+
+  <button type="submit">ส่งข้อความ</button>
+</form>
+<div class="contact-form">
+  <h3 data-i18n="contact.form.title">ส่งข้อความถึงเรา</h3>
+  <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+    <input type="hidden" name="access_key" value="89ce9f87-29e1-4840-8b41-7c5a0e7e6263">
+    
+    <div class="form-group">
+      <label data-i18n="contact.form.name">ชื่อ-นามสกุล</label>
+      <input type="text" name="name" required>
+    </div>
+    
+    <div class="form-group">
+      <label data-i18n="contact.form.email">อีเมล</label>
+      <input type="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="contact.form.phone">เบอร์โทรศัพท์</label>
+      <input type="tel" name="phone">
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="contact.form.message">ข้อความ</label>
+      <textarea name="message" required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn" data-i18n="contact.form.submit">ส่งข้อความ</button>
+  </form>
+  69,000  class="hidden text-green-600 font-semibold mt-2"></div>
+</div>
+
         <div class="form-group">
           <label for="name" data-i18n="contact.form.name">ชื่อ-นามสกุล</label>
           <input type="text" id="name" required>
@@ -921,12 +960,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. จัดการฟอร์มติดต่อ (Placeholder - ต้องมีโค้ดสำหรับส่งข้อมูลจริง)
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('การส่งข้อความจำลองสำเร็จ! (ต้องเพิ่มโค้ดส่งข้อมูลจริง)');
-        this.reset();
-    });
+    
 });
 </script>
+  <script>
+document.getElementById('contact-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const messageDiv = document.getElementById('form-message');
+  const formData = new FormData(form);
+
+  const response = await fetch(form.action, {
+    method: form.method,
+    body: formData
+  });
+
+  if (response.ok) {
+    messageDiv.textContent = '✅ ข้อความของคุณถูกส่งเรียบร้อยแล้ว ขอบคุณครับ!';
+    messageDiv.classList.remove('hidden', 'text-red-600');
+    messageDiv.classList.add('text-green-600');
+    form.reset();
+  } else {
+    messageDiv.textContent = '❌ เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง';
+    messageDiv.classList.remove('hidden', 'text-green-600');
+    messageDiv.classList.add('text-red-600');
+  }
+});
+</script>
+
 </body>
 </html>
