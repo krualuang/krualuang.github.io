@@ -104,17 +104,23 @@ nav a:hover {
 /* =============================================== */
 
 /* ซ่อนส่วนเครื่องมือผู้ดูแลระบบจากผู้ใช้ทั่วไป */
+/* =============================================== */
+/* 📌 CSS ส่วน Admin Tool (เครื่องมือผู้ดูแลระบบ) */
+/* =============================================== */
+
+/* 1. ซ่อนส่วนเครื่องมือผู้ดูแลระบบจากผู้ใช้ทั่วไป */
 .admin-tool {
     display: none !important;
 }
 
-/* เพิ่ม CSS สำหรับการจัดสไตล์เมื่อถูกเปิดใช้งาน */
+/* 2. จัดสไตล์เมื่อถูกเปิดใช้งานด้วย JavaScript */
 .admin-tool {
     padding: 30px;
     margin: 40px auto;
-    background-color: #222; /* ใช้สีดำเข้มเป็นพื้นหลังเมื่อถูกเปิดด้วย JS */
-    color: #fff; /* ข้อความสีขาว */
+    background-color: #222; 
+    color: #fff; 
     border-radius: 8px;
+    max-width: 950px; /* เพิ่ม max-width เพื่อจำกัดขนาด */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -123,16 +129,18 @@ nav a:hover {
     margin-bottom: 20px;
     border-bottom: 2px solid var(--secondary-color); /* สีแดงเข้ม */
     padding-bottom: 10px;
-    /* ยกเลิกการตั้งค่า text-align: center และ h2::after เดิมของ h2 ทั่วไป */
-    text-align: left; 
+    text-align: left; /* ให้ชื่อหัวข้ออยู่ซ้าย */
+    /* *** สำคัญ: ยกเลิก h2::after เดิมของ h2 ทั่วไปใน Admin Tool *** */
+    position: relative; 
 }
 
 .admin-tool h2::after {
-    content: none; /* ยกเลิกขีดเส้นใต้สีทอง */
+    content: none; 
 }
 
+/* 3. จัดสไตล์ฟอร์ม */
 .menu-form {
-    display: flex; /* ใช้ Flexbox จัดเรียงแนวนอน */
+    display: flex; 
     gap: 15px;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -140,16 +148,16 @@ nav a:hover {
 
 .menu-form input[type="text"], 
 .menu-form input[type="number"] {
-    flex: 1 1 200px; /* ยืดหยุ่นได้และมีขนาดเริ่มต้น 200px */
+    flex: 1 1 200px; 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    color: var(--text-color); /* สีข้อความปกติ */
+    color: var(--text-color); 
 }
 
 .menu-form button {
     flex-shrink: 0;
-    background-color: var(--secondary-color); /* สีแดงเข้ม */
+    background-color: var(--secondary-color); 
     color: white;
     padding: 10px 15px;
     border: none;
@@ -160,7 +168,7 @@ nav a:hover {
 }
 
 .menu-form button:hover {
-    background-color: var(--primary-color); /* สีทองเมื่อ Hover */
+    background-color: var(--primary-color); 
     color: #000;
 }
 
@@ -183,7 +191,7 @@ h2 {
   margin-bottom: 2rem;
   font-size: 2rem;
   color: var(--secondary-color);
-  position: relative;
+  position: relative; /* ต้องมี position: relative เพื่อให้ h2::after ทำงาน */
 }
 
 h2::after {
