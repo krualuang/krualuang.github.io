@@ -1,51 +1,20 @@
 :root {
-  --primary-color: #d4af37; /* สีทอง/เหลือง */
-  --secondary-color: #8b0000; /* สีแดงเข้ม */
-  --text-color: #333;
-  --light-bg: #f9f9f9;
+  --primary-color: #d4af37; /* สีทอง/เหลือง */
+  --secondary-color: #8b0000; /* สีแดงเข้ม */
+  --text-color: #333;
+  --light-bg: #f9f9f9;
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: "Prompt", sans-serif;
-  margin: 0;
-  background: #fff;
-  color: var(--text-color);
-  line-height: 1.6;
-}
-
-/* =============================================== */
-/* 📌 CSS ส่วน Layout ทั่วไป และ Headings */
-/* =============================================== */
-
-section {
-  padding: 5rem 1.5rem;
-  max-width: 1000px;
-  margin: auto;
-}
-
-.section-dark {
-  background-color: var(--light-bg);
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  color: var(--secondary-color);
-  position: relative;
-}
-
-h2::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 3px;
-  background: var(--primary-color);
-  margin: 10px auto;
+  font-family: "Prompt", sans-serif;
+  margin: 0;
+  background: #fff;
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
 /* =============================================== */
@@ -53,217 +22,185 @@ h2::after {
 /* =============================================== */
 
 header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 100;
 }
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 1.5rem;
 }
 
 /* 🌟 โครงสร้างใหม่สำหรับโลโก้ */
 .brand-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; 
-    text-decoration: none; 
-    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* ระยะห่างระหว่างรูปภาพและข้อความ */
+    text-decoration: none; /* สำหรับกรณีที่เป็นลิงก์ */
+    color: var(--text-color);
 }
 
 .logo-img {
-    height: 40px; 
-    width: auto;
-    display: block;
+    height: 40px; /* ปรับขนาดโลโก้รูปภาพตามต้องการ */
+    width: auto;
+    display: block;
 }
 
 .logo-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--secondary-color); 
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-color); /* ใช้สีแดงเข้มสำหรับชื่อแบรนด์ */
 }
 /* ----------------------------------------------- */
 
 .nav-links {
-  display: flex;
-  align-items: center; 
+  display: flex;
+  align-items: center; /* จัดให้ธงอยู่แถวเดียวกับเมนู */
 }
 
 nav a {
-  text-decoration: none;
-  color: var(--text-color);
-  margin: 0 1rem;
-  font-weight: 500;
-  transition: color 0.3s;
+  text-decoration: none;
+  color: var(--text-color);
+  margin: 0 1rem;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-  color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .lang-flags {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-left: 1rem; 
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: 1rem; /* เพิ่มระยะห่างจากเมนู */
 }
 
 .lang-flags img {
-  width: 26px;
-  height: 18px;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  transition: 0.2s;
+  width: 26px;
+  height: 18px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  transition: 0.2s;
 }
 
 .lang-flags img:hover {
-  transform: scale(1.15);
-  border-color: var(--primary-color);
-}
-
-/* =============================================== */
-/* 📌 CSS ส่วน Admin Tool (เครื่องมือผู้ดูแลระบบ) */
-/* * โค้ดนี้ถูกรวมและลบความซ้ำซ้อนแล้ว */
-/* =============================================== */
-
-/* 1. ซ่อนส่วนเครื่องมือผู้ดูแลระบบจากผู้ใช้ทั่วไป */
-.admin-tool {
-    display: none !important; 
-    /* 2. จัดสไตล์เมื่อถูกเปิดใช้งานด้วย JavaScript (ถูกรวมเข้ามา) */
-    padding: 30px;
-    margin: 40px auto;
-    background-color: #222; 
-    color: #fff; 
-    border-radius: 8px;
-    max-width: 950px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.admin-tool h2 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--secondary-color);
-    padding-bottom: 10px;
-    text-align: left;
-    position: relative;
-}
-
-.admin-tool h2::after {
-    content: none; /* ยกเลิกขีดเส้นใต้สีทองของ h2 ทั่วไป */
-}
-
-/* 3. จัดสไตล์ฟอร์ม */
-.menu-form {
-    display: flex; 
-    gap: 15px;
-    flex-wrap: wrap;
-    align-items: flex-end;
-}
-
-.menu-form input[type="text"], 
-.menu-form input[type="number"] {
-    flex: 1 1 200px; 
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: var(--text-color); 
-}
-
-.menu-form button {
-    flex-shrink: 0;
-    background-color: var(--secondary-color); 
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.menu-form button:hover {
-    background-color: var(--primary-color); 
-    color: #000;
+  transform: scale(1.15);
+  border-color: var(--primary-color);
 }
 
 /* =============================================== */
 /* 📌 CSS ส่วน Hero Section */
 /* =============================================== */
+/* =============================================== */
+/* 📌 CSS ส่วน Layout ทั่วไป และ Headings (โค้ดที่ขาดหายไป) */
+/* =============================================== */
+
+section {
+  padding: 5rem 1.5rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.section-dark {
+  background-color: var(--light-bg);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: var(--secondary-color);
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--primary-color);
+  margin: 10px auto;
+}
+/* =============================================== */
+/* 📌 CSS ส่วน Hero Section (แก้ไขให้สมบูรณ์) */
+/* =============================================== */
 
 .hero {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  /* แก้ไข Path รูปภาพ และเพิ่ม Linear Gradient */
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero/hero_bg.jpg') center/cover no-repeat;
-  
-  /* เพิ่มการจัดวางองค์ประกอบหลัก */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff; /* กำหนดสีพื้นฐานเป็นสีขาว */
-  margin-top: 70px; /* ปรับให้มีระยะห่างจาก Header ที่ถูก fix ไว้ */
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* แก้ไข Path รูปภาพ และเพิ่ม Linear Gradient */
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero/hero_bg.jpg') center/cover no-repeat;
+  
+  /* เพิ่มการจัดวางองค์ประกอบหลัก */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff; /* กำหนดสีพื้นฐานเป็นสีขาว */
+  margin-top: 70px; /* ปรับให้มีระยะห่างจาก Header ที่ถูก fix ไว้ */
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 90%;
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
 }
 
 /* บังคับสีข้อความ h4 เป็นสีขาว */
 .hero h4 {
-  font-size: 1.3rem;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
-  color: #fff; 
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  color: #fff; 
 }
 
 /* บังคับสีหัวข้อ h1 เป็นสีขาว */
 .hero h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin: 1rem 0;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  color: #fff;
 }
 
 /* บังคับสีเนื้อหา p เป็นสีขาว */
 .hero p {
-  font-size: 1.2rem;
-  margin-bottom: 1.8rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 1.8rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
 }
 
 .hero-buttons a {
-  background: var(--primary-color);
-  color: #000;
-  padding: 0.8rem 1.5rem;
-  border-radius: 50px;
-  text-decoration: none;
-  margin: 0 0.5rem;
-  transition: 0.3s;
-  display: inline-block;
-  font-weight: 600;
+  background: var(--primary-color);
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  transition: 0.3s;
+  display: inline-block;
+  font-weight: 600;
 }
 
 .hero-buttons a:hover {
-  background: #ffbf00;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  background: #ffbf00;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* ----------------------------------------------- */
@@ -275,29 +212,29 @@ nav a:hover {
 /* =============================================== */
 
 .about-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
 }
 
 .about-text {
-  flex: 1;
-  min-width: 300px;
+  flex: 1;
+  min-width: 300px;
 }
 
 .about-image {
-  flex: 1;
-  min-width: 300px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  flex: 1;
+  min-width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .about-image img {
-  width: 100%;
-  height: auto;
-  display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* =============================================== */
@@ -305,54 +242,54 @@ nav a:hover {
 /* =============================================== */
 
 .franchise-packages {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .package {
-  background: white;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  text-align: center;
-  transition: transform 0.3s;
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s;
 }
 
 .package:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .package h3 {
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
 }
 
 .package .price {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin: 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 1rem 0;
 }
 
 .package ul {
-  list-style: none;
-  padding: 0;
-  text-align: left;
+  list-style: none;
+  padding: 0;
+  text-align: left;
 }
 
 .package ul li {
-  margin-bottom: 0.5rem;
-  position: relative;
-  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
 }
 
 .package ul li::before {
-  content: '✓';
-  color: var(--primary-color);
-  position: absolute;
-  left: 0;
+  content: '✓';
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
 }
 
 /* =============================================== */
@@ -360,37 +297,37 @@ nav a:hover {
 /* =============================================== */
 
 .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .menu-item {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .menu-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .menu-item-content {
-  padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 .menu-item h3 {
-  margin: 0 0 0.5rem;
-  color: var(--secondary-color);
+  margin: 0 0 0.5rem;
+  color: var(--secondary-color);
 }
 
 .menu-item .price {
-  color: var(--primary-color);
-  font-weight: 700;
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
 /* =============================================== */
@@ -398,27 +335,27 @@ nav a:hover {
 /* =============================================== */
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .gallery-item {
-  border-radius: 10px;
-  overflow: hidden;
-  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 250px;
 }
 
 .gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
 }
 
 .gallery-item:hover img {
-  transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* =============================================== */
@@ -426,107 +363,107 @@ nav a:hover {
 /* =============================================== */
 
 .contact-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .contact-info {
-  flex: 1;
-  min-width: 300px;
+  flex: 1;
+  min-width: 300px;
 }
 
 .contact-form {
-  flex: 1;
-  min-width: 300px;
+  flex: 1;
+  min-width: 300px;
 }
 
 .contact-details {
-  margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .contact-details div {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .contact-details i {
-  margin-right: 10px;
-  color: var(--primary-color);
-  font-style: normal;
+  margin-right: 10px;
+  color: var(--primary-color);
+  font-style: normal;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .form-group input,
 .form-group textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-family: "Prompt", sans-serif;
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: "Prompt", sans-serif;
 }
 
 .form-group textarea {
-  height: 150px;
-  resize: vertical;
+  height: 150px;
+  resize: vertical;
 }
 
 .submit-btn {
-  background: var(--primary-color);
-  color: #000;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
-  font-family: "Prompt", sans-serif;
+  background: var(--primary-color);
+  color: #000;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  font-family: "Prompt", sans-serif;
 }
 
 .submit-btn:hover {
-  background: #ffbf00;
+  background: #ffbf00;
 }
 
 .social-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .social-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--secondary-color);
-  color: white;
-  border-radius: 50%;
-  text-decoration: none;
-  transition: 0.3s;
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--secondary-color);
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 1.2rem;
 }
 
 .social-links a:hover {
-  background: var(--primary-color);
-  transform: translateY(-3px);
+  background: var(--primary-color);
+  transform: translateY(-3px);
 }
 
 footer {
-  text-align: center;
-  padding: 2rem;
-  background: #222;
-  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  background: #222;
+  color: #fff;
 }
 
 /* =============================================== */
@@ -534,27 +471,27 @@ footer {
 /* =============================================== */
 
 .back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--primary-color);
-  color: #000;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  z-index: 99;
-  opacity: 0;
-  transition: opacity 0.3s;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary-color);
+  color: #000;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .back-to-top.visible {
-  opacity: 1;
+  opacity: 1;
 }
 
 /* =============================================== */
@@ -562,33 +499,33 @@ footer {
 /* =============================================== */
 
 @media(max-width: 768px){
-  nav {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 1rem 0;
-  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+  }
 
-  .hero {
-    margin-top: 120px;
-    height: 80vh;
-  }
+  .hero {
+    margin-top: 120px;
+    height: 80vh;
+  }
 
-  .hero h1 {
-    font-size: 2.2rem;
-  }
+  .hero h1 {
+    font-size: 2.2rem;
+  }
 
-  .hero p {
-    font-size: 1rem;
-  }
+  .hero p {
+    font-size: 1rem;
+  }
 
-  .hero-buttons a {
-    display: block;
-    margin: 0.5rem auto;
-    width: fit-content;
-  }
+  .hero-buttons a {
+    display: block;
+    margin: 0.5rem auto;
+    width: fit-content;
+  }
 }
