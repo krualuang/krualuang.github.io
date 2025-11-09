@@ -51,6 +51,20 @@
     </div>
   </div>
 </section>
+<!-- เพิ่มตรงนี้ใน HTML ของคุณ -->
+<section id="menu-generator" class="section-dark">
+  <h2>เพิ่มเมนูใหม่อัตโนมัติ</h2>
+  <div class="menu-form">
+    <input type="text" id="menuNameTh" placeholder="ชื่อเมนู (ไทย)">
+    <input type="text" id="menuDescTh" placeholder="รายละเอียด (ไทย)">
+    <input type="text" id="menuPriceTh" placeholder="ราคา (บาท)">
+    <input type="text" id="menuImage" placeholder="ชื่อไฟล์รูป (เช่น menu_pad_krapao.jpg)">
+    <button id="generateMenuBtn">สร้างเมนู</button>
+  </div>
+
+  <pre id="generatedKeys"></pre>
+  <div id="menuPreview"></div>
+</section>
 
 <section id="about">
   <h2 data-i18n="about.title">เกี่ยวกับครัวหลวง</h2>
@@ -243,5 +257,6 @@ Ban Thôngkang Hom 10, No 395, Sisatanak District, Vientiane, Laos 01000</span>
 <script src="js/translations.js"></script>
 <script src="js/script.js"></script>
 <script src="js/main.js"></script>
+<script src="js/menu-generator.js"></script>
 </body>
 </html>
