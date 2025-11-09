@@ -68,6 +68,11 @@ const translations = {
         "menu.item4.name": "มัสมั่นไก่ หมู",
         "menu.item4.desc": "มัสมั่นสูตรโบราณ หวานมันหอมเครื่องเทศ",
         "menu.item4.price": "250 บาท",
+        
+        "menu.item5.name": "ข้าวผัดเกลือ",
+        "menu.item5.desc": "ข้าวผัดเกลือ (MUST TRY) อีกหนึ่งเมนูเด็ด เมนูดังยืนหนึ่งของร้านเรา ข้าวผัดร้อนๆนุ่มหนึบเม็ดเรียงสวย ตามแบบฉบับข้าวผัด รสชาติกลมกล่อม",
+        "menu.item5.price": "120 บาท",
+        
 
         // --- Gallery & Contact (บางส่วน) ---
         "gallery.title": "แกลเลอรี่",
@@ -161,6 +166,10 @@ const translations = {
         "menu.item4.desc": "ສູດເກົ່າດັ້ງເດີມ ຫວານມັນຫອມເຄື່ອງເທດ",
         "menu.item4.price": "250 ບາດ",
 
+        "menu.item5.name": "ເຂົ້າເກືອ",
+        "menu.item5.desc": "ເຂົ້າຫນົມປັງເກືອ (ຕ້ອງລອງ) ເມນູທີ່ດີເລີດອື່ນ. ຫນຶ່ງໃນບັນດາລາຍການເມນູທີ່ມີຊື່ສຽງທີ່ສຸດຂອງຮ້ານອາຫານ. ເຂົ້າປຽກ, ອ່ອນ, ເປັນເຂົ້າຫນົມປັງຂົ້ວທີ່ມີເມັດພືດທີ່ສວຍງາມ. ອີງຕາມຮູບແບບຂອງເຂົ້າຂົ້ວ mellow mowyl",
+        "menu.item5.price": "120 ກີບ"
+
         // --- Gallery & Contact (บางส่วน) ---
         "gallery.title": "ຮູບພາບ",
         "gallery.desc": "ບັນຍາກາດແລະເມນູອາຫານຈາກຄົວຫຼວງ",
@@ -252,6 +261,10 @@ const translations = {
         "menu.item4.name": "Massaman Curry (Chicken/Pork)",
         "menu.item4.desc": "Traditional Massaman curry with rich spices and sweetness.",
         "menu.item4.price": "250 THB",
+            
+        "menu.item5.name": "Salt fried rice",
+        "menu.item5.desc": "Salt fried rice (MUST TRY) another great menu. ",
+        "menu.item5.price": "120 Baht"
 
         // --- Gallery & Contact (บางส่วน) ---
         "gallery.title": "Gallery",
@@ -344,6 +357,10 @@ const translations = {
         "menu.item4.name": "马沙曼咖喱（鸡肉/猪肉）",
         "menu.item4.desc": "传统马沙曼咖喱，香浓微甜。",
         "menu.item4.price": "250 泰铢",
+
+        "menu.item5.name": "盐炒饭",
+        "menu.item5.desc": "盐炒饭（必须尝试）另一个很棒的菜单。我们餐厅最著名的菜单之一。热腾腾的炒饭，软糯有嚼劲，颗粒排列得很漂亮。炒饭风格 口感醇厚",
+        "menu.item5.price": "120 泰铢"
 
         // --- Gallery & Contact (บางส่วน) ---
         "gallery.title": "画廊",
