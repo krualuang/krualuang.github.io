@@ -1,181 +1,338 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin — เครื่องมือสร้างเมนูอัตโนมัติ | ครัวหลวง</title>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Prompt', sans-serif;
-      margin: 0;
-      background: #f8f8f8;
-      color: #333;
-    }
-
-    header {
-      background: #b8860b;
-      color: white;
-      padding: 15px 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    header h1 {
-      font-size: 1.5rem;
-      margin: 0;
-    }
-
-    .logout {
-      color: white;
-      text-decoration: none;
-      background: #8b6508;
-      padding: 6px 12px;
-      border-radius: 6px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 30px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #a07505;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 5px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background: #b8860b;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #a07505;
-    }
-
-    .menu-preview {
-      margin-top: 30px;
-      border-top: 2px solid #eee;
-      padding-top: 20px;
-    }
-
-    .menu-item {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 10px;
-      background: #fafafa;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Admin — เครื่องมือสร้างเมนูอัตโนมัติ | ครัวหลวง</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body{font-family:'Prompt',sans-serif;margin:0;background:#f6f6f6;color:#222}
+  header{background:#b8860b;color:#fff;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+  header h1{margin:0;font-size:1.1rem}
+  .container{max-width:980px;margin:28px auto;padding:22px;background:#fff;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.05)}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .col{flex:1;min-width:220px}
+  label{display:block;font-weight:600;margin-bottom:6px}
+  input[type=text],input[type=number],textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px}
+  button{background:#b8860b;color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer}
+  .menu-list{margin-top:18px}
+  .menu-item{padding:12px;border-radius:8px;border:1px solid #eee;background:#fafafa;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+  .menu-item img{width:96px;height:72px;object-fit:cover;border-radius:6px}
+  .small{font-size:0.9rem;color:#666}
+  .controls{display:flex;gap:8px;flex-wrap:wrap}
+  .danger{background:#a00}
+  .note{font-size:0.9rem;color:#555;margin-top:8px}
+  .login-box{max-width:360px;margin:36px auto;padding:20px;background:#fff;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.05)}
+</style>
 </head>
 <body>
 
 <header>
-  <h1>เครื่องมือสร้างเมนูอัตโนมัติ</h1>
-  <a href="index.html" class="logout">← กลับหน้าเว็บหลัก</a>
+  <h1>เครื่องมือสร้างเมนูอัตโนมัติ — Admin</h1>
+  <a href="index.html" style="color:#fff;text-decoration:none;font-weight:600">← ดูหน้าเว็บหลัก</a>
 </header>
 
-<div class="container">
-  <h2>เพิ่มรายการเมนู</h2>
-
-  <div class="form-group">
-    <label for="menuName">ชื่อเมนู</label>
-    <input type="text" id="menuName" placeholder="เช่น ผัดไทยกุ้งสด">
-  </div>
-
-  <div class="form-group">
-    <label for="menuDesc">รายละเอียด</label>
-    <textarea id="menuDesc" rows="3" placeholder="ใส่คำอธิบายเมนู..."></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="menuPrice">ราคา (บาท)</label>
-    <input type="number" id="menuPrice" placeholder="เช่น 120">
-  </div>
-
-  <div class="form-group">
-    <label for="menuImage">รูปภาพ (URL)</label>
-    <input type="text" id="menuImage" placeholder="เช่น images/menu/menu_pad_thai.jpg">
-  </div>
-
-  <button id="addMenuBtn">เพิ่มเมนู</button>
-
-  <div class="menu-preview" id="menuPreview">
-    <h3>รายการเมนูทั้งหมด</h3>
-    <div id="menuList"></div>
+<!-- LOGIN (PIN) -->
+<div id="loginWrap" class="login-box">
+  <h3>เข้าสู่ระบบผู้ดูแล (PIN 4 หลัก)</h3>
+  <div style="margin-top:8px">
+    <label for="pin">PIN</label>
+    <input id="pin" type="text" placeholder="กรอก 4 หลัก">
+    <div style="margin-top:10px;display:flex;gap:8px">
+      <button id="btnLogin">เข้าสู่ระบบ</button>
+      <button id="btnUseDemo" style="background:#777">ทดลอง (ไม่มีล็อกอิน)</button>
+    </div>
+    <p class="note">ค่า PIN เริ่มต้นคือ <strong>1234</strong> (เปลี่ยนได้ในสคริปต์)</p>
   </div>
 </div>
 
-<footer>
-  © 2025 ครัวหลวง — ระบบหลังบ้าน
-</footer>
+<!-- ADMIN UI -->
+<div id="adminUI" class="container" style="display:none">
+
+  <h2>จัดการเมนู</h2>
+
+  <div class="row">
+    <div class="col">
+      <label for="menuName">ชื่อเมนู</label>
+      <input id="menuName" type="text" placeholder="เช่น ผัดไทยกุ้งสด">
+    </div>
+
+    <div class="col">
+      <label for="menuPrice">ราคา (บาท)</label>
+      <input id="menuPrice" type="number" placeholder="120">
+    </div>
+
+    <div style="flex:1 1 100%">
+      <label for="menuDesc">คำอธิบาย</label>
+      <textarea id="menuDesc" rows="3" placeholder="รายละเอียดเมนู"></textarea>
+    </div>
+
+    <div class="col">
+      <label for="menuImage">รูปภาพ (URL) — หรือวางว่างไว้เพื่อไม่ใช้รูป</label>
+      <input id="menuImage" type="text" placeholder="images/menu/menu_pad_thai.jpg">
+    </div>
+
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="addBtn">เพิ่มเมนู</button>
+      <button id="clearBtn" style="background:#777">ล้างฟอร์ม</button>
+    </div>
+  </div>
+
+  <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+    <button id="saveLocal">บันทึกอัตโนมัติ (localStorage)</button>
+    <button id="downloadJson">ดาวน์โหลด menu.json</button>
+    <input id="fileIn" type="file" style="display:none" accept="application/json">
+    <button id="uploadJson">นำเข้า menu.json</button>
+
+    <!-- ปุ่มขั้นสูง: push ขึ้น GitHub (ต้องมี token) -->
+    <div style="margin-left:auto">
+      <input id="ghToken" type="text" placeholder="(OPTIONAL) GitHub Token" style="width:280px;padding:8px;border-radius:6px;border:1px solid #ddd">
+      <button id="pushGithubBtn" style="margin-left:8px;background:#2c974b">Push → GitHub</button>
+    </div>
+  </div>
+
+  <p class="note">หมายเหตุ: หากใช้งานบน GitHub Pages โดยไม่มี backend ระบบจะบันทึกเป็น localStorage และให้ดาวน์โหลดไฟล์ JSON เพื่ออัปโหลดไปยังระบบ / deploy ด้วยตนเอง</p>
+
+  <div class="menu-list" id="menuListWrap">
+    <h3>รายการเมนูทั้งหมด</h3>
+    <div id="menuList"></div>
+  </div>
+
+</div>
 
 <script>
-  const addMenuBtn = document.getElementById('addMenuBtn');
-  const menuList = document.getElementById('menuList');
+/* =========================
+   Config
+   ========================= */
+const ADMIN_PIN = '1234'; // เปลี่ยน PIN ที่ต้องการได้ที่นี่
+const STORAGE_KEY = 'krualuang_menu_v1';
+const DEFAULT_MENU = []; // ถ้าต้องการตัวอย่าง ให้ใส่ object ในนี้
 
-  addMenuBtn.addEventListener('click', () => {
-    const name = document.getElementById('menuName').value;
-    const desc = document.getElementById('menuDesc').value;
-    const price = document.getElementById('menuPrice').value;
-    const image = document.getElementById('menuImage').value;
+/* =========================
+   Helper: localStorage
+   ========================= */
+function loadMenuFromLocal(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : DEFAULT_MENU.slice();
+  }catch(e){ return DEFAULT_MENU.slice(); }
+}
+function saveMenuToLocal(arr){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr, null, 2));
+}
 
-    if (!name || !price) {
-      alert('กรุณากรอกชื่อเมนูและราคา');
-      return;
-    }
+/* =========================
+   Render
+   ========================= */
+let menu = loadMenuFromLocal();
+const menuList = document.getElementById('menuList');
 
-    const item = document.createElement('div');
-    item.classList.add('menu-item');
-    item.innerHTML = `
-      <strong>${name}</strong><br>
-      <em>${desc}</em><br>
-      ราคา: ${price} บาท<br>
-      <img src="${image}" alt="${name}" style="max-width:120px; margin-top:5px;">
+function render(){
+  menuList.innerHTML = '';
+  if(!menu.length){ menuList.innerHTML = '<p class="small">ยังไม่มีรายการเมนู</p>'; return; }
+  menu.forEach((it, idx) => {
+    const el = document.createElement('div');
+    el.className = 'menu-item';
+    el.innerHTML = `
+      <div style="flex:1">
+        <strong>${escapeHtml(it.name||'')}</strong>
+        <div class="small">${escapeHtml(it.desc||'')}</div>
+        <div style="margin-top:8px">ราคา: <strong>${Number(it.price||0)} บาท</strong></div>
+        <div style="margin-top:8px" class="controls">
+          <button data-edit="${idx}">แก้ไข</button>
+          <button data-delete="${idx}" class="danger" style="background:#a00">ลบ</button>
+        </div>
+      </div>
+      ${it.image ? `<img src="${escapeAttr(it.image)}" alt="${escapeHtml(it.name)}">` : ''}
     `;
-    menuList.appendChild(item);
-
-    document.getElementById('menuName').value = '';
-    document.getElementById('menuDesc').value = '';
-    document.getElementById('menuPrice').value = '';
-    document.getElementById('menuImage').value = '';
+    menuList.appendChild(el);
   });
-</script>
+}
 
+/* =========================
+   Utilities
+   ========================= */
+function escapeHtml(s){ return (s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+function escapeAttr(s){ return (s||'').replaceAll('"','&quot;'); }
+
+/* =========================
+   Handlers
+   ========================= */
+document.getElementById('addBtn').addEventListener('click', () => {
+  const name = document.getElementById('menuName').value.trim();
+  const desc = document.getElementById('menuDesc').value.trim();
+  const price = document.getElementById('menuPrice').value.trim();
+  const image = document.getElementById('menuImage').value.trim();
+  if(!name || !price){ alert('กรุณากรอกชื่อเมนูและราคา'); return; }
+  menu.push({name, desc, price: Number(price), image});
+  saveMenuToLocal(menu);
+  render();
+  clearForm();
+});
+
+document.getElementById('clearBtn').addEventListener('click', clearForm);
+
+function clearForm(){
+  document.getElementById('menuName').value='';
+  document.getElementById('menuDesc').value='';
+  document.getElementById('menuPrice').value='';
+  document.getElementById('menuImage').value='';
+}
+
+/* edit / delete delegation */
+menuList.addEventListener('click', (ev)=>{
+  const edit = ev.target.getAttribute('data-edit');
+  const del = ev.target.getAttribute('data-delete');
+  if(edit!=null){
+    const idx = Number(edit);
+    const it = menu[idx];
+    document.getElementById('menuName').value = it.name;
+    document.getElementById('menuDesc').value = it.desc;
+    document.getElementById('menuPrice').value = it.price;
+    document.getElementById('menuImage').value = it.image||'';
+    // remove original so add will create new or user can change
+    menu.splice(idx,1);
+    render();
+    saveMenuToLocal(menu);
+  } else if(del!=null){
+    if(confirm('ลบรายการเมนูนี้จริงหรือไม่?')){
+      menu.splice(Number(del),1);
+      render();
+      saveMenuToLocal(menu);
+    }
+  }
+});
+
+/* save / download / upload */
+document.getElementById('saveLocal').addEventListener('click', ()=> {
+  saveMenuToLocal(menu);
+  alert('บันทึกลง localStorage เรียบร้อย');
+});
+
+document.getElementById('downloadJson').addEventListener('click', ()=> {
+  const blob = new Blob([JSON.stringify(menu, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'menu.json';
+  document.body.appendChild(a); a.click();
+  a.remove(); URL.revokeObjectURL(url);
+});
+
+document.getElementById('uploadJson').addEventListener('click', ()=> {
+  document.getElementById('fileIn').click();
+});
+document.getElementById('fileIn').addEventListener('change', (e)=>{
+  const f = e.target.files[0];
+  if(!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const data = JSON.parse(r.result);
+      if(!Array.isArray(data)) throw new Error('ไฟล์ต้องเป็น array ของเมนู');
+      if(!confirm(`นำเข้า ${data.length} รายการเมนู (จะแทนที่รายการปัจจุบัน) ?`)) return;
+      menu = data;
+      saveMenuToLocal(menu);
+      render();
+      alert('นำเข้าเรียบร้อย');
+    } catch(err){ alert('ไฟล์ไม่ถูกต้อง: ' + err.message); }
+  };
+  r.readAsText(f);
+});
+
+/* =========================
+   OPTIONAL: Push to GitHub (use with caution)
+   =========================
+   Method: fetch GitHub REST API to get current file SHA and then PUT to update.
+   You MUST provide a personal access token with "repo" scope (NOT safe to paste in public).
+   Recommended: run server-side script instead (see Node example).
+*/
+async function pushToGithub({owner,repo,path,token,contentObj,commitMsg='Update menu.json from admin'}){
+  // contentObj => JS object to save as JSON
+  const apiBase = 'https://api.github.com';
+  const getUrl = `${apiBase}/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`;
+  // 1) get current file to obtain sha (if exists)
+  const headers = { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' };
+  let sha = null;
+  try {
+    const res = await fetch(getUrl, {headers});
+    if(res.status === 200){
+      const j = await res.json();
+      sha = j.sha;
+    } else if(res.status === 404){
+      sha = null; // new file
+    } else {
+      const t = await res.text();
+      throw new Error('GET file failed: ' + res.status + ' ' + t);
+    }
+  } catch(err){ throw err; }
+
+  // 2) PUT new content
+  const contentStr = JSON.stringify(contentObj, null, 2);
+  const body = {
+    message: commitMsg,
+    content: btoa(unescape(encodeURIComponent(contentStr))),
+    committer: { name: "krualuang-admin", email: "admin@krualuang.local" }
+  };
+  if(sha) body.sha = sha;
+
+  const putRes = await fetch(getUrl, {
+    method: 'PUT',
+    headers,
+    body: JSON.stringify(body)
+  });
+  if(!putRes.ok){
+    const text = await putRes.text();
+    throw new Error('PUT failed: ' + putRes.status + ' ' + text);
+  }
+  return await putRes.json();
+}
+
+document.getElementById('pushGithubBtn').addEventListener('click', async ()=>{
+  const token = document.getElementById('ghToken').value.trim();
+  if(!token){ if(!confirm('คุณยังไม่ได้ใส่ GitHub token — ต้องการดำเนินการต่อแบบ LOCAL (ดาวน์โหลด JSON) แทนหรือไม่?')) return; }
+
+  // default values (เปลี่ยนให้ตรง repo ของคุณ)
+  const owner = 'krualuang';   // <-- เปลี่ยนเป็น owner ของ repo
+  const repo  = 'krualuang.github.io'; // <-- เปลี่ยนชื่อ repo
+  const path  = 'data/menu.json'; // <-- path ใน repo ที่ต้องการบันทึก
+
+  if(!token){
+    // fallback: prompt download
+    document.getElementById('downloadJson').click();
+    return;
+  }
+
+  try {
+    const res = await pushToGithub({owner,repo,path,token,contentObj:menu,commitMsg:'Update menu.json via admin UI'});
+    alert('Push สำเร็จ: ' + (res.commit && res.commit.sha ? res.commit.sha : 'OK'));
+  } catch(err){
+    alert('Push ล้มเหลว: ' + err.message + '\nแนะนำ: ใช้ Node script หรือ GitHub Actions มากกว่าใส่ token ในบราว์เซอร์.');
+  }
+});
+
+/* =========================
+   Login handling
+   ========================= */
+document.getElementById('btnLogin').addEventListener('click', ()=>{
+  const v = (document.getElementById('pin').value||'').trim();
+  if(v === ADMIN_PIN){
+    document.getElementById('loginWrap').style.display='none';
+    document.getElementById('adminUI').style.display='block';
+    render();
+  } else {
+    alert('PIN ผิด กรุณาลองใหม่');
+  }
+});
+document.getElementById('btnUseDemo').addEventListener('click', ()=>{
+  document.getElementById('loginWrap').style.display='none';
+  document.getElementById('adminUI').style.display='block';
+  render();
+});
+
+/* Initial render (if already logged via demo) */
+if(menu && menu.length) {
+  // don't auto-show admin; require login
+}
+</script>
 </body>
 </html>
