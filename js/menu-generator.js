@@ -3,8 +3,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("generateMenuBtn");
   const output = document.getElementById("generatedKeys");
   const preview = document.getElementById("menuPreview");
+  const copyBtn = document.getElementById("copyJsonBtn");
 
-  btn.addEventListener("click", () => {
+  // 🔹 ฟังก์ชันแปลข้อความ (Google Translate ฟรี)
+  async function translateText(text, targetLang) {
+    try {
+      const res = await fetch(
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=th&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`
+      );
+      const data = await res.json();
+      return data[0][0][0];
+    } catch (e) {
+      console.warn("❌ แปลไม่สำเร็จ:", e);
+      return `[${targetLang.toUpperCase()}] ${text}`;
+    }
+  }
+
+  btn.addEventListener("click", async () => {
     const nameTh = document.getElementById("menuNameTh").value.trim();
     const descTh = document.getElementById("menuDescTh").value.trim();
     const priceTh = document.getElementById("menuPriceTh").value.trim();
@@ -15,11 +30,26 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ค้นหาหมายเลขเมนูถัดไป เช่น item5
+    preview.innerHTML = "<p>⏳ กำลังแปลภาษา...</p>";
+
+    // 🔹 ค้นหาหมายเลขเมนูถัดไป เช่น item5
     const existingKeys = Object.keys(translations.th || {}).filter(k => k.startsWith("menu.item"));
     const lastIndex = existingKeys.length / 3;
     const nextIndex = lastIndex + 1;
     const keyBase = `menu.item${nextIndex}`;
+
+    // 🔹 แปลภาษาอัตโนมัติ (ลาว, อังกฤษ, จีน)
+    const [nameLa, nameEn, nameZh] = await Promise.all([
+      translateText(nameTh, "lo"),
+      translateText(nameTh, "en"),
+      translateText(nameTh, "zh-CN")
+    ]);
+
+    const [descLa, descEn, descZh] = await Promise.all([
+      translateText(descTh, "lo"),
+      translateText(descTh, "en"),
+      translateText(descTh, "zh-CN")
+    ]);
 
     // 🔹 สร้าง key สำหรับทุกภาษา
     const newKeys = {
@@ -29,18 +59,18 @@ document.addEventListener("DOMContentLoaded", () => {
         [`${keyBase}.price`]: `${priceTh} บาท`
       },
       en: {
-        [`${keyBase}.name`]: `[EN] ${nameTh}`,
-        [`${keyBase}.desc`]: `[EN] ${descTh}`,
+        [`${keyBase}.name`]: nameEn,
+        [`${keyBase}.desc`]: descEn,
         [`${keyBase}.price`]: `${priceTh} Baht`
       },
       la: {
-        [`${keyBase}.name`]: `[LAO] ${nameTh}`,
-        [`${keyBase}.desc`]: `[LAO] ${descTh}`,
+        [`${keyBase}.name`]: nameLa,
+        [`${keyBase}.desc`]: descLa,
         [`${keyBase}.price`]: `${priceTh} ກີບ`
       },
       zh: {
-        [`${keyBase}.name`]: `[中] ${nameTh}`,
-        [`${keyBase}.desc`]: `[中] ${descTh}`,
+        [`${keyBase}.name`]: nameZh,
+        [`${keyBase}.desc`]: descZh,
         [`${keyBase}.price`]: `${priceTh} 泰铢`
       }
     };
@@ -53,8 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // 🔹 แสดง key ที่สร้างใน <pre>
     output.textContent = JSON.stringify(newKeys, null, 2);
 
-    // 🔹 สร้าง preview ของเมนูใหม่
-    const menuHTML = `
+    // 🔹 แสดง preview เมนู
+    preview.innerHTML = `
       <div class="menu-item fade-in">
         <img src="images/menu/${img || 'placeholder.jpg'}" alt="${nameTh}">
         <div class="menu-item-content">
@@ -65,8 +95,20 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    preview.innerHTML = menuHTML;
+    copyBtn.style.display = "inline-block"; // แสดงปุ่มคัดลอก
 
-    alert("✅ สร้างเมนูใหม่เรียบร้อย!\nคัดลอก key ด้านล่างไปใส่ใน translations.js ได้เลยหากต้องการบันทึกถาวร");
+    alert("✅ สร้างเมนูใหม่และแปลอัตโนมัติเรียบร้อย!\nคัดลอก JSON ด้านล่างได้เลย");
+  });
+
+  // 📋 ปุ่มคัดลอกโค้ด JSON
+  copyBtn.addEventListener("click", () => {
+    const jsonText = output.textContent;
+    if (!jsonText.trim()) {
+      alert("ยังไม่มีข้อมูลให้คัดลอก");
+      return;
+    }
+    navigator.clipboard.writeText(jsonText);
+    copyBtn.textContent = "✅ คัดลอกแล้ว!";
+    setTimeout(() => (copyBtn.textContent = "📋 คัดลอกโค้ด JSON"), 1500);
   });
 });
