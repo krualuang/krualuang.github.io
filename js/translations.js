@@ -166,9 +166,10 @@ const translations = {
         "menu.item4.desc": "ສູດເກົ່າດັ້ງເດີມ ຫວານມັນຫອມເຄື່ອງເທດ",
         "menu.item4.price": "250 ບາດ",
 
-        "menu.item5.name": "ເຂົ້າເກືອ",
-        "menu.item5.desc": "ເຂົ້າຫນົມປັງເກືອ (ຕ້ອງລອງ) ເມນູທີ່ດີເລີດອື່ນ. ຫນຶ່ງໃນບັນດາລາຍການເມນູທີ່ມີຊື່ສຽງທີ່ສຸດຂອງຮ້ານອາຫານ. ເຂົ້າປຽກ, ອ່ອນ, ເປັນເຂົ້າຫນົມປັງຂົ້ວທີ່ມີເມັດພືດທີ່ສວຍງາມ. ອີງຕາມຮູບແບບຂອງເຂົ້າຂົ້ວ mellow mowyl",
-        "menu.item5.price": "120 ກີບ"
+        // ✅ แก้ไข: ปรับคำลาวให้ถูกต้องและคำอธิบายให้สั้นลง
+        "menu.item5.name": "ເຂົ້າຜັດເກືອ",
+        "menu.item5.desc": "ເຂົ້າຜັດເກືອ (ຕ້ອງລອງ) ເມນູແນະນຳຂອງຮ້ານ. ເຂົ້າຜັດຮ້ອນໆ ເມັດງາມ, ລົດຊາດກົມກ່ອມຕາມແບບສະບັບເຂົ້າຜັດໄທ.",
+        "menu.item5.price": "120 ກີບ", // หรือ "120 ບາດ" หากใช้หน่วยเงินบาท
 
         // --- Gallery & Contact (บางส่วน) ---
         "gallery.title": "ຮູບພາບ",
@@ -262,9 +263,9 @@ const translations = {
         "menu.item4.desc": "Traditional Massaman curry with rich spices and sweetness.",
         "menu.item4.price": "250 THB",
             
-        "menu.item5.name": "Salt fried rice",
-        "menu.item5.desc": "Salt fried rice (MUST TRY) another great menu. ",
-        "menu.item5.price": "120 Baht"
+        "menu.item5.name": "Salt Fried Rice",
+        "menu.item5.desc": "Salt Fried Rice (MUST TRY). A popular signature menu, featuring warm, soft, and fluffy rice grains, achieving the perfect mellow flavour.",
+        "menu.item5.price": "120 THB",
 
         // --- Gallery & Contact (บางส่วน) ---
         "gallery.title": "Gallery",
@@ -359,8 +360,8 @@ const translations = {
         "menu.item4.price": "250 泰铢",
 
         "menu.item5.name": "盐炒饭",
-        "menu.item5.desc": "盐炒饭（必须尝试）另一个很棒的菜单。我们餐厅最著名的菜单之一。热腾腾的炒饭，软糯有嚼劲，颗粒排列得很漂亮。炒饭风格 口感醇厚",
-        "menu.item5.price": "120 泰铢"
+        "menu.item5.desc": "盐炒饭（必尝）。本店招牌菜之一，米饭热气腾腾、松软可口、颗粒分明，口感醇厚。",
+        "menu.item5.price": "120 泰铢",
 
         // --- Gallery & Contact (บางส่วน) ---
         "gallery.title": "画廊",
