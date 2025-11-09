@@ -1,5 +1,3 @@
-// โค้ดนี้จะไปแทนที่เนื้อหาเดิมในไฟล์ js/main.js
-
 // ตรวจสอบว่า Object translations มีการโหลดแล้ว
 if (typeof translations === 'undefined') {
     console.error('Error: translations object is not defined. Please ensure js/translations.js is loaded correctly.');
@@ -43,6 +41,23 @@ if (typeof translations === 'undefined') {
     // 2. Event Listeners และการโหลดภาษาเริ่มต้น
     // ----------------------------------------------------
     document.addEventListener('DOMContentLoaded', () => {
+        
+        // ********* 🛠️ โค้ดสำหรับ Admin Tool Access *********
+        const urlParams = new URLSearchParams(window.location.search);
+        const isAdmin = urlParams.get('admin'); 
+        const adminToolSection = document.getElementById('menu-generator');
+
+        if (isAdmin === 'krualuangadmin') { 
+            if (adminToolSection) {
+                // ยกเลิกการซ่อนจาก CSS เพื่อแสดงฟอร์ม
+                adminToolSection.style.display = 'block'; 
+                // ตั้งค่าพื้นหลังตามที่แนะนำ
+                adminToolSection.style.backgroundColor = '#222'; 
+                console.log("Admin Menu Generator Tool Activated.");
+            }
+        }
+        // ************************************************
+        
         const langFlagsContainer = document.querySelector('.lang-flags');
         
         // ดักจับการคลิกที่ธงภาษา
