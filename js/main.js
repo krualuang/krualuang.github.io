@@ -40,20 +40,32 @@ if (typeof translations === 'undefined') {
     // ----------------------------------------------------
     // 2. Event Listeners และการโหลดภาษาเริ่มต้น
     // ----------------------------------------------------
-    document.addEventListener('DOMContentLoaded', () => {
-        
-        // ********* 🛠️ โค้ดสำหรับ Admin Tool Access *********
-        const urlParams = new URLSearchParams(window.location.search);
-        const isAdmin = urlParams.get('admin'); 
-        const adminToolSection = document.getElementById('menu-generator');
+    // ในไฟล์ js/main.js
 
-        if (isAdmin === 'krualuangadmin') { 
-            if (adminToolSection) {
-                // ยกเลิกการซ่อนจาก CSS เพื่อแสดงฟอร์ม
-                adminToolSection.style.display = 'block'; 
-                // ตั้งค่าพื้นหลังตามที่แนะนำ
-                adminToolSection.style.backgroundColor = '#222'; 
-                console.log("Admin Menu Generator Tool Activated.");
+// ... โค้ดเดิม ...
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // ********* 🛠️ โค้ดสำหรับ Admin Tool Access *********
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAdmin = urlParams.get('admin'); 
+    const adminToolSection = document.getElementById('menu-generator');
+    
+    // 💡 เพิ่มบรรทัดนี้เพื่อดูค่าที่ดึงมา
+    console.log("Admin Parameter Value:", isAdmin); 
+
+    if (isAdmin === 'krualuangadmin') { 
+        console.log("Admin Code Matched! Attempting to display tool."); // 💡 เพิ่มบรรทัดนี้
+        if (adminToolSection) {
+            adminToolSection.style.display = 'block'; 
+            adminToolSection.style.backgroundColor = '#222'; 
+            console.log("Admin Menu Generator Tool Activated.");
+        }
+    }
+    // ************************************************
+    
+    // ... โค้ดที่เหลือ ...
+});
             }
         }
         // ************************************************
