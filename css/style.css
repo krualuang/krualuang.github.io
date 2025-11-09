@@ -98,7 +98,51 @@ nav a:hover {
   transform: scale(1.15);
   border-color: var(--primary-color);
 }
+/* ซ่อนส่วนเครื่องมือผู้ดูแลระบบจากผู้ใช้ทั่วไป */
+.admin-tool {
+    display: none !important;
+}
 
+/* เพิ่ม CSS สำหรับการจัดสไตล์ตามที่คุณต้องการ */
+.admin-tool {
+    padding: 30px;
+    margin: 40px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-tool h2 {
+    color: #ffd700; /* สีทอง */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #8b0000;
+    padding-bottom: 10px;
+}
+
+.menu-form {
+    display: flex; /* ใช้ Flexbox จัดเรียงแนวนอน */
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.menu-form input[type="text"], 
+.menu-form input[type="number"] {
+    flex: 1 1 200px; /* ยืดหยุ่นได้และมีขนาดเริ่มต้น 200px */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.menu-form button {
+    flex-shrink: 0;
+    background-color: #8b0000;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
 /* =============================================== */
 /* 📌 CSS ส่วน Hero Section */
 /* =============================================== */
