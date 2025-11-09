@@ -11,6 +11,11 @@ const translations = {
     "menu.item4.name": "มัสมั่นไก่ หมู",
     "menu.item4.desc": "มัสมั่นสูตรโบราณ หวานมันหอมเครื่องเทศ",
     "menu.item4.price": "220 บาท",
+
+    // 👇 เพิ่มเมนูใหม่ที่นี่
+    "menu.item5.name": "ต้มยำกุ้ง",
+    "menu.item5.desc": "ต้มยำกุ้งรสจัดจ้าน หอมสมุนไพรไทย",
+    "menu.item5.price": "180 บาท",
   },
   la: {
     "menu.home": "ໜ້າຫຼັກ",
@@ -24,6 +29,10 @@ const translations = {
     "menu.item4.name": "ມັດສະມັນໄກ່ ຫຼື ໝູ",
     "menu.item4.desc": "ສູດເກົ່າດັ້ງເດີມ ຫວານມັນຫອມເຄື່ອງເທດ",
     "menu.item4.price": "220 ບາດ",
+
+    "menu.item5.name": "ຕົ້ມຢຳກຸ້ງ",
+    "menu.item5.desc": "ຕົ້ມຢຳກຸ້ງຮສເຜັດ ຫອມສົມຸນໄພໄທ",
+    "menu.item5.price": "180 ບາດ",
   },
   en: {
     "menu.home": "Home",
@@ -37,6 +46,10 @@ const translations = {
     "menu.item4.name": "Massaman Curry (Chicken/Pork)",
     "menu.item4.desc": "Traditional Massaman curry with rich spices and sweetness",
     "menu.item4.price": "220 THB",
+
+    "menu.item5.name": "Tom Yum Goong",
+    "menu.item5.desc": "Spicy and aromatic shrimp soup with Thai herbs.",
+    "menu.item5.price": "180 THB",
   },
   zh: {
     "menu.home": "主页",
@@ -50,5 +63,10 @@ const translations = {
     "menu.item4.name": "马沙曼咖喱（鸡肉/猪肉）",
     "menu.item4.desc": "传统马沙曼咖喱，香浓微甜",
     "menu.item4.price": "220 泰铢",
+
+    "menu.item5.name": "冬阴功汤",
+    "menu.item5.desc": "泰式香辣虾汤，充满草本香气。",
+    "menu.item5.price": "180 泰铢",
   }
 };
+
