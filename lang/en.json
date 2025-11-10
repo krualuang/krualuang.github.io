@@ -1,0 +1,17 @@
+{
+  "menu": {
+    "home": "Home",
+    "about": "About Us",
+    "franchise": "Franchise",
+    "menu": "Menu",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Krualuang — Authentic Thai Taste",
+    "title": "ROYAL THAI CUISINE",
+    "desc": "A premium Thai dining experience with franchise opportunities across Laos and Thailand",
+    "cta1": "View Franchise",
+    "cta2": "Book a Visit"
+  }
+}
