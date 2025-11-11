@@ -1,14 +1,8 @@
 [
   {
-    "name": "ผัดไทยกุ้งสด",
-    "desc": "เส้นนุ่มซอสเข้มข้น เสิร์ฟพร้อมกุ้งสดตัวโต",
-    "price": "60",
-    "image": "images/menu/padthai-kung.jpg"
-  },
-  {
-    "name": "ข้าวผัดปู",
-    "desc": "ข้าวหอมมะลิผัดกับเนื้อปูสด รสกลมกล่อม",
-    "price": "70",
-    "image": "images/menu/khaopad-pu.jpg"
+    "name": "ผัดไทยปลาหมึกกรอบ Crispy Squid Pad Thai",
+    "desc": "ผัดไทยปลาหมึกกรอบ Crispy Squid Pad Thai",
+    "price": 120,
+    "image": "menu_Crispy Squid Pad Thai"
   }
 ]
