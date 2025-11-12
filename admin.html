@@ -324,10 +324,10 @@ document.getElementById('pushGithubBtn').addEventListener('click', async ()=>{
   const token = document.getElementById('ghToken').value.trim();
   if(!token){ if(!confirm('คุณยังไม่ได้ใส่ GitHub token — ต้องการดำเนินการต่อแบบ LOCAL (ดาวน์โหลด JSON) แทนหรือไม่?')) return; }
 
-  // default values (เปลี่ยนให้ตรง repo ของคุณ!)
-  const owner = 'krualuang';    // <-- เปลี่ยนเป็น owner ของ repo
-  const repo  = 'krualuang.github.io'; // <-- เปลี่ยนชื่อ repo
-  const path  = 'data/menu.json'; // <-- path ใน repo ที่ต้องการบันทึก
+  // แก้ไขค่า OWNER และ REPO ตามข้อมูลจาก GitHub ของคุณแล้ว
+  const owner = 'krualuang';    // <-- ชื่อผู้ใช้ GitHub
+  const repo  = 'krualuang.github.io'; // <-- ชื่อ Repository
+  const path  = 'data/menu.json'; // <-- Path ของไฟล์ JSON (ใช้ค่าเดิม)
 
   if(!token){
     // fallback: prompt download
