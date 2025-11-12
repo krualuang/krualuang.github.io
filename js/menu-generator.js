@@ -1,9 +1,14 @@
-// js/menu-generator.js
+// ✅ js/menu-generator.js (เวอร์ชันปรับปรุง)
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("generateMenuBtn");
   const output = document.getElementById("generatedKeys");
   const preview = document.getElementById("menuPreview");
   const copyBtn = document.getElementById("copyJsonBtn");
+
+  // ✅ ถ้ายังไม่มี translations ให้สร้างไว้ก่อน
+  if (typeof window.translations === "undefined") {
+    window.translations = { th: {}, en: {}, la: {}, zh: {} };
+  }
 
   // 🔹 ฟังก์ชันแปลข้อความ (Google Translate ฟรี)
   async function translateText(text, targetLang) {
@@ -19,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // 🔹 ปุ่มสร้างเมนูใหม่
   btn.addEventListener("click", async () => {
     const nameTh = document.getElementById("menuNameTh").value.trim();
     const descTh = document.getElementById("menuDescTh").value.trim();
@@ -30,11 +36,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    preview.innerHTML = "<p>⏳ กำลังแปลภาษา...</p>";
+    // แสดง Loader
+    preview.innerHTML = `
+      <p style="text-align:center; color:#888;">⏳ กำลังแปลภาษาและสร้างเมนู...</p>
+      <div class="loader"></div>
+    `;
 
-    // 🔹 ค้นหาหมายเลขเมนูถัดไป เช่น item5
+    // 🔹 คำนวณหมายเลขเมนูถัดไป (แบบแม่นยำ)
     const existingKeys = Object.keys(translations.th || {}).filter(k => k.startsWith("menu.item"));
-    const lastIndex = existingKeys.length / 3;
+    const itemNumbers = new Set(
+      existingKeys.map(k => parseInt(k.replace("menu.item", "").split(".")[0])).filter(n => !isNaN(n))
+    );
+    const lastIndex = itemNumbers.size ? Math.max(...itemNumbers) : 0;
     const nextIndex = lastIndex + 1;
     const keyBase = `menu.item${nextIndex}`;
 
@@ -75,12 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    // 🔹 เพิ่ม key เข้าใน translations (ใช้งานทันที)
+    // 🔹 เพิ่ม key เข้าใน translations
     Object.keys(newKeys).forEach(lang => {
       Object.assign(translations[lang], newKeys[lang]);
     });
 
-    // 🔹 แสดง key ที่สร้างใน <pre>
+    // 🔹 แสดงผล JSON
     output.textContent = JSON.stringify(newKeys, null, 2);
 
     // 🔹 แสดง preview เมนู
@@ -95,20 +108,28 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    copyBtn.style.display = "inline-block"; // แสดงปุ่มคัดลอก
+    // ✅ แสดงปุ่มคัดลอก
+    copyBtn.style.display = "inline-block";
+
+    // ✅ ล้างช่อง input
+    document.querySelectorAll("#menuNameTh, #menuDescTh, #menuPriceTh, #menuImage").forEach(i => (i.value = ""));
 
     alert("✅ สร้างเมนูใหม่และแปลอัตโนมัติเรียบร้อย!\nคัดลอก JSON ด้านล่างได้เลย");
   });
 
-  // 📋 ปุ่มคัดลอกโค้ด JSON
-  copyBtn.addEventListener("click", () => {
-    const jsonText = output.textContent;
-    if (!jsonText.trim()) {
+  // 📋 ปุ่มคัดลอก JSON
+  copyBtn.addEventListener("click", async () => {
+    const jsonText = output.textContent.trim();
+    if (!jsonText) {
       alert("ยังไม่มีข้อมูลให้คัดลอก");
       return;
     }
-    navigator.clipboard.writeText(jsonText);
-    copyBtn.textContent = "✅ คัดลอกแล้ว!";
-    setTimeout(() => (copyBtn.textContent = "📋 คัดลอกโค้ด JSON"), 1500);
+    try {
+      await navigator.clipboard.writeText(jsonText);
+      copyBtn.textContent = "✅ คัดลอกแล้ว!";
+      setTimeout(() => (copyBtn.textContent = "📋 คัดลอกโค้ด JSON"), 1500);
+    } catch (err) {
+      alert("⚠️ ไม่สามารถคัดลอกอัตโนมัติได้ — โปรดคัดลอกด้วยตนเอง");
+    }
   });
 });
