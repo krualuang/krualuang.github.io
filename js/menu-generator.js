@@ -5,14 +5,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const preview = document.getElementById("menuPreview");
   const copyBtn = document.getElementById("copyJsonBtn");
 
-  // 📁 เพิ่มปุ่มบันทึกเมนู JSON
+  // 📁 ปุ่มเพิ่มเติม
   const saveBtn = document.createElement("button");
   saveBtn.textContent = "💾 บันทึกเมนูเป็น menu.json";
   saveBtn.style.display = "none";
   saveBtn.style.marginLeft = "10px";
   btn.after(saveBtn);
 
-  // 🔹 ฟังก์ชันแปลข้อความ (Google Translate ฟรี)
+  const loadBtn = document.createElement("button");
+  loadBtn.textContent = "📂 โหลดเมนูที่เคยบันทึกไว้";
+  loadBtn.style.marginLeft = "10px";
+  btn.after(loadBtn);
+
+  // 🔹 ฟังก์ชันแปลข้อความ
   async function translateText(text, targetLang) {
     try {
       const res = await fetch(
@@ -26,6 +31,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // 🔹 โหลดเมนูจาก localStorage
+  loadBtn.addEventListener("click", () => {
+    const savedMenus = JSON.parse(localStorage.getItem("menus") || "[]");
+    if (savedMenus.length === 0) {
+      alert("📭 ยังไม่มีเมนูที่เคยบันทึกไว้");
+      return;
+    }
+
+    output.textContent = JSON.stringify(savedMenus, null, 2);
+    preview.innerHTML = `<h3>📂 เมนูที่เคยบันทึกไว้ (${savedMenus.length} รายการ)</h3>`;
+
+    savedMenus.forEach(menuSet => {
+      const [th] = Object.values(menuSet.th);
+      const [desc] = Object.values(menuSet.th).slice(1, 2);
+      preview.innerHTML += `
+        <div class="menu-item fade-in">
+          <img src="images/menu/placeholder.jpg" alt="${th}">
+          <div class="menu-item-content">
+            <h3>${th}</h3>
+            <p>${desc}</p>
+          </div>
+        </div>`;
+    });
+
+    alert(`✅ โหลดเมนูสำเร็จ ${savedMenus.length} รายการ!`);
+  });
+
+  // 🔹 ปุ่มสร้างเมนูใหม่
   btn.addEventListener("click", async () => {
     const nameTh = document.getElementById("menuNameTh").value.trim();
     const descTh = document.getElementById("menuDescTh").value.trim();
@@ -42,13 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
       <p>⏳ กำลังแปลภาษา...</p>
     `;
 
-    // 🔹 ค้นหาหมายเลขเมนูถัดไป เช่น item5
+    // 🔹 หาหมายเลขเมนูถัดไป
     const existingKeys = Object.keys(translations.th || {}).filter(k => k.startsWith("menu.item"));
     const lastIndex = existingKeys.length / 3;
     const nextIndex = lastIndex + 1;
     const keyBase = `menu.item${nextIndex}`;
 
-    // 🔹 แปลภาษาอัตโนมัติ (ลาว, อังกฤษ, จีน)
+    // 🔹 แปลภาษา
     const [nameLa, nameEn, nameZh] = await Promise.all([
       translateText(nameTh, "lo"),
       translateText(nameTh, "en"),
@@ -61,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
       translateText(descTh, "zh-CN")
     ]);
 
-    // 🔹 สร้าง key สำหรับทุกภาษา
+    // 🔹 สร้าง key
     const newKeys = {
       th: {
         [`${keyBase}.name`]: nameTh,
@@ -85,15 +118,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    // 🔹 เพิ่ม key เข้าใน translations (ใช้งานทันที)
-    Object.keys(newKeys).forEach(lang => {
-      Object.assign(translations[lang], newKeys[lang]);
-    });
+    // 🔹 เพิ่มเข้า translations
+    Object.keys(newKeys).forEach(lang => Object.assign(translations[lang], newKeys[lang]));
 
-    // 🔹 แสดงผล JSON ที่สร้าง
+    // 🔹 แสดงผล
     output.textContent = JSON.stringify(newKeys, null, 2);
-
-    // 🔹 แสดง preview เมนู
     preview.innerHTML = `
       <div class="menu-item fade-in">
         <img src="images/menu/${img || 'placeholder.jpg'}" alt="${nameTh}">
@@ -105,16 +134,15 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // 🔹 แสดงปุ่มคัดลอกและบันทึก
     copyBtn.style.display = "inline-block";
     saveBtn.style.display = "inline-block";
 
-    // 🔹 เก็บลง localStorage
+    // 🔹 บันทึกใน localStorage
     const savedMenus = JSON.parse(localStorage.getItem("menus") || "[]");
     savedMenus.push(newKeys);
     localStorage.setItem("menus", JSON.stringify(savedMenus));
 
-    alert("✅ สร้างเมนูใหม่และแปลอัตโนมัติเรียบร้อย!\nคุณสามารถคัดลอกหรือบันทึก JSON ได้เลย");
+    alert("✅ สร้างและบันทึกเมนูใหม่เรียบร้อย!");
   });
 
   // 📋 ปุ่มคัดลอก JSON
