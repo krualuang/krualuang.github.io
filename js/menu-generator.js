@@ -1,14 +1,16 @@
-// ✅ js/menu-generator.js (เวอร์ชันปรับปรุง)
+// js/menu-generator.js
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("generateMenuBtn");
   const output = document.getElementById("generatedKeys");
   const preview = document.getElementById("menuPreview");
   const copyBtn = document.getElementById("copyJsonBtn");
 
-  // ✅ ถ้ายังไม่มี translations ให้สร้างไว้ก่อน
-  if (typeof window.translations === "undefined") {
-    window.translations = { th: {}, en: {}, la: {}, zh: {} };
-  }
+  // 📁 เพิ่มปุ่มบันทึกเมนู JSON
+  const saveBtn = document.createElement("button");
+  saveBtn.textContent = "💾 บันทึกเมนูเป็น menu.json";
+  saveBtn.style.display = "none";
+  saveBtn.style.marginLeft = "10px";
+  btn.after(saveBtn);
 
   // 🔹 ฟังก์ชันแปลข้อความ (Google Translate ฟรี)
   async function translateText(text, targetLang) {
@@ -24,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 🔹 ปุ่มสร้างเมนูใหม่
   btn.addEventListener("click", async () => {
     const nameTh = document.getElementById("menuNameTh").value.trim();
     const descTh = document.getElementById("menuDescTh").value.trim();
@@ -36,18 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // แสดง Loader
     preview.innerHTML = `
-      <p style="text-align:center; color:#888;">⏳ กำลังแปลภาษาและสร้างเมนู...</p>
       <div class="loader"></div>
+      <p>⏳ กำลังแปลภาษา...</p>
     `;
 
-    // 🔹 คำนวณหมายเลขเมนูถัดไป (แบบแม่นยำ)
+    // 🔹 ค้นหาหมายเลขเมนูถัดไป เช่น item5
     const existingKeys = Object.keys(translations.th || {}).filter(k => k.startsWith("menu.item"));
-    const itemNumbers = new Set(
-      existingKeys.map(k => parseInt(k.replace("menu.item", "").split(".")[0])).filter(n => !isNaN(n))
-    );
-    const lastIndex = itemNumbers.size ? Math.max(...itemNumbers) : 0;
+    const lastIndex = existingKeys.length / 3;
     const nextIndex = lastIndex + 1;
     const keyBase = `menu.item${nextIndex}`;
 
@@ -88,12 +85,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    // 🔹 เพิ่ม key เข้าใน translations
+    // 🔹 เพิ่ม key เข้าใน translations (ใช้งานทันที)
     Object.keys(newKeys).forEach(lang => {
       Object.assign(translations[lang], newKeys[lang]);
     });
 
-    // 🔹 แสดงผล JSON
+    // 🔹 แสดงผล JSON ที่สร้าง
     output.textContent = JSON.stringify(newKeys, null, 2);
 
     // 🔹 แสดง preview เมนู
@@ -108,28 +105,49 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // ✅ แสดงปุ่มคัดลอก
+    // 🔹 แสดงปุ่มคัดลอกและบันทึก
     copyBtn.style.display = "inline-block";
+    saveBtn.style.display = "inline-block";
 
-    // ✅ ล้างช่อง input
-    document.querySelectorAll("#menuNameTh, #menuDescTh, #menuPriceTh, #menuImage").forEach(i => (i.value = ""));
+    // 🔹 เก็บลง localStorage
+    const savedMenus = JSON.parse(localStorage.getItem("menus") || "[]");
+    savedMenus.push(newKeys);
+    localStorage.setItem("menus", JSON.stringify(savedMenus));
 
-    alert("✅ สร้างเมนูใหม่และแปลอัตโนมัติเรียบร้อย!\nคัดลอก JSON ด้านล่างได้เลย");
+    alert("✅ สร้างเมนูใหม่และแปลอัตโนมัติเรียบร้อย!\nคุณสามารถคัดลอกหรือบันทึก JSON ได้เลย");
   });
 
   // 📋 ปุ่มคัดลอก JSON
-  copyBtn.addEventListener("click", async () => {
-    const jsonText = output.textContent.trim();
-    if (!jsonText) {
+  copyBtn.addEventListener("click", () => {
+    const jsonText = output.textContent;
+    if (!jsonText.trim()) {
       alert("ยังไม่มีข้อมูลให้คัดลอก");
       return;
     }
-    try {
-      await navigator.clipboard.writeText(jsonText);
-      copyBtn.textContent = "✅ คัดลอกแล้ว!";
-      setTimeout(() => (copyBtn.textContent = "📋 คัดลอกโค้ด JSON"), 1500);
-    } catch (err) {
-      alert("⚠️ ไม่สามารถคัดลอกอัตโนมัติได้ — โปรดคัดลอกด้วยตนเอง");
+    navigator.clipboard.writeText(jsonText);
+    copyBtn.textContent = "✅ คัดลอกแล้ว!";
+    setTimeout(() => (copyBtn.textContent = "📋 คัดลอกโค้ด JSON"), 1500);
+  });
+
+  // 💾 ปุ่มบันทึกไฟล์ JSON
+  saveBtn.addEventListener("click", () => {
+    const jsonText = output.textContent;
+    if (!jsonText.trim()) {
+      alert("ยังไม่มีข้อมูลให้บันทึก");
+      return;
     }
+
+    const blob = new Blob([jsonText], { type: "application/json;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "menu.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    alert("✅ บันทึกไฟล์ menu.json เรียบร้อยแล้ว!");
   });
 });
