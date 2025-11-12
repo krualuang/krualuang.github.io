@@ -3,372 +3,557 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Admin — เครื่องมือสร้างเมนูอัตโนมัติ | ครัวหลวง</title>
-<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+<title>🛠️ Admin Tool | ครัวหลวง Menu Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-  body{font-family:'Prompt',sans-serif;margin:0;background:#f6f6f6;color:#222}
-  header{background:#b8860b;color:#fff;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
-  header h1{margin:0;font-size:1.1rem}
-  .container{max-width:980px;margin:28px auto;padding:22px;background:#fff;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.05)}
-  .row{display:flex;gap:12px;flex-wrap:wrap}
-  .col{flex:1;min-width:220px}
-  label{display:block;font-weight:600;margin-bottom:6px}
-  input[type=text],input[type=number],textarea{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px}
-  button{background:#b8860b;color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer}
-  .menu-list{margin-top:18px}
-  .menu-item{padding:12px;border-radius:8px;border:1px solid #eee;background:#fafafa;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
-  .menu-item img{width:96px;height:72px;object-fit:cover;border-radius:6px}
-  .small{font-size:0.9rem;color:#666}
-  .controls{display:flex;gap:8px;flex-wrap:wrap}
-  .danger{background:#a00}
-  .note{font-size:0.9rem;color:#555;margin-top:8px}
-  .login-box{max-width:360px;margin:36px auto;padding:20px;background:#fff;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.05)}
+    /* --------------------------------- */
+    /* 1. Global & Layout CSS */
+    /* --------------------------------- */
+    :root {
+        --primary-color: #b8860b; /* DarkGoldenrod */
+        --secondary-color: #1e88e5; /* Blue */
+        --danger-color: #a00;
+        --success-color: #2c974b;
+        --bg-light: #f6f6f6;
+        --bg-dark: #222;
+        --text-color: #222;
+        --text-light: #fff;
+    }
+    body {
+        font-family: 'Prompt', sans-serif;
+        margin: 0;
+        background: var(--bg-light);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+    header {
+        background: var(--primary-color);
+        color: var(--text-light);
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    header h1 { margin: 0; font-size: 1.3rem; }
+    .container {
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 30px;
+        background: var(--text-light);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    h2, h3 { color: var(--text-color); border-bottom: 1px solid #eee; padding-bottom: 5px; }
+    h2 { margin-top: 0; }
+    
+    /* --------------------------------- */
+    /* 2. Form & Controls */
+    /* --------------------------------- */
+    .row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .col { flex: 1; min-width: 250px; }
+    label { display: block; font-weight: 600; margin-bottom: 8px; color: #555; }
+    input[type=text], input[type=number], textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: 'Prompt', sans-serif;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+    }
+    button {
+        background: var(--primary-color);
+        color: var(--text-light);
+        border: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-weight: 600;
+    }
+    button:hover { filter: brightness(1.1); }
+    .btn-secondary { background: #777; }
+    .btn-danger { background: var(--danger-color); }
+    .btn-primary { background: var(--primary-color); }
+    .btn-success { background: var(--success-color); }
+    .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
+    .note { font-size: 0.9rem; color: #777; margin-top: 5px; }
+    
+    /* --------------------------------- */
+    /* 3. Login Box */
+    /* --------------------------------- */
+    .login-box {
+        max-width: 360px;
+        margin: 60px auto;
+        padding: 30px;
+        background: var(--text-light);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .login-box h3 { border-bottom: none; }
+
+    /* --------------------------------- */
+    /* 4. Menu List */
+    /* --------------------------------- */
+    .menu-list h3 { margin-bottom: 15px; margin-top: 30px; }
+    .menu-item {
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #eee;
+        background: #fafafa;
+        margin-bottom: 15px;
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+        transition: box-shadow 0.2s;
+    }
+    .menu-item:hover { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); }
+    .menu-item img {
+        width: 120px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex-shrink: 0;
+    }
+    .menu-item-content { flex-grow: 1; }
+    .menu-item-content strong { color: var(--primary-color); font-weight: 700; }
+    .small { font-size: 0.9rem; color: #666; }
+    
+    /* --------------------------------- */
+    /* 5. Generator Section */
+    /* --------------------------------- */
+    #menu-generator {
+        background: #fcfcfc;
+        border: 1px dashed #ddd;
+        padding: 25px;
+        border-radius: 10px;
+        margin-top: 30px;
+    }
+    #generatedKeys {
+        background: var(--bg-dark);
+        color: #00ff6a; /* Neon Green */
+        padding: 15px;
+        border-radius: 8px;
+        white-space: pre-wrap;
+        margin-top: 15px;
+        font-size: 0.9rem;
+        overflow-x: auto;
+    }
+    #menuPreview .menu-item { 
+        max-width: 450px; 
+        margin: 15px auto; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
 </style>
 </head>
 <body>
 
 <header>
-  <h1>เครื่องมือสร้างเมนูอัตโนมัติ — Admin</h1>
-  <a href="index.html" style="color:#fff;text-decoration:none;font-weight:600">← ดูหน้าเว็บหลัก</a>
+    <h1>🛠️ Admin Tool | ครัวหลวง</h1>
+    <a href="index.html" style="color:var(--text-light);text-decoration:none;font-weight:600;opacity:0.8;">← กลับหน้าหลัก</a>
 </header>
 
 <div id="loginWrap" class="login-box">
-  <h3>เข้าสู่ระบบผู้ดูแล (PIN 4 หลัก)</h3>
-  <div style="margin-top:8px">
-    <label for="pin">PIN</label>
-    <input id="pin" type="text" placeholder="กรอก 4 หลัก">
-    <div style="margin-top:10px;display:flex;gap:8px">
-      <button id="btnLogin">เข้าสู่ระบบ</button>
-      <button id="btnUseDemo" style="background:#777">ทดลอง (ไม่มีล็อกอิน)</button>
-    </div>
-    <p class="note">ค่า PIN เริ่มต้นคือ <strong>1234</strong> (เปลี่ยนได้ในสคริปต์)</p>
-  </div>
+    <h3>เข้าสู่ระบบผู้ดูแล</h3>
+    <div style="margin-top:15px">
+        <label for="pin">PIN 4 หลัก</label>
+        <input id="pin" type="text" placeholder="ค่าเริ่มต้น: 1234">
+        <div class="controls" style="justify-content:center;margin-top:20px;">
+            <button id="btnLogin" class="btn-primary">🔐 เข้าสู่ระบบ</button>
+            <button id="btnUseDemo" class="btn-secondary">ทดลอง (ไม่มีล็อกอิน)</button>
+        </div>
+        <p class="note" style="margin-top:15px;">**ค่า PIN เริ่มต้นคือ **1234** (เปลี่ยนได้ในโค้ด)</p>
+    </div>
 </div>
 
 <div id="adminUI" class="container" style="display:none">
+    
+    <h2>1. จัดการเมนูหลัก (Local Storage Manager)</h2>
 
-  <h2>จัดการเมนู</h2>
+    <div class="row">
+        <div class="col">
+            <label for="menuName">ชื่อเมนู</label>
+            <input id="menuName" type="text" placeholder="เช่น ผัดไทยกุ้งสด">
+        </div>
+        <div class="col">
+            <label for="menuPrice">ราคา (บาท)</label>
+            <input id="menuPrice" type="number" placeholder="120">
+        </div>
+        <div style="flex:1 1 100%">
+            <label for="menuDesc">คำอธิบาย</label>
+            <textarea id="menuDesc" rows="2" placeholder="รายละเอียดเมนู"></textarea>
+        </div>
+        <div class="col">
+            <label for="menuImage">รูปภาพ (URL)</label>
+            <input id="menuImage" type="text" placeholder="images/menu/pad_thai.jpg">
+        </div>
 
-    <div class="row">
-    <div class="col">
-      <label for="menuName">ชื่อเมนู</label>
-      <input id="menuName" type="text" placeholder="เช่น ผัดไทยกุ้งสด">
-    </div>
+        <div class="controls">
+            <button id="addBtn" class="btn-success">เพิ่ม/บันทึกเมนู</button>
+            <button id="clearBtn" class="btn-secondary">ล้างฟอร์ม</button>
+        </div>
+    </div>
 
-    <div class="col">
-      <label for="menuPrice">ราคา (บาท)</label>
-      <input id="menuPrice" type="number" placeholder="120">
-      <span class="small">สำหรับใช้กับรายการเมนูปัจจุบัน</span>
-    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:30px 0;">
 
-    <div style="flex:1 1 100%">
-      <label for="menuDesc">คำอธิบาย</label>
-      <textarea id="menuDesc" rows="3" placeholder="รายละเอียดเมนู"></textarea>
-    </div>
+    <section id="menu-generator">
+        <h2>2. 🧑‍🍳 เครื่องมือสร้างคีย์แปลภาษาอัตโนมัติ</h2>
+        <p class="note">ใช้เครื่องมือนี้เพื่อสร้างคีย์ `menu.itemX` พร้อมแปลภาษาอัตโนมัติ (ต้องคัดลอก JSON ไปวางในไฟล์ **`translations.js`** เอง)</p>
 
-    <div class="col">
-      <label for="menuImage">รูปภาพ (URL) — หรือวางว่างไว้เพื่อไม่ใช้รูป</label>
-      <input id="menuImage" type="text" placeholder="images/menu/menu_pad_thai.jpg">
-    </div>
+        <div class="row">
+            <div class="col">
+                <label>ชื่อเมนู (ไทย):</label>
+                <input type="text" id="menuNameTh" placeholder="ผัดไทยกุ้งสด">
+            </div>
+            <div class="col">
+                <label>คำอธิบาย (ไทย):</label>
+                <textarea id="menuDescTh" rows="2" placeholder="เส้นจันท์ผัดกับน้ำซอสสูตรพิเศษ"></textarea>
+            </div>
+        </div>
 
-    <div style="display:flex;gap:8px;align-items:center">
-      <button id="addBtn">เพิ่ม/บันทึกเมนู</button>
-      <button id="clearBtn" style="background:#777">ล้างฟอร์ม</button>
-    </div>
-  </div>
+        <div class="row" style="margin-top:15px;">
+            <div class="col">
+                <label>ราคา (บาท):</label>
+                <input type="number" id="menuPriceTh" placeholder="60">
+            </div>
+            <div class="col">
+                <label>ชื่อไฟล์รูปภาพ (เฉพาะชื่อไฟล์):</label>
+                <input type="text" id="menuImageGen" placeholder="padthai.jpg">
+            </div>
+        </div>
+        
+        <div class="controls" style="margin-top:20px;">
+            <button id="generateMenuBtn" class="btn-secondary">⚙️ สร้างเมนูและแปลภาษา</button>
+            <button id="copyJsonBtn" class="btn-success" style="display:none;">📋 คัดลอกโค้ด JSON</button>
+        </div>
 
-  ---
+        <h3 style="margin-top:30px;">ผลลัพธ์ JSON:</h3>
+        <pre id="generatedKeys"></pre>
+        <h3 style="margin-top:20px;">ตัวอย่าง Preview:</h3>
+        <div id="menuPreview"></div>
+    </section>
 
-    <section id="menu-generator" style="margin-top:25px;padding-top:15px;border-top:1px dashed #ddd;">
-    <h2>🧑‍🍳 เครื่องมือสร้างเมนูใหม่ (พร้อมแปลภาษา)</h2>
+    <hr style="border:0;border-top:1px solid #eee;margin:30px 0;">
 
-    <div class="row">
-      <div class="col">
-        <label>ชื่อเมนู (ไทย):</label>
-        <input type="text" id="menuNameTh" placeholder="ผัดไทยกุ้งสด">
-      </div>
-      <div class="col">
-        <label>คำอธิบาย (ไทย):</label>
-        <textarea id="menuDescTh" rows="3" placeholder="เส้นจันท์ผัดกับน้ำซอสสูตรพิเศษ"></textarea>
-      </div>
-    </div>
+    <h2 style="margin-top:30px;">3. เครื่องมือ Import/Export</h2>
+    <div class="controls">
+        <button id="saveLocal" class="btn-primary">💾 บันทึกอัตโนมัติ (localStorage)</button>
+        <button id="downloadJson" class="btn-secondary">⬇️ ดาวน์โหลด menu.json</button>
+        <input id="fileIn" type="file" style="display:none" accept="application/json">
+        <button id="uploadJson" class="btn-secondary">⬆️ นำเข้า menu.json</button>
+    </div>
 
-    <div class="row" style="margin-top:10px;">
-      <div class="col">
-        <label>ราคา (บาท):</label>
-        <input type="number" id="menuPriceTh" placeholder="60">
-      </div>
-      <div class="col">
-        <label>ชื่อไฟล์รูปภาพ:</label>
-        <input type="text" id="menuImageGen" placeholder="padthai.jpg">
-      </div>
-    </div>
-    
-    <div style="margin-top:15px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
-      <button id="generateMenuBtn" style="background:#1e88e5;">⚙️ สร้างเมนูและแปลภาษา</button>
-      <button id="copyJsonBtn" style="display:none;background:#2c974b;">📋 คัดลอกโค้ด JSON</button>
-    </div>
-
-    <pre id="generatedKeys" style="background:#111;color:#0f0;padding:10px;border-radius:10px;white-space:pre-wrap;margin-top:20px;"></pre>
-    <div id="menuPreview" style="margin-top:20px;"></div>
-  </section>
-
-  ---
-
-    <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
-    <button id="saveLocal">💾 บันทึกอัตโนมัติ (localStorage)</button>
-    <button id="downloadJson">⬇️ ดาวน์โหลด menu.json</button>
-    <input id="fileIn" type="file" style="display:none" accept="application/json">
-    <button id="uploadJson">⬆️ นำเข้า menu.json</button>
-
-        <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
-      <input id="ghToken" type="text" placeholder="(OPTIONAL) GitHub Token" style="width:200px;padding:8px;border-radius:6px;border:1px solid #ddd">
-      <button id="pushGithubBtn" style="background:#2c974b">🚀 Push → GitHub</button>
-    </div>
-  </div>
-
-  <p class="note">หมายเหตุ: หากใช้งานบน GitHub Pages โดยไม่มี backend ระบบจะบันทึกเป็น localStorage และให้ดาวน์โหลดไฟล์ JSON เพื่ออัปโหลดไปยังระบบ / deploy ด้วยตนเอง</p>
-
-  <div class="menu-list" id="menuListWrap">
-    <h3>รายการเมนูทั้งหมด</h3>
-    <div id="menuList"></div>
-  </div>
+    <div class="menu-list" id="menuListWrap">
+        <h3>รายการเมนูทั้งหมดที่บันทึกไว้ใน localStorage</h3>
+        <div id="menuList"></div>
+    </div>
 
 </div>
 
+
 <script>
-/* =========================
-   Config
-   ========================= */
-const ADMIN_PIN = '1234'; // เปลี่ยน PIN ที่ต้องการได้ที่นี่
-const STORAGE_KEY = 'krualuang_menu_v1';
-const DEFAULT_MENU = []; // ถ้าต้องการตัวอย่าง ให้ใส่ object ในนี้
+    /* ==========================================================
+       CONFIG
+       ========================================================== */
+    const ADMIN_PIN = '1234'; 
+    const STORAGE_KEY = 'krualuang_menu_v1';
+    // 🚨 สมมติว่า translations object ถูกโหลดแล้ว (ถ้าคุณจะใช้ Generator)
+    // สำหรับหน้า Standalone Admin นี้ เราจะกำหนด Translations ว่างไว้ก่อน
+    const translations = {
+        th: {
+            "menu.item1.name": "ผัดไทย",
+            "menu.item1.desc": "ผัดไทยกุ้งสด",
+            "menu.item1.price": "120 บาท",
+        },
+        en: {}, la: {}, zh: {}
+    };
+    const DEFAULT_MENU = []; // เมนูเริ่มต้น
 
-/* =========================
-   Helper: localStorage
-   ========================= */
-function loadMenuFromLocal(){
-  try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : DEFAULT_MENU.slice();
-  }catch(e){ return DEFAULT_MENU.slice(); }
-}
-function saveMenuToLocal(arr){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr, null, 2));
-}
+    /* ==========================================================
+       HELPER FUNCTIONS
+       ========================================================== */
+    function loadMenuFromLocal(){
+        try{
+            const raw = localStorage.getItem(STORAGE_KEY);
+            return raw ? JSON.parse(raw) : DEFAULT_MENU.slice();
+        }catch(e){ return DEFAULT_MENU.slice(); }
+    }
+    function saveMenuToLocal(arr){
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr, null, 2));
+    }
+    function escapeHtml(s){ return (s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+    function escapeAttr(s){ return (s||'').replaceAll('"','&quot;'); }
 
-/* =========================
-   Render
-   ========================= */
-let menu = loadMenuFromLocal();
-const menuList = document.getElementById('menuList');
+    /* ------------------------------------
+       Google Translate API (Free)
+       ------------------------------------ */
+    async function translateText(text, targetLang) {
+        if (!text) return '';
+        try {
+            const res = await fetch(
+                `https://translate.googleapis.com/translate_a/single?client=gtx&sl=th&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`
+            );
+            const data = await res.json();
+            return data[0][0][0];
+        } catch (e) {
+            console.warn("❌ แปลไม่สำเร็จ:", e);
+            return `[${targetLang.toUpperCase()}] ${text}`;
+        }
+    }
 
-function render(){
-  menuList.innerHTML = '';
-  if(!menu.length){ menuList.innerHTML = '<p class="small">ยังไม่มีรายการเมนู</p>'; return; }
-  menu.forEach((it, idx) => {
-    const el = document.createElement('div');
-    el.className = 'menu-item';
-    el.innerHTML = `
-      <div style="flex:1">
-        <strong>${escapeHtml(it.name||'')}</strong>
-        <div class="small">${escapeHtml(it.desc||'')}</div>
-        <div style="margin-top:8px">ราคา: <strong>${Number(it.price||0)} บาท</strong></div>
-        <div style="margin-top:8px" class="controls">
-          <button data-edit="${idx}">แก้ไข</button>
-          <button data-delete="${idx}" class="danger" style="background:#a00">ลบ</button>
-        </div>
-      </div>
-      ${it.image ? `<img src="${escapeAttr(it.image)}" alt="${escapeHtml(it.name)}">` : ''}
-    `;
-    menuList.appendChild(el);
-  });
-}
+    /* ==========================================================
+       UI LOGIC (RENDER & HANDLERS)
+       ========================================================== */
+    let menu = loadMenuFromLocal();
+    const menuList = document.getElementById('menuList');
+    const nameInput = document.getElementById('menuName');
+    const descInput = document.getElementById('menuDesc');
+    const priceInput = document.getElementById('menuPrice');
+    const imageInput = document.getElementById('menuImage');
 
-/* =========================
-   Utilities
-   ========================= */
-function escapeHtml(s){ return (s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
-function escapeAttr(s){ return (s||'').replaceAll('"','&quot;'); }
+    function render(){
+        menuList.innerHTML = '';
+        if(!menu.length){ menuList.innerHTML = '<p class="small">ยังไม่มีรายการเมนู</p>'; return; }
+        
+        menu.forEach((it, idx) => {
+            const el = document.createElement('div');
+            el.className = 'menu-item';
+            el.innerHTML = `
+                ${it.image ? `<img src="${escapeAttr(it.image)}" alt="${escapeHtml(it.name)}">` : ''}
+                <div class="menu-item-content">
+                    <strong>${escapeHtml(it.name||'')}</strong>
+                    <div class="small">${escapeHtml(it.desc||'')}</div>
+                    <div style="margin-top:8px">ราคา: <strong>${Number(it.price||0)} บาท</strong></div>
+                    <div style="margin-top:8px" class="controls">
+                        <button data-edit="${idx}" class="btn-primary" style="padding: 5px 10px;">แก้ไข</button>
+                        <button data-delete="${idx}" class="btn-danger" style="padding: 5px 10px;">ลบ</button>
+                    </div>
+                </div>
+            `;
+            menuList.appendChild(el);
+        });
+    }
 
-/* =========================
-   Handlers (Add / Clear / Edit / Delete)
-   ========================= */
-document.getElementById('addBtn').addEventListener('click', () => {
-  const name = document.getElementById('menuName').value.trim();
-  const desc = document.getElementById('menuDesc').value.trim();
-  const price = document.getElementById('menuPrice').value.trim();
-  const image = document.getElementById('menuImage').value.trim();
-  if(!name || !price){ alert('กรุณากรอกชื่อเมนูและราคา'); return; }
-  menu.push({name, desc, price: Number(price), image});
-  saveMenuToLocal(menu);
-  render();
-  clearForm();
-});
+    function clearForm(){
+        nameInput.value='';
+        descInput.value='';
+        priceInput.value='';
+        imageInput.value='';
+    }
 
-document.getElementById('clearBtn').addEventListener('click', clearForm);
+    // --- Handlers ---
+    document.getElementById('addBtn').addEventListener('click', () => {
+        const name = nameInput.value.trim();
+        const desc = descInput.value.trim();
+        const price = priceInput.value.trim();
+        const image = imageInput.value.trim();
+        if(!name || !price){ alert('กรุณากรอกชื่อเมนูและราคา'); return; }
+        menu.push({name, desc, price: Number(price), image});
+        saveMenuToLocal(menu);
+        render();
+        clearForm();
+        alert('เพิ่มเมนูสำเร็จ! กรุณากด "บันทึกอัตโนมัติ" เพื่อยืนยันการบันทึก');
+    });
 
-function clearForm(){
-  document.getElementById('menuName').value='';
-  document.getElementById('menuDesc').value='';
-  document.getElementById('menuPrice').value='';
-  document.getElementById('menuImage').value='';
-}
+    document.getElementById('clearBtn').addEventListener('click', clearForm);
 
-/* edit / delete delegation */
-menuList.addEventListener('click', (ev)=>{
-  const edit = ev.target.getAttribute('data-edit');
-  const del = ev.target.getAttribute('data-delete');
-  if(edit!=null){
-    const idx = Number(edit);
-    const it = menu[idx];
-    // Load data to form
-    document.getElementById('menuName').value = it.name;
-    document.getElementById('menuDesc').value = it.desc;
-    document.getElementById('menuPrice').value = it.price;
-    document.getElementById('menuImage').value = it.image||'';
-    // remove original item (so 'Add' button becomes 'Save')
-    menu.splice(idx,1);
-    render();
-    saveMenuToLocal(menu);
-  } else if(del!=null){
-    if(confirm('ลบรายการเมนูนี้จริงหรือไม่?')){
-      menu.splice(Number(del),1);
-      render();
-      saveMenuToLocal(menu);
-    }
-  }
-});
+    // Edit / Delete Delegation
+    menuList.addEventListener('click', (ev)=>{
+        const edit = ev.target.getAttribute('data-edit');
+        const del = ev.target.getAttribute('data-delete');
+        if(edit!=null){
+            const idx = Number(edit);
+            const it = menu[idx];
+            // Load data to form
+            nameInput.value = it.name;
+            descInput.value = it.desc;
+            priceInput.value = it.price;
+            imageInput.value = it.image||'';
+            // Remove original item (so 'Add' button becomes 'Save')
+            menu.splice(idx,1);
+            render();
+            saveMenuToLocal(menu);
+            alert('เมนูถูกโหลดเข้าสู่ฟอร์มแล้ว. แก้ไขแล้วกด "เพิ่ม/บันทึก" เพื่อบันทึกทับ');
+        } else if(del!=null){
+            if(confirm('ลบรายการเมนูนี้จริงหรือไม่?')){
+                menu.splice(Number(del),1);
+                render();
+                saveMenuToLocal(menu);
+                alert('ลบรายการสำเร็จ!');
+            }
+        }
+    });
 
-/* save / download / upload */
-document.getElementById('saveLocal').addEventListener('click', ()=> {
-  saveMenuToLocal(menu);
-  alert('บันทึกลง localStorage เรียบร้อย');
-});
+    // Save / Download / Upload
+    document.getElementById('saveLocal').addEventListener('click', ()=> {
+        saveMenuToLocal(menu);
+        alert('บันทึกลง localStorage เรียบร้อย');
+    });
 
-document.getElementById('downloadJson').addEventListener('click', ()=> {
-  const blob = new Blob([JSON.stringify(menu, null, 2)], {type:'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'menu.json';
-  document.body.appendChild(a); a.click();
-  a.remove(); URL.revokeObjectURL(url);
-});
+    document.getElementById('downloadJson').addEventListener('click', ()=> {
+        const blob = new Blob([JSON.stringify(menu, null, 2)], {type:'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'menu.json';
+        document.body.appendChild(a); a.click();
+        a.remove(); URL.revokeObjectURL(url);
+    });
 
-document.getElementById('uploadJson').addEventListener('click', ()=> {
-  document.getElementById('fileIn').click();
-});
-document.getElementById('fileIn').addEventListener('change', (e)=>{
-  const f = e.target.files[0];
-  if(!f) return;
-  const r = new FileReader();
-  r.onload = () => {
-    try {
-      const data = JSON.parse(r.result);
-      if(!Array.isArray(data)) throw new Error('ไฟล์ต้องเป็น array ของเมนู');
-      if(!confirm(`นำเข้า ${data.length} รายการเมนู (จะแทนที่รายการปัจจุบัน) ?`)) return;
-      menu = data;
-      saveMenuToLocal(menu);
-      render();
-      alert('นำเข้าเรียบร้อย');
-    } catch(err){ alert('ไฟล์ไม่ถูกต้อง: ' + err.message); }
-  };
-  r.readAsText(f);
-});
+    document.getElementById('uploadJson').addEventListener('click', ()=> {
+        document.getElementById('fileIn').click();
+    });
+    document.getElementById('fileIn').addEventListener('change', (e)=>{
+        const f = e.target.files[0];
+        if(!f) return;
+        const r = new FileReader();
+        r.onload = () => {
+            try {
+                const data = JSON.parse(r.result);
+                if(!Array.isArray(data)) throw new Error('ไฟล์ต้องเป็น array ของเมนู');
+                if(!confirm(`นำเข้า ${data.length} รายการเมนู (จะแทนที่รายการปัจจุบัน) ?`)) return;
+                menu = data;
+                saveMenuToLocal(menu);
+                render();
+                alert('นำเข้าเรียบร้อย');
+            } catch(err){ alert('ไฟล์ไม่ถูกต้อง: ' + err.message); }
+        };
+        r.readAsText(f);
+    });
 
-/* =========================
-   OPTIONAL: Push to GitHub (use with caution)
-   ========================= */
-async function pushToGithub({owner,repo,path,token,contentObj,commitMsg='Update menu.json from admin'}){
-  // ... (โค้ดสำหรับ Push to Github ที่ซับซ้อนตามโค้ดเดิม) ...
-  const apiBase = 'https://api.github.com';
-  const getUrl = `${apiBase}/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`;
-  // 1) get current file to obtain sha (if exists)
-  const headers = { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' };
-  let sha = null;
-  try {
-    const res = await fetch(getUrl, {headers});
-    if(res.status === 200){
-      const j = await res.json();
-      sha = j.sha;
-    } else if(res.status === 404){
-      sha = null; // new file
-    } else {
-      const t = await res.text();
-      throw new Error('GET file failed: ' + res.status + ' ' + t);
-    }
-  } catch(err){ throw err; }
+    /* ==========================================================
+       MENU GENERATOR LOGIC
+       ========================================================== */
+    const generatorBtn = document.getElementById("generateMenuBtn");
+    const generatorOutput = document.getElementById("generatedKeys");
+    const generatorCopyBtn = document.getElementById("copyJsonBtn");
+    const generatorPreview = document.getElementById("menuPreview");
+    
+    // Generator Inputs (ใช้ ID ใหม่ใน HTML)
+    const genNameInput = document.getElementById("menuNameTh");
+    const genDescInput = document.getElementById("menuDescTh");
+    const genPriceInput = document.getElementById("menuPriceTh");
+    const genImageInput = document.getElementById("menuImageGen");
 
-  // 2) PUT new content
-  const contentStr = JSON.stringify(contentObj, null, 2);
-  const body = {
-    message: commitMsg,
-    content: btoa(unescape(encodeURIComponent(contentStr))),
-    committer: { name: "krualuang-admin", email: "admin@krualuang.local" }
-  };
-  if(sha) body.sha = sha;
+    generatorBtn.addEventListener("click", async () => {
+        const nameTh = genNameInput.value.trim();
+        const descTh = genDescInput.value.trim();
+        const priceTh = genPriceInput.value.trim();
+        const img = genImageInput.value.trim();
 
-  const putRes = await fetch(getUrl, {
-    method: 'PUT',
-    headers,
-    body: JSON.stringify(body)
-  });
-  if(!putRes.ok){
-    const text = await putRes.text();
-    throw new Error('PUT failed: ' + putRes.status + ' ' + text);
-  }
-  return await putRes.json();
-}
+        if (!nameTh || !descTh || !priceTh) {
+            alert("⚠️ กรุณากรอกชื่อเมนู คำอธิบาย และราคา (ไทย)");
+            return;
+        }
+        
+        generatorPreview.innerHTML = "<p style='text-align:center;'>⏳ กำลังแปลภาษา...</p>";
+        generatorOutput.textContent = ""; 
+        generatorCopyBtn.style.display = "none";
 
-document.getElementById('pushGithubBtn').addEventListener('click', async ()=>{
-  const token = document.getElementById('ghToken').value.trim();
-  if(!token){ if(!confirm('คุณยังไม่ได้ใส่ GitHub token — ต้องการดำเนินการต่อแบบ LOCAL (ดาวน์โหลด JSON) แทนหรือไม่?')) return; }
+        // 🔹 ค้นหาหมายเลขเมนูถัดไป (นับจาก translations object ที่มีอยู่)
+        // Note: โค้ดนี้จะใช้ translations object ที่กำหนดไว้ด้านบน
+        const existingKeys = Object.keys(translations.th).filter(k => k.startsWith("menu.item") && k.endsWith(".name"));
+        const nextIndex = existingKeys.length + 1; 
+        const keyBase = `menu.item${nextIndex}`;
 
-  // แก้ไขค่า OWNER และ REPO ตามข้อมูลจาก GitHub ของคุณแล้ว
-  const owner = 'krualuang';    // <-- ชื่อผู้ใช้ GitHub
-  const repo  = 'krualuang.github.io'; // <-- ชื่อ Repository
-  const path  = 'data/menu.json'; // <-- Path ของไฟล์ JSON (ใช้ค่าเดิม)
+        // 🔹 แปลภาษาอัตโนมัติ
+        const [nameLa, nameEn, nameZh, descLa, descEn, descZh] = await Promise.all([
+            translateText(nameTh, "lo"),
+            translateText(nameTh, "en"),
+            translateText(nameTh, "zh-CN"),
+            translateText(descTh, "lo"),
+            translateText(descTh, "en"),
+            translateText(descTh, "zh-CN")
+        ]);
 
-  if(!token){
-    // fallback: prompt download
-    document.getElementById('downloadJson').click();
-    return;
-  }
+        // 🔹 สร้าง key
+        const newKeys = {
+            th: { [`${keyBase}.name`]: nameTh, [`${keyBase}.desc`]: descTh, [`${keyBase}.price`]: `${priceTh} บาท` },
+            en: { [`${keyBase}.name`]: nameEn, [`${keyBase}.desc`]: descEn, [`${keyBase}.price`]: `${priceTh} Baht` },
+            la: { [`${keyBase}.name`]: nameLa, [`${keyBase}.desc`]: descLa, [`${keyBase}.price`]: `${priceTh} ກີບ` },
+            zh: { [`${keyBase}.name`]: nameZh, [`${keyBase}.desc`]: descZh, [`${keyBase}.price`]: `${priceTh} 泰铢` }
+        };
 
-  try {
-    const res = await pushToGithub({owner,repo,path,token,contentObj:menu,commitMsg:'Update menu.json via admin UI'});
-    alert('Push สำเร็จ: ' + (res.commit && res.commit.sha ? res.commit.sha : 'OK'));
-  } catch(err){
-    alert('Push ล้มเหลว: ' + err.message + '\nแนะนำ: ใช้ Node script หรือ GitHub Actions มากกว่าใส่ token ในบราว์เซอร์.');
-  }
-});
+        // 🚨 อัปเดต translations object ชั่วคราว (เพื่อให้ Generator ใช้ได้แม้ไม่รีเฟรช)
+        Object.keys(newKeys).forEach(lang => {
+            Object.assign(translations[lang], newKeys[lang]);
+        });
+        
+        generatorOutput.textContent = JSON.stringify(newKeys, null, 2);
 
-/* =========================
-   Login handling
-   ========================= */
-document.getElementById('btnLogin').addEventListener('click', ()=>{
-  const v = (document.getElementById('pin').value||'').trim();
-  if(v === ADMIN_PIN){
-    document.getElementById('loginWrap').style.display='none';
-    document.getElementById('adminUI').style.display='block';
-    render();
-  } else {
-    alert('PIN ผิด กรุณาลองใหม่');
-  }
-});
-document.getElementById('btnUseDemo').addEventListener('click', ()=>{
-  document.getElementById('loginWrap').style.display='none';
-  document.getElementById('adminUI').style.display='block';
-  render();
-});
+        // 🔹 แสดง preview
+        generatorPreview.innerHTML = `
+            <div class="menu-item" style="max-width:400px;margin:20px auto;">
+                ${img ? `<img src="${img}" alt="${nameTh}">` : ''}
+                <div class="menu-item-content">
+                    <h4 style="margin:0;font-size:1.1rem;">${nameTh} (Key: ${keyBase})</h4>
+                    <p class="small" style="margin:5px 0;">${descTh}</p>
+                    <div style="font-weight:bold;color:var(--primary-color);">${priceTh} บาท</div>
+                </div>
+            </div>
+        `;
 
-/* Initial render (if already logged via demo) */
-if(menu && menu.length) {
-  // don't auto-show admin; require login
-}
+        // 🚨 ล้างฟอร์ม
+        genNameInput.value = ''; genDescInput.value = ''; genPriceInput.value = ''; genImageInput.value = '';
+
+        generatorCopyBtn.style.display = "inline-block"; 
+        alert("✅ สร้างเมนูใหม่และแปลอัตโนมัติเรียบร้อย!\nคัดลอก JSON แล้วนำไปวางในไฟล์ translations.js");
+    });
+
+    generatorCopyBtn.addEventListener("click", () => {
+        const jsonText = generatorOutput.textContent;
+        if (!jsonText.trim()) { alert("ยังไม่มีข้อมูลให้คัดลอก"); return; }
+        
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(jsonText).then(() => {
+                generatorCopyBtn.textContent = "✅ คัดลอกแล้ว!";
+                setTimeout(() => (generatorCopyBtn.textContent = "📋 คัดลอกโค้ด JSON"), 1500);
+            });
+        }
+    });
+
+    /* ==========================================================
+       LOGIN LOGIC
+       ========================================================== */
+    const loginWrap = document.getElementById('loginWrap');
+    const adminUI = document.getElementById('adminUI');
+    const pinInput = document.getElementById('pin');
+
+    function handleLogin(){
+        const v = (pinInput.value||'').trim();
+        if(v === ADMIN_PIN){
+            loginWrap.style.display='none';
+            adminUI.style.display='block';
+            render();
+            alert('ยินดีต้อนรับผู้ดูแลระบบ!');
+        } else {
+            alert('PIN ผิด กรุณาลองใหม่');
+        }
+    }
+
+    document.getElementById('btnLogin').addEventListener('click', handleLogin);
+    pinInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleLogin();
+    });
+
+    document.getElementById('btnUseDemo').addEventListener('click', ()=>{
+        if(confirm('โหมดทดลองจะข้ามการล็อกอิน คุณแน่ใจหรือไม่?')){
+            loginWrap.style.display='none';
+            adminUI.style.display='block';
+            render();
+        }
+    });
+    
+    // Initial render call must be after UI is shown
+    // but the array load happens at the top.
+    // We only call render() after successful login.
 </script>
-
-<script src="js/menu-generator.js"></script>
 
 </body>
 </html>
